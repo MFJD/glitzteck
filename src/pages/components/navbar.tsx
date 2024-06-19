@@ -59,7 +59,7 @@ const Navbar: FC<ExampleProps> = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
     return (
-        <div className={`w-full    duration-500 ease-in-out  ${isVisible ? 'h-[85vh]':'h-[100vh]'}  relative`} style={{ background: `url('/images/hero-bg.png')`, backgroundSize: "cover" }}>
+        <div className={`w-full    duration-500 ease-in-out  ${isVisible ? 'md:h-[85vh] h-[55vh]' : 'md:h-[100vh] h-[60vh]'}  relative`} style={{ background: `url('/images/hero-bg.png')`, backgroundSize: "cover" }}>
             <Disclosure as="nav" className={`  transform transition-transform duration-500 ease-in-out 
                  ${isVisible ? 'bg-white fixed top-0 left-0 right-0 z-10  shadow-lg' : ''}
                  ${isVisible ? 'animate-headerWobble' : ''}
@@ -75,7 +75,11 @@ const Navbar: FC<ExampleProps> = () => {
                                             <span className="absolute -inset-0.5" />
                                             <span className="sr-only">Open main menu</span>
                                             {open ? (
-                                                <img src="/images/car.png" alt="" />
+                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="21" height="26">
+                                                    <path d="M0 0 C6.93 0 13.86 0 21 0 C21 0.99 21 1.98 21 3 C14.07 3 7.14 3 0 3 C0 2.01 0 1.02 0 0 Z " fill="#2c7081" transform="translate(0,0)" />
+                                                    <path d="M0 0 C4.62 0 9.24 0 14 0 C14 0.99 14 1.98 14 3 C9.38 3 4.76 3 0 3 C0 2.01 0 1.02 0 0 Z " fill="#2c7081" transform="translate(0,12)" />
+                                                    <path d="M0 0 C2.97 0 5.94 0 9 0 C9 0.99 9 1.98 9 3 C6.03 3 3.06 3 0 3 C0 2.01 0 1.02 0 0 Z " fill="#2c7081" transform="translate(0,23)" />
+                                                </svg>
                                             ) : (
                                                 <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                                             )}
@@ -192,7 +196,7 @@ const Navbar: FC<ExampleProps> = () => {
                                     Contact
                                 </DisclosureButton>
                             </div>
-                            
+
                         </DisclosurePanel>
                     </>
                 )}
