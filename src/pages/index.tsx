@@ -14,6 +14,14 @@ import MostValue from "./components/mostvalue";
 import Features from "./components/features";
 import WhyGlitzteck from "./components/whyglitzteck";
 import Services from "./components/services";
+import Faq from "./components/faq";
+import { path } from 'animejs'
+import { usePathname } from "next/navigation";
+import React from "react";
+import SplashCreen from "./splashscreen";
+import { motion } from "framer-motion";
+import ScrollToTopButton from "@/components/scrollButton";
+
 
 export async function getStaticProps(obj: { locale: any }) {
   return {
@@ -28,6 +36,9 @@ export async function getStaticProps(obj: { locale: any }) {
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const pathname = usePathname()
+  const isHome = pathname === "/"
+  const [isLoading, setIsLoading] = React.useState(isHome)
   const router = useRouter();
   const { t } = useTranslation('common')
   const { i18n } = useTranslation();
@@ -44,26 +55,33 @@ export default function Home() {
     if (data! == null)
       i18n.changeLanguage(data);
 
-  }, [selectedLanguage]);
+    if (isLoading) return
 
+  }, [selectedLanguage, isLoading]);
 
-  const changeLanguage = (language: any) => {
-    i18n.changeLanguage(language);
-
-    localStorage.setItem('selectedLanguage', language);
-    router.push(router.asPath, router.asPath, { locale: language });
-  };
   return (
-    <div className="bg-[#fcfeff]">
-      <Navbar />
-      <Weare />
-      <MostValue />
-      <Features />
-      <WhyGlitzteck />
-      <Services />
-      <ContactUs />
-      <CTA />
-      <Footer />
-    </div>
+    <div
+    >
+      {isLoading && isHome ? (<SplashCreen finishLoading={() => { setIsLoading(false) }} />)
+        :
+        (
+          <motion.div
+            initial={{ opacity: 0, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 3, ease: 'easeOut' }}
+            className="bg-[#fcfeff]"><Navbar />
+            <Weare />
+            <MostValue />
+            {/* <Features /> */}
+            <WhyGlitzteck />
+            <Services />
+            {/* <Faq /> */}
+            {/* <ContactUs /> */}
+            <CTA />
+            <Footer />
+            <ScrollToTopButton />
+          </motion.div>)
+      }
+    </div >
   );
 }

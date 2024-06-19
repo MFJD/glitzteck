@@ -94,3 +94,15 @@ li {
 -moz-box-shadow: 2px 4px 5px 10px rgba(247, 249, 250,0.6);
 box-shadow: 2px 4px 5px 10px rgba(247, 249, 250,0.6);
 }
+
+@keyframes headerWobble {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-5px); }
+  50% { transform: translateY(-5px); }
+  75% { transform: translateY(-3px); }
+}
+
+.animate-headerWobble {
+  animation: headerWobble 1s ease-in-out;
+  animation-iteration-count: 1;
+}

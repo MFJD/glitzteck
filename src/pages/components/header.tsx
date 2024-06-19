@@ -24,7 +24,7 @@ const Header = () => {
                 <button className="primarybg text-white flex px-4 py-3.5 rounded mt-2 space-x-5 text-xl">Get Started <i className="ri-arrow-right-line ml-4 text-xl"></i></button>
             </div>
 
-            <div className="image-animation">
+            <div className="image-animation md:block hidden">
                 <img src="/images/hero-img.png" alt="" />
             </div>
         </div>

@@ -97,7 +97,7 @@ export default function Footer() {
                 Footer
             </h2>
             <div className="mx-auto max-w-7xl px-6 pb-2 pt-18 sm:pt-10 lg:px-8 lg:pt-20">
-                <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+                <div className="grid  md:grid-cols-4 grid-cols-1 md:gap-8">
                     <div className="space-y-8">
                         <img
                             className="h-12 w-auto"
@@ -116,9 +116,7 @@ export default function Footer() {
                             ))}
                         </div>
                     </div>
-                    <div className="mt-16 grid grid-cols-3 gap-8 xl:col-span-2 xl:mt-0">
-
-                        <div>
+                        <div className="mt-10 md:mt-0">
                             <h3 className="text-2xl font-semibold leading-6 primaryText">Explore</h3>
                             <ul role="list" className="mt-6 space-y-4">
                                 {navigation.solutions.map((item) => (
@@ -169,7 +167,7 @@ export default function Footer() {
 
                             </ul>
                         </div>
-                    </div>
+                    
                 </div>
                 <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-10 lg:mt-14">
                     <p className="text-xs leading-5 text-gray-500">&copy; 2024 Glitzteck LLC, Inc. All rights reserved.</p>

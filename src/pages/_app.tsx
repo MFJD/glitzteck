@@ -4,9 +4,10 @@ import App, { AppContext, AppProps } from 'next/app';
 import { appWithTranslation, i18n } from 'next-i18next';
 import { SetStateAction, useEffect, useState } from 'react';
 import 'remixicon/fonts/remixicon.css'
-import Loading from "@/pages/components/loader";
 import { useRouter } from "next/router";
-
+import 'react-bootstrap-accordion/dist/index.css'
+import '@/styles/loader.css'
+import { motion } from 'framer-motion';
 interface MyAppProps extends AppProps {
   // Add any additional props here if needed
 }
@@ -18,10 +19,10 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
   useEffect(() => {
 
-    
+
     // 1. Get Locale from localStorage on mount
-    const storedLocale = typeof window !== 'undefined' 
-      ? localStorage.getItem('language') 
+    const storedLocale = typeof window !== 'undefined'
+      ? localStorage.getItem('language')
       : null;
 
     // 2. Redirect if localStorage value doesn't match current route
@@ -29,7 +30,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
       // push(`/${storedLocale}`); 
     } else if (!storedLocale) {
       // 3. If no localStorage value, set it to default (or detected)
-      localStorage.setItem('language', locale  ? locale : ""); 
+      localStorage.setItem('language', locale ? locale : "");
       setUserLocale(locale); `          `
     } else {
       // 4. If localStorage value is valid, use it
@@ -41,12 +42,12 @@ function MyApp({ Component, pageProps }: MyAppProps) {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [locale, locales, push]); 
+  }, [locale, locales, push]);
 
 
 
   return (
-    <div className={`  ${isLoading ? 'overflow-y-hidden':''}`}>
+    <div className={`  ${isLoading ? 'overflow-y-hidden' : ''}`}>
       {/* {isLoading && <Loading />} */}
       <Component {...pageProps} />
     </div>
