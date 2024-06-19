@@ -68,7 +68,7 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 3, ease: 'easeOut' }}
+            transition={{ duration: 2, ease: 'easeOut' }}
             className="bg-[#fcfeff]"><Navbar />
             <Weare />
             <MostValue />
