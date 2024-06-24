@@ -108,36 +108,35 @@ const Head = () => {
                                         >
                                             Home
                                         </a></Link>
-                                        <a
-                                            href="/about"
+                                        <Link href="/about" legacyBehavior><a
+                                            
                                             className={`${link[1] == 'about' ? 'primaryText font-bold':''}  inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
                                         >
                                             About
-                                        </a>
-                                        <a
-                                            href="/services"
+                                        </a></Link>
+                                        <Link legacyBehavior href="/services"><a
+                                            
                                             className={`${link[1] == 'services' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
                                         >
                                             Services
-                                        </a>
-                                        <a
-                                            href="/team"
+                                        </a></Link>
+                                        <Link href="/team" legacyBehavior><a
+                                            
                                             className={`${link[1] == 'team' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
                                         >
                                             Team
-                                        </a>
-                                        <a
-                                            href="/news"
+                                        </a></Link>
+                                        <Link href="/news" legacyBehavior><a
                                             className={`${link[1] == 'news' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
                                         >
                                             News
-                                        </a>
-                                        <a
-                                            href="/contact"
+                                        </a></Link>
+                                        <Link href="/contact" legacyBehavior><a
+                                            
                                             className={`${link[1] == 'contact' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
                                         >
                                             Contact
-                                        </a>
+                                        </a></Link>
                                     </div>
                                     <div className="flex-shrink-0 ml-10">
                                         <ReactFlagsSelect
