@@ -102,12 +102,12 @@ const Head = () => {
                                 <div className="flex items-center">
                                     <div className="hidden md:ml-6 md:flex md:space-x-8">
                                         {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                                        <a
-                                            href="/"
+                                        <Link href="/" legacyBehavior><a
+                                            
                                             className={`${link[1] == undefined || link[1] == "" ? 'primaryText font-bold':''} inline-flex items-center  px-1 pt-1 text-[16px] `}
                                         >
                                             Home
-                                        </a>
+                                        </a></Link>
                                         <a
                                             href="/about"
                                             className={`${link[1] == 'about' ? 'primaryText font-bold':''}  inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
