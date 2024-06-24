@@ -17,7 +17,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ finishLoading }: SplashScre
             targets: "#logo",
             delay: 0,
             scale: 1,
-            duration: 2000,
+            duration: 1200,
             easing: "easeInOutExpo"
         })
              
