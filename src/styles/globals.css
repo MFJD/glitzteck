@@ -106,3 +106,9 @@ box-shadow: 2px 4px 5px 10px rgba(247, 249, 250,0.6);
   animation: headerWobble 1s ease-in-out;
   animation-iteration-count: 1;
 }
+
+
+.textalign{
+  text-align: justify;
+  text-align-last: left;
+}
