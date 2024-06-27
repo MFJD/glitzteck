@@ -160,35 +160,35 @@ const Head = () => {
                                 <DisclosureButton
                                     as="a"
                                     href="/"
-                                    className={`${link[1] == undefined || link[1] == "" ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium  sm:pl-5 sm:pr-6`}
+                                    className={`${link[1] == undefined || link[1] == "" ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
                                     Home
                                 </DisclosureButton>
                                 <DisclosureButton
                                     as="a"
                                     href="/about"
-                                    className={`${link[1] == 'about' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block border-l-4  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
+                                    className={`${link[1] == 'about' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
                                     About
                                 </DisclosureButton>
                                 <DisclosureButton
                                     as="a"
                                     href="/services"
-                                    className={`${link[1] == 'services' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block border-l-4  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
+                                    className={`${link[1] == 'services' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
                                     Services
                                 </DisclosureButton>
                                 <DisclosureButton
                                     as="a"
                                     href="/team"
-                                    className={`${link[1] == 'team' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block border-l-4  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
+                                    className={`${link[1] == 'team' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
                                     Team
                                 </DisclosureButton>
                                 <DisclosureButton
                                     as="a"
                                     href="/news"
-                                    className={`${link[1] == 'news' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block border-l-4  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
+                                    className={`${link[1] == 'news' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
                                     News
                                 </DisclosureButton>
