@@ -1,4 +1,5 @@
 import React from "react";
+import ProjectManagementModal from "./components/modal";
 
 const ProjectManagement = () => {
     return (
@@ -8,6 +9,7 @@ const ProjectManagement = () => {
                     <div>
                         <h3 className="text-5xl font-medium primaryText">project Management</h3>
                         <p className="mt-5 text-lg text-gray-600">The most popular premium WordPress theme in the world (stats from BuiltWith.com) and the most powerful theme in our collection, including the visual drag & drop Divi page builder.</p>
+                        <ProjectManagementModal />
                     </div>
                     <div className="p-3 flex justify-center">
                         <img src="/images/alt-features.png" className="h-72 w-auto" alt="" />

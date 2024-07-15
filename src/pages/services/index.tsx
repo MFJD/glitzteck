@@ -22,8 +22,8 @@ const Services = () => {
                 <ScrollToTopButton />
                 <div className=" mx-auto max-w-7xl px-4 sm:px-6  lg:px-8 md:mb-20 mb-10">
                     <div className='text-center my-16'>
-                        <h3 className='text-black text-5xl'>WordPress Themes & Plugins</h3>
-                        <p className='text-xl text-gray-500 mt-4'>Home Of Divi, The Most Popular WordPress Theme In The World</p>
+                        <h3 className='text-black md:text-5xl text-3xl'>WordPress Themes & Plugins</h3>
+                        <p className='md:text-xl text-lg text-gray-500 mt-4'>Home Of Divi, The Most Popular WordPress Theme In The World</p>
 
                     </div>
                     <div>
@@ -40,7 +40,7 @@ const Services = () => {
                     </div>
                 </div>
                 <CTA />
-                <Footer />
+                <Footer />0
             </motion.div>
         </>
     )

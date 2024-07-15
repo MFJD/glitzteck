@@ -1,4 +1,5 @@
 import React from "react";
+import SoftwareModal from "./components/modal";
 
 const SoftwareEngineer = () => {
     return (
@@ -7,8 +8,8 @@ const SoftwareEngineer = () => {
                 <div className="w-full grid md:grid-cols-2 grid-col-1 md:gap-5">
                     <div className="mt-10">
                         <h3 className="text-5xl font-medium primaryText">Software Engineering</h3>
-                        <p className="mt-5 text-lg text-gray-600">The most popular premium WordPress theme in the world (stats from BuiltWith.com) and the most powerful theme in our collection, including the visual drag & drop Divi page builder.</p>
-                        <button className="mt-4 px-8 py-4 primarybg text-white rounded">Contact Us </button>
+                        <p className="mt-5 text-lg text-gray-600">At Glitzeck, we specialize in crafting high-performance  applications that drive business growth. Our expert engineers leverage a standardized, component-based approach across all phases of development – from design and assembly to deployment and ongoing maintenance. </p>
+                        <SoftwareModal />
                     </div>
                     <div className="p-1 flex justify-center">
                         <img src="/images/alt-features.png" className="h-[40vh] w-auto" alt="" />
