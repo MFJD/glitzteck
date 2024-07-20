@@ -6,8 +6,8 @@ import { SetStateAction, useEffect, useState } from 'react';
 import 'remixicon/fonts/remixicon.css'
 import { useRouter } from "next/router";
 import 'react-bootstrap-accordion/dist/index.css'
-import '@/styles/loader.css'
-import { motion } from 'framer-motion';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 interface MyAppProps extends AppProps {
   // Add any additional props here if needed
 }
@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
   return (
     <div className={`  ${isLoading ? 'overflow-y-hidden' : ''}`}>
-      {/* {isLoading && <Loading />} */}
+      <ToastContainer />
       <Component {...pageProps} />
     </div>
   );
