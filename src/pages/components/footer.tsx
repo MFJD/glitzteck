@@ -149,7 +149,7 @@ export default function Footer() {
                                 <li className="flex">
                                     <i className="ri-map-pin-fill mr-1 text-red-600 text-xl"></i>
                                     <a href="" className="text-lg text-gray-600 hover:text-gray-900">
-                                        1117 Marquette Ave, Minneapolis, MN 55403, <USA></USA>
+                                        1117 Marquette Ave, Minneapolis, MN 55403, USA
                                     </a>
                                 </li>
                                 <li className="flex">
