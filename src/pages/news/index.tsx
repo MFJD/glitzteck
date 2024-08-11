@@ -29,7 +29,7 @@ const News = () => {
                             <h2 id="featured-post" className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                                 {featuredPost.title}
                             </h2>
-                            <p className="mt-4 text-lg leading-8 text-gray-600">{featuredPost.description}</p>
+                            <p className="mt-4 text-xl leading-8 text-gray-600">{featuredPost.description}</p>
                             <div className="mt-4 flex flex-col justify-between gap-6 sm:mt-8 sm:flex-row-reverse sm:gap-8 lg:mt-4 lg:flex-col">
                                 <div className="flex">
                                     <a
@@ -59,13 +59,13 @@ const News = () => {
                                             <time dateTime={post.datetime} className="block text-sm leading-6 text-gray-600">
                                                 {post.date}
                                             </time>
-                                            <h2 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-gray-600">
+                                            <h2 className="mt-2 text-xl font-semibold text-gray-900 group-hover:text-gray-600">
                                                 <a href={post.href}>
                                                     <span className="absolute inset-0" />
                                                     {post.title}
                                                 </a>
                                             </h2>
-                                            <p className="mt-4 text-md leading-6 text-gray-600">{post.description}</p>
+                                            <p className="mt-4 text-lg leading-6 text-gray-600">{post.description}</p>
                                         </div>
                                         <div className="mt-4 flex">
                                             <a
