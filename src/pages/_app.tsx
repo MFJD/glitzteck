@@ -7,6 +7,7 @@ import 'remixicon/fonts/remixicon.css'
 import { useRouter } from "next/router";
 import 'react-bootstrap-accordion/dist/index.css'
 import 'react-toastify/dist/ReactToastify.css';
+import Header from "./components/header";
 import { ToastContainer } from 'react-toastify';
 interface MyAppProps extends AppProps {
   // Add any additional props here if needed
@@ -18,7 +19,17 @@ function MyApp({ Component, pageProps }: MyAppProps) {
   const [userLocale, setUserLocale] = useState(locale);
 
   useEffect(() => {
+    
+    const addChatScript = () => {
+      const hccid = 94576215;
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://mylivechat.com/chatinline.aspx?hccid=${hccid}`;
+      document.body.appendChild(script); 
+    };
 
+    // Add the chat script after the component mounts
+    addChatScript();
 
     // 1. Get Locale from localStorage on mount
     const storedLocale = typeof window !== 'undefined'

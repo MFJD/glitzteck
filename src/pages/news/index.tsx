@@ -3,8 +3,7 @@ import Head from "../components/head";
 import Footer from "../components/footer";
 import { motion } from "framer-motion";
 import ScrollToTopButton from "@/components/scrollButton";
-import { DataOne, featuredPost, posts } from "../api/datas";
-import { Datas } from "../api/datas";
+import {featuredPost, posts } from "../api/datas";
 
 
 const News = () => {
@@ -16,7 +15,7 @@ const News = () => {
             <Head />
             <ScrollToTopButton />
             <div className="grid  mx-auto max-w-7xl px-4 sm:px-6  lg:px-8 md:mb-20 mb-10">
-                <h2 className="text-3xl font-bold tracking-tight px-5 text-gray-900 sm:text-4xl mt-10">From the blog</h2>
+                <h2 className="text-3xl font-bold tracking-tight px-5 primaryText sm:text-4xl mt-10">From the blog</h2>
                 <p className="mt-2 text-lg px-5 leading-8 text-gray-600 text-left">
                     Learn how to grow your business with our expert advice.
                 </p>
@@ -26,7 +25,7 @@ const News = () => {
                             <time dateTime={featuredPost.datetime} className="block text-sm leading-6 text-gray-600">
                                 {featuredPost.date}
                             </time>
-                            <h2 id="featured-post" className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                            <h2 id="featured-post" className="mt-4 text-3xl font-bold tracking-tight primaryText sm:text-4xl">
                                 {featuredPost.title}
                             </h2>
                             <p className="mt-4 text-xl leading-8 text-gray-600">{featuredPost.description}</p>
@@ -89,46 +88,3 @@ const News = () => {
 }
 export default News
 
-// <div className="w-full  flex mt-7">
-//                     <div className="w-[50%]">
-//                         <div className="w-full">
-//                             {
-//                                 DataOne.length <= 0 ? <></> :
-//                                     DataOne.map((items, id) => {
-//                                         return (
-//                                             <div key={id}>
-//                                                 <div className="h-[70vh] w-[70vh] rounded" style={{ background: `url(${items.img})`, backgroundPosition: 'center', backgroundSize: 'contain' }}>
-
-//                                                 </div>
-//                                                 <div className="w-[70vh]">
-//                                                     <p className="text-gray-600 text-sm mt-8">{items.datePosted}</p>
-//                                                     <h3 className="text-2xl ">{items.title}</h3>
-//                                                     <p className="text-gray-700">{items.description}</p>
-//                                                 </div>
-//                                             </div>
-//                                         )
-//                                     })
-//                             }
-//                         </div>
-//                     </div>
-//                     <div className="w-[50%] ">
-//                         <div className="grid grid-cols-2 gap-10">
-//                             {
-//                                 Datas.length <= 0 ? <></> :
-//                                     Datas.map((items, id) => {
-//                                         return (
-//                                             <div className="w-full">
-//                                                 <div className="w-full">
-//                                                     <img className="h-56 w-full" src={items.img} alt="" />
-//                                                 </div>
-//                                                 <div className="">
-//                                                     <h3 className="my-2 text-xl">{items.title}</h3>
-//                                                      <p className="text-gray-700">{items.description}</p>
-//                                                 </div>
-//                                             </div>
-//                                         )
-//                                     })
-//                             }
-//                         </div>
-//                     </div>
-//                 </div>

@@ -1,45 +1,4 @@
-export const Datas = [
-    {
-        id: 1,
-        title: 'New Technology',
-        description: 'Download the perfect technology pictures. Find over 100+ of the best free technology images. Free for commercial use No attribution required Copyright-free .',
-        datePosted: '12 August 2024',
-        img: 'https://th.bing.com/th/id/OIP.R5w99e7r3RDTqNfiZe8YrQHaJ4?w=600&h=800&rs=1&pid=ImgDetMain'
-    },
-    {
-        id: 2,
-        title: 'New Technology',
-        description: 'Download the perfect technology pictures. Find over 100+ of the best free technology images. Free for commercial use No attribution required Copyright-free .',
-        datePosted: '12 August 2024',
-        img: 'https://th.bing.com/th/id/R.2aa3cb2b4acfba4d275dcecf01989d93?rik=cpBrJAHxiUJXCg&pid=ImgRaw&r=0'
-    },
-    {
-        id: 3,
-        title: 'New Technology',
-        description: 'Download the perfect technology pictures. Find over 100+ of the best free technology images. Free for commercial use No attribution required Copyright-free .',
-        datePosted: '12 August 2024',
-        img: 'https://th.bing.com/th/id/R.125e16519593a186c48022e5ce64bb77?rik=aCcAPtdlr%2f73bg&riu=http%3a%2f%2fi.ndtvimg.com%2fi%2f2016-05%2fhyundai-hlex_827x510_81463643126.jpg&ehk=POlTa%2bkjSaK%2fltwH%2ft3HLvEQM5h0aOGcslkFAS3gUzc%3d&risl=&pid=ImgRaw&r=0'
-    },
-    {
-        id: 4,
-        title: 'New Technology',
-        description: 'Download the perfect technology pictures. Find over 100+ of the best free technology images. Free for commercial use No attribution required Copyright-free .',
-        datePosted: '12 August 2024',
-        img: 'https://media.istockphoto.com/id/1355632594/photo/high-tech-startup-concept-innovative-male-software-engineer-standing-doing-big-data-analysis.jpg?s=612x612&w=0&k=20&c=fISUO-soPEK5zjw6MS3xR9hcPCYbVDceYPqfSCbhM9E='
-    }
-]
 
-
-
-export const DataOne = [
-    {
-        id: 1,
-        title: 'New Technology',
-        description: 'Download the perfect technology pictures. Find over 100+ of the best free technology images. Free for commercial use No attribution required Copyright-free .',
-        datePosted: '12 August 2024',
-        img: 'https://th.bing.com/th/id/OIP.R5w99e7r3RDTqNfiZe8YrQHaJ4?w=600&h=800&rs=1&pid=ImgDetMain'
-    }
-]
 
 export const posts = [
     {
