@@ -37,13 +37,14 @@ const ImageAbout = () => {
                         <figure>
                             <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
                                 <p>
-                                    “Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias
-                                    molestiae. Numquam corrupti in laborum sed rerum et corporis.”
+                                    “ I believe our success lies in our unwavering commitment to innovation, 
+                                    integrity, and client partnership, driving us to continuously 
+                                    set new standards and exceed expectations in everything we do.”
                                 </p>
                             </blockquote>
                             <figcaption className="mt-6 text-base text-white">
-                                <div className="font-semibold">Judith Black</div>
-                                <div className="mt-1">CEO of Workcation</div>
+                                <div className="font-semibold">Yann Tchoumta</div>
+                                <div className="mt-1">Cofounder and CAO of GlitzTeck</div>
                             </figcaption>
                         </figure>
                     </div>
