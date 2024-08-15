@@ -114,6 +114,7 @@ const Users = () => {
                     onHoverEnd={() => setIsHoveredJ(false)}
                     className="h-[75vh] mt-3 relative shadow-xl rounded-md cursor-pointer w-full"
                 >
+<<<<<<< HEAD
                     <div className="h-[40vh] relative w-full bg-gray-200">
                         <img
                             src="/images/users/MbaJames.png"
@@ -121,6 +122,13 @@ const Users = () => {
                             width={500}
                             className="mt-5 absolute bottom-0"
 
+=======
+                    <div className="h-[40vh] w-full bg-gray-200">
+                        <img
+                            src="/images/users/TowaFrank.png"
+                            className="h-[40vh] w-full"
+                            style={{ objectFit: "contain" }}
+>>>>>>> 8590616b55bca02049d8e0766822f1f090e3a125
                             alt=""
                         />
                     </div>
