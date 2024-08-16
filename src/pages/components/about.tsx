@@ -1,11 +1,10 @@
 import React from "react";
 
-const About = () => {
-    return (
-        <>
-
-
-        </>
-    )
+const About =()=>{
+return (
+    <>
+        
+    </>
+)
 }
 export default About 
