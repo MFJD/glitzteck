@@ -2,9 +2,9 @@ import React from "react";
 const stats = [
 
 
-    { label: 'Transactions every 24 hours', value: '44 million' },
-    { label: 'Assets under holding', value: '$119 trillion' },
-    { label: 'New users annually', value: '46,000' },
+    { label: '24', value: 'Projects' },
+    { label: '6', value: 'Clients' },
+    { label: '5', value: 'Experts' },
 ]
 
 const MissionSection = () => {
@@ -15,21 +15,30 @@ const MissionSection = () => {
                 <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
                     <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
                         <p className="text-xl leading-8 text-gray-600">
-                            Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam
-                            eget aliquam. Quisque id at vitae feugiat egestas ac. Diam nulla orci at in viverra scelerisque eget.
-                            Eleifend egestas fringilla sapien.
+                        At GlitzTeck, we understand that every business is unique and requires personalized solutions to truly excel. 
+                        Our approach revolves around deeply comprehending your specific needs and 
+                        delivering solutions that are both innovative and precisely aligned with 
+                        your business goals. We focus on crafting tailored strategies 
+                        that effectively drive your business forward, ensuring that each solution 
+                        is uniquely suited to your requirements.
                         </p>
                         <div className="mt-10 max-w-xl text-base leading-7 text-gray-700">
                             <p>
-                                Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed
-                                amet vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius
-                                sit neque erat velit. Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim.
-                                Mattis mauris semper sed amet vitae sed turpis id.
+                            Quality is the cornerstone of our operations at GlitzTeck. It’s 
+                            not merely a target but the foundation of everything we do. 
+                            From the development of our solutions to the level of customer 
+                            service we offer, excellence is embedded in every facet of our work. 
+                            When you choose GlitzTeck, you’re selecting a partner who is committed 
+                            to maintaining the highest standards and never compromises on the quality of service provided.
                             </p>
                             <p className="mt-10">
-                                Et vitae blandit facilisi magna lacus commodo. Vitae sapien duis odio id et. Id blandit molestie
-                                auctor fermentum dignissim. Lacus diam tincidunt ac cursus in vel. Mauris varius vulputate et
-                                ultrices hac adipiscing egestas. Iaculis convallis ac tempor et ut. Ac lorem vel integer orci.
+                            Our team is made up of professionals and forward-thinking experts, each with 
+                            extensive experience and a deep enthusiasm for technology. This 
+                            collective expertise allows us to serve not just as service providers, but 
+                            as trusted advisors who can navigate the intricate IT landscape with you. 
+                            At GlitzTeck, we offer comprehensive solutions and uphold strong values of 
+                            sustainability and ethics, aiming to build lasting partnerships that extend 
+                            beyond mere contractual agreements.
                             </p>
                         </div>
                     </div>

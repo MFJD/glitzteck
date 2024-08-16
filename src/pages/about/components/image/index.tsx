@@ -7,7 +7,7 @@ const ImageAbout = () => {
                 <div className="relative overflow-hidden bg-gray-900 px-6 py-20 shadow-xl sm:rounded-3xl sm:px-10 sm:py-24 md:px-12 lg:px-20">
                     <img
                         alt=""
-                        src="https://images.unsplash.com/photo-1601381718415-a05fb0a261f3?ixid=MXwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8ODl8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1216&q=80"
+                        src="/images/users/tchoumtayann.png"
                         className="absolute inset-0 h-full w-full object-cover brightness-150 saturate-0"
                     />
                     <div className="absolute inset-0 bg-gray-900/90 mix-blend-multiply" />
@@ -33,17 +33,18 @@ const ImageAbout = () => {
                         />
                     </div>
                     <div className="relative mx-auto max-w-2xl lg:mx-0">
-                        <img alt="" src="https://tailwindui.com/img/logos/workcation-logo-white.svg" className="h-12 w-auto" />
+                        <img alt="" src="/images/logos/logoHeader.png" className="h-12 w-auto" />
                         <figure>
                             <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
                                 <p>
-                                    “Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias
-                                    molestiae. Numquam corrupti in laborum sed rerum et corporis.”
+                                    “ I believe our success lies in our unwavering commitment to innovation, 
+                                    integrity, and client partnership, driving us to continuously 
+                                    set new standards and exceed expectations in everything we do.”
                                 </p>
                             </blockquote>
                             <figcaption className="mt-6 text-base text-white">
-                                <div className="font-semibold">Judith Black</div>
-                                <div className="mt-1">CEO of Workcation</div>
+                                <div className="font-semibold">Yann Tchoumta</div>
+                                <div className="mt-1">Cofounder and CAO of GlitzTeck</div>
                             </figcaption>
                         </figure>
                     </div>
