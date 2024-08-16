@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import ScrollToTopButton from "@/components/scrollButton";
 import Users from "./components/users";
 import CTA from "../components/Cta";
+import OurTeam from "./components/teams";
 const Team = () => {
     return (
         <motion.div
@@ -16,11 +17,12 @@ const Team = () => {
             <div className="w-full justify-center flex my-10">
                 <div className="md:w-[60%] w-full px-4 md:px-0">
                     <h3 className="primaryText text-3xl text-center">Our Team</h3>
-                    <p className="text-center text-gray-600 text-lg textalign">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure modi corporis excepturi perferendis sit, expedita ducimus, libero mollitia laudantium, molestias debitis qui. Facilis, repellendus. Praesentium eligendi maiores placeat debitis tenetur?</p>
+                    <p className="text-center text-gray-600 text-lg ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure modi corporis excepturi perferendis sit, expedita ducimus, libero mollitia laudantium, molestias debitis qui. Facilis, repellendus. Praesentium eligendi maiores placeat debitis tenetur?</p>
                 </div>
             </div>
             <div className="mx-auto max-w-6xl px-6 pb-2 pt-18 sm:pt-10 lg:px-8 lg:pt-20">
-                <Users />
+                <OurTeam />
+                {/* <Users /> */}
                 <CTA />
             </div>
             <Footer />
