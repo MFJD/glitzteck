@@ -8,7 +8,7 @@ const ImageAbout = () => {
                     <img
                         alt=""
                         src="/images/users/tchoumtayann.png"
-                        className="absolute inset-0 h-full w-full object-cover brightness-150 saturate-0"
+                        className="absolute inset-0 h-full w-full md:object-contain object-cover md:ml-56 brightness-150 saturate-0"
                     />
                     <div className="absolute inset-0 bg-gray-900/90 mix-blend-multiply" />
                     <div aria-hidden="true" className="absolute -left-80 -top-56 transform-gpu blur-3xl">
