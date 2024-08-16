@@ -22,10 +22,10 @@ const MissionSection: React.FC = () => {
     const isInView = useInView(sectionRef, {});
 
     useEffect(() => {
-        let intervalId: NodeJS.Timer; // To store the interval ID
+        let intervalId: NodeJS.Timer | any; // To store the interval ID
 
         if (isInView) {
-            intervalId = setInterval(() => {
+            intervalId   = setInterval(() => {
                 setAnimatedStats((prevStats) =>
                     prevStats.map((stat, index) => {
                         if (stat.label < stats[index].label) {
