@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import ScrollToTopButton from "@/components/scrollButton";
 import Users from "./components/users";
 import CTA from "../components/Cta";
+import OurTeam from "./components/teams";
 const Team = () => {
     return (
         <motion.div
@@ -23,7 +24,8 @@ const Team = () => {
                 </div>
             </div>
             <div className="mx-auto max-w-6xl px-6 pb-2 pt-18 sm:pt-10 lg:px-8 lg:pt-20">
-                <Users />
+                <OurTeam />
+                {/* <Users /> */}
                 <CTA />
             </div>
             <Footer />
