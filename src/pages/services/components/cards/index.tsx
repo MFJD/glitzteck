@@ -69,7 +69,7 @@ const Cards = () => {
               <img
                 src={service.imageUrl}
                 alt={service.title}
-                className="h-96 w-auto" 
+                className="md:h-96 w-auto" 
               />
             </div>
             <div className="lg:w-1/2 p-4">
