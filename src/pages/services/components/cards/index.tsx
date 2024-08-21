@@ -12,7 +12,7 @@ const servicesData = [
     - API Design and Development
     - Cloud-Native Development
     `, 
-    imageUrl: '/images/software.PNG', // Replace with actual image path
+    imageUrl: '/images/software.png', // Replace with actual image path
   },
   {
     title: 'Project Management',
@@ -24,7 +24,7 @@ const servicesData = [
     - Resource allocation 
     - Communication and stakeholder management
     - Quality assurance and testing`,
-    imageUrl: '/images/projectmanagement.PNG', // Replace with actual image path
+    imageUrl: '/images/projectmanagement.png', // Replace with actual image path
   },
   {
     title: 'Cloud Computing',
@@ -36,7 +36,7 @@ const servicesData = [
     - Cloud Security and Compliance
     - Cloud Infrastructure Management
     - Cloud Cost Optimization`,
-    imageUrl: '/images/cloudcomputing.PNG', // Replace with actual image path 
+    imageUrl: '/images/cloudcomputing.png', // Replace with actual image path 
   },
   {
     title: 'Cyber Security',
@@ -48,7 +48,7 @@ const servicesData = [
     - Firewall Management and Intrusion Detection/Prevention
     - Data Encryption and Data Loss Prevention (DLP)
     - Security Awareness Training`, 
-    imageUrl: '/images/cybersecurity.PNG', // Replace with actual image path
+    imageUrl: '/images/cybersecurity.png', // Replace with actual image path
   },
 ];
 
