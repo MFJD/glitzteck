@@ -57,7 +57,7 @@ const Cards = () => {
     <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
     
 
-      <div className="space-y-16 mt-10"> {/* Use space-y for vertical spacing */}
+      <div className="space-y-16 mt-16"> {/* Use space-y for vertical spacing */}
         {servicesData.map((service, index) => (
           <div 
             key={index} 
