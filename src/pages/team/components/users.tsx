@@ -116,7 +116,7 @@ const Users = () => {
                 >
                     <div className="h-[40vh] relative w-full bg-gray-200">
                         <img
-                            src="/images/users/MbaJames.png"
+                            src="/images/users/Mbajames.png"
                             height={500}
                             width={500}
                             className="mt-5 absolute bottom-0"
