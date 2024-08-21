@@ -76,7 +76,7 @@ const Cards = () => {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 {service.title}
               </h3>
-              <p className="text-[18px] text-gray-600 mb-4">
+              <p className="text-[18px] text-justify text-gray-600 mb-4">
                 {service.description}
               </p>
               <Link href={'/contact'}><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
