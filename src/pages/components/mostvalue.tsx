@@ -23,7 +23,7 @@ const MostValue = () => {
                         <img src="/images/values-1.png" height={280} width={280} alt="" />
                         <div>
                             <h5 className="text-2xl font-semibold primaryText my-3">Culture</h5>
-                            <p className="text-lg text-gray-600  ">We are a family! We want everyone to love their job and the people they work with. If you work with us, you'll see smiles and hear laughter.</p>
+                            <p className="text-lg text-gray-600  ">We are a family! We want everyone to love their job and the people they work with. If you work with us, you&apos;ll see smiles and hear laughter.</p>
                         </div>
                     </div>
                 </motion.div>
