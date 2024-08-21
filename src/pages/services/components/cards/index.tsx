@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 const servicesData = [
   {
@@ -11,7 +12,7 @@ const servicesData = [
     - API Design and Development
     - Cloud-Native Development
     `, 
-    imageUrl: '/images/software-engineering.jpg', // Replace with actual image path
+    imageUrl: '/images/software.PNG', // Replace with actual image path
   },
   {
     title: 'Project Management',
@@ -23,7 +24,7 @@ const servicesData = [
     - Resource allocation 
     - Communication and stakeholder management
     - Quality assurance and testing`,
-    imageUrl: '/images/project-management.jpg', // Replace with actual image path
+    imageUrl: '/images/projectmanagement.PNG', // Replace with actual image path
   },
   {
     title: 'Cloud Computing',
@@ -35,7 +36,7 @@ const servicesData = [
     - Cloud Security and Compliance
     - Cloud Infrastructure Management
     - Cloud Cost Optimization`,
-    imageUrl: '/images/cloud-computing.jpg', // Replace with actual image path 
+    imageUrl: '/images/cloudcomputing.PNG', // Replace with actual image path 
   },
   {
     title: 'Cyber Security',
@@ -47,7 +48,7 @@ const servicesData = [
     - Firewall Management and Intrusion Detection/Prevention
     - Data Encryption and Data Loss Prevention (DLP)
     - Security Awareness Training`, 
-    imageUrl: '/images/cyber-security.jpg', // Replace with actual image path
+    imageUrl: '/images/cybersecurity.PNG', // Replace with actual image path
   },
 ];
 
@@ -56,7 +57,7 @@ const Cards = () => {
     <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
     
 
-      <div className="space-y-16"> {/* Use space-y for vertical spacing */}
+      <div className="space-y-16 mt-10"> {/* Use space-y for vertical spacing */}
         {servicesData.map((service, index) => (
           <div 
             key={index} 
@@ -65,24 +66,22 @@ const Cards = () => {
             } gap-8`} 
           >
             <div className="lg:w-1/2"> 
-              <Image
+              <img
                 src={service.imageUrl}
                 alt={service.title}
-                width={800} 
-                height={500} 
-                className="w-full h-auto rounded-lg shadow-md" 
+                className="h-96 w-auto" 
               />
             </div>
             <div className="lg:w-1/2 p-4">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 {service.title}
               </h3>
-              <p className="text-base text-gray-700 mb-4">
+              <p className="text-[18px] text-gray-600 mb-4">
                 {service.description}
               </p>
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Read More
-              </button>
+              <Link href={'/contact'}><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Contact us
+              </button></Link>
             </div>
           </div>
         ))}
