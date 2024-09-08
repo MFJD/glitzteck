@@ -22,7 +22,7 @@ const WhyGlitzteck = () => {
                         <i className="ri-bar-chart-line text-3xl text-blue-500"></i>
                         <div>
                             <h3 className="text-2xl primaryText">Strategic Partnership</h3>
-                            <p className="text-lg text-gray-600">GlitzTeck offers more than IT services; we 
+                            <p className="text-lg text-gray-600 text-left">GlitzTeck offers more than IT services; we 
                                 provide a collaborative partnership aimed at advancing and securing your
                                  business’s future. </p>
                         </div>
@@ -35,7 +35,7 @@ const WhyGlitzteck = () => {
                         <i className="ri-bar-chart-line text-3xl text-blue-500"></i>
                         <div>
                             <h3 className="text-2xl primaryText">Innovative Solutions</h3>
-                            <p className="text-lg text-gray-600">We empower your business with 
+                            <p className="text-lg text-gray-600 text-left">We empower your business with 
                                 cutting-edge technology and creative solutions that address your 
                                 unique challenges and opportunities. </p>
                         </div>
@@ -48,7 +48,7 @@ const WhyGlitzteck = () => {
                         <i className="ri-bar-chart-line text-3xl text-blue-500"></i>
                         <div>
                             <h3 className="text-2xl primaryText">Unmatched Reliability</h3>
-                            <p className="text-lg text-gray-600"> Our commitment to reliability 
+                            <p className="text-lg text-gray-600 text-left"> Our commitment to reliability 
                                 ensures that you receive consistent and dependable support, crucial 
                                 for maintaining smooth operations. </p>
                         </div>
@@ -61,7 +61,7 @@ const WhyGlitzteck = () => {
                         <i className="ri-bar-chart-line text-3xl text-blue-500"></i>
                         <div>
                             <h3 className="text-2xl primaryText">Excellence in Service</h3>
-                            <p className="text-lg text-gray-600"> We are dedicated to delivering 
+                            <p className="text-lg text-gray-600 text-left"> We are dedicated to delivering 
                                 exceptional quality in every aspect of our work, setting a high 
                                 standard for performance and outcomes. </p>
                         </div>
@@ -75,7 +75,7 @@ const WhyGlitzteck = () => {
                         <i className="ri-bar-chart-line text-3xl text-blue-500"></i>
                         <div>
                             <h3 className="text-2xl primaryText">Future-Proofing</h3>
-                            <p className="text-lg text-gray-600">Our services are designed to 
+                            <p className="text-lg text-gray-600 text-left">Our services are designed to 
                                 keep your business ahead of technological trends, helping you 
                                 stay relevant and competitive in a rapidly evolving digital world. </p>
                         </div>
@@ -89,7 +89,7 @@ const WhyGlitzteck = () => {
                         <i className="ri-bar-chart-line text-3xl text-blue-500"></i>
                         <div>
                             <h3 className="text-2xl primaryText">Dedicated Expertise</h3>
-                            <p className="text-lg text-gray-600">With a focus on excellence and 
+                            <p className="text-lg text-gray-600 text-left">With a focus on excellence and 
                                 innovation, GlitzTeck stands out for its ability to integrate 
                                 advanced technology seamlessly into your business strategy. </p>
                         </div>

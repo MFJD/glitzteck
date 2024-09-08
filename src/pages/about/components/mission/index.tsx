@@ -10,8 +10,8 @@ interface Stat {
 
 const stats: Stat[] = [
     { label: 24, value: "Projects" },
-    { label: 40, value: "Clients" },
-    { label: 80, value: "Experts" },
+    { label: 18, value: "Clients" },
+    { label: 10, value: "Experts" },
 ];
 
 const MissionSection: React.FC = () => {
@@ -51,12 +51,12 @@ const MissionSection: React.FC = () => {
             <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                 {/* Use a div with a ref for useInView */}
                 <div ref={sectionRef}>
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                    <h2 className="text-3xl font-bold tracking-tight primaryText sm:text-4xl">
                         Our mission
                     </h2>
                     <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
                         <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
-                            <p className="text-xl leading-8 text-gray-600">
+                            <p className="text-lg leading-8 text-gray-600">
                                 At GlitzTeck, we understand that every business is
                                 unique and requires personalized solutions to truly excel.
                                 Our approach revolves around deeply comprehending your
@@ -66,7 +66,7 @@ const MissionSection: React.FC = () => {
                                 effectively drive your business forward, ensuring that
                                 each solution is uniquely suited to your requirements.
                             </p>
-                            <div className="mt-10 max-w-xl text-base leading-7 text-gray-700">
+                            <div className="mt-10 text-lg text-gray-700">
                                 <p>
                                     Quality is the cornerstone of our operations at
                                     GlitzTeck. It’s not merely a target but the
@@ -78,7 +78,7 @@ const MissionSection: React.FC = () => {
                                     standards and never compromises on the quality of
                                     service provided.
                                 </p>
-                                <p className="mt-10">
+                                <p className="mt-10 text-lg">
                                     Our team is made up of professionals and
                                     forward-thinking experts, each with extensive
                                     experience and a deep enthusiasm for technology.

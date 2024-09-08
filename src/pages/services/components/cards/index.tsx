@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const servicesData = [
   {
-    title: 'Software Engineering',
+    title: 'Software Development',
     description: `Crafting bespoke software solutions tailored to your unique business needs. From web applications to mobile apps, we build it with precision and scalability in mind.  We leverage the latest technologies and industry best practices to deliver high-quality, maintainable code that drives your business forward. 
     
     Our software engineering expertise includes: 
@@ -39,7 +39,7 @@ const servicesData = [
     imageUrl: '/images/cloudcomputing.png', // Replace with actual image path 
   },
   {
-    title: 'Cyber Security',
+    title: 'Cybersecurity',
     description: `Protecting your digital assets with robust cybersecurity solutions. From threat detection and prevention to data encryption and security audits, we keep your business safe from evolving cyber threats. 
 
     Our cybersecurity services include:
