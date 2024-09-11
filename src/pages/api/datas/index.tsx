@@ -6,14 +6,14 @@ export const posts = [
         title: 'Here are some tips about data protection:',
         href: '#',
         description:
-            '- Use strong, unique passwords and consider a password manager. - Be cautious with links and attachements from unknown sources. - Use encryption for sensitive data. - Use VPN (Virtual Private Network) on public Wi-Fi.',
+            'Use strong, unique passwords and consider a password manager. - Be cautious with links and attachements from unknown sources. - Use encryption for sensitive data. - Use VPN (Virtual Private Network) on public Wi-Fi.',
         date: 'Jul 10, 2024',
         datetime: '2024-07-10',
         author: {
             name: 'Yann Tchoumta',
             href: '#',
             imageUrl:
-            <img src="/images/users/tchoumtayann.png" alt="" />
+            <img src="/images/users/tchoumtayann.png" alt="" />,
         },
     },
     {
