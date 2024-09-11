@@ -20,8 +20,8 @@ const Services = () => {
                     className="shadow-md w-full mt-5 p-8 cursor-pointer flex justify-center hover:bg-[#2c7081] hover:text-white border-b-2 border-green-500">
                     <div className="text-center">
                         <div className="flex justify-center">
-                            <div className=" flex justify-center items-center w-20 h-20 rounded bg-green-100 ">
-                                <i className="ri-git-branch-line text-3xl text-green-500"></i>
+                            <div className=" flex justify-center items-center w-20 h-20  ">
+                                <img src="/images/software-development(1).png" alt="" />
                             </div>
                         </div>
                         <div className="mt-5">
@@ -36,8 +36,8 @@ const Services = () => {
                     transition={{ duration: 1.8, ease: 'easeInOut' }}  className="shadow-md w-full mt-5 p-8 cursor-pointer flex justify-center hover:bg-[#2c7081] hover:text-white border-b-2 border-green-500">
                     <div className="text-center">
                         <div className="flex justify-center">
-                            <div className=" flex justify-center items-center w-20 h-20 rounded bg-green-100 ">
-                                <i className="ri-git-branch-line text-3xl text-green-500"></i>
+                            <div className=" flex justify-center items-center w-20 h-20">
+                            <img src="/images/project-management(1).png" alt="" />
                             </div>
                         </div>
                         <div className="mt-5">
@@ -53,8 +53,8 @@ const Services = () => {
                     transition={{ duration: 2.5, ease: 'easeInOut' }} className="shadow-md w-full mt-5 p-8 cursor-pointer flex justify-center hover:bg-[#2c7081] hover:text-white border-b-2 border-green-500">
                     <div className="text-center">
                         <div className="flex justify-center">
-                            <div className=" flex justify-center items-center w-20 h-20 rounded bg-green-100 ">
-                                <i className="ri-git-branch-line text-3xl text-green-500"></i>
+                            <div className=" flex justify-center items-center w-20 h-20 ">
+                            <img src="/images/cybersecurite.png" alt="" />
                             </div>
                         </div>
                         <div className="mt-5">

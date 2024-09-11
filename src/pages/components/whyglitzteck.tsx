@@ -98,7 +98,7 @@ const WhyGlitzteck = () => {
                 </div>
                 <div className="w-full flex justify-end">
                     <div>
-                        <img src="/images/alt-features.png" height={500} width={500} alt="" />
+                        <img src="/images/whyUs.png" height={1000} width={570} alt=""  style={{ display: 'block', margin: '0 auto' , paddingTop:'140px' }}/>
                     </div>
                 </div>
             </div>

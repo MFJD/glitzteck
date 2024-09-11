@@ -29,7 +29,7 @@ const Weare = () => {
                     // animate={isInview ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 2.5, ease: 'easeInOut' }}
                     className="w-full">
-                    <img src="/images/about.jpg" alt="" />
+                    <img src="/images/groupofpoeple3.jpg" alt="" style={{ display: 'block', paddingTop:'45px' }} />
                 </motion.div>
             </div>
         </motion.div>
