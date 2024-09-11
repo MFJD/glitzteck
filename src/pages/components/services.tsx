@@ -25,8 +25,8 @@ const Services = () => {
                             </div>
                         </div>
                         <div className="mt-5">
-                            <h2 className="text-2xl primaryText mb-3 text-center">Software Engineering </h2>
-                            <p className="text-gray-700 text-lg hover:text-white text-center">We Leading providerIn a digital landscape where technology evolves at lightning speed, choosing the right IT partner is more than  a strategic move towards future-proofing your business.</p>
+                            <h2 className="text-2xl primaryText mb-3 text-center">Software Development </h2>
+                            <p className="text-gray-700 text-lg  text-gray-400 text-justify">We Leading providerIn a digital landscape where technology evolves at lightning speed, choosing the right IT partner is more than  a strategic move towards future-proofing your business.</p>
                         </div>
                     </div>
                 </motion.div>
@@ -42,7 +42,7 @@ const Services = () => {
                         </div>
                         <div className="mt-5">
                             <h2 className="text-2xl primaryText mb-3 text-center">Project Management</h2>
-                            <p className="text-gray-700 text-lg hover:text-white text-center">We Leading providerIn a digital landscape where technology evolves at lightning speed, choosing the right IT partner is more than  a strategic move towards future-proofing your business.</p>
+                            <p className="text-gray-700 text-lg   text-justify">We Leading providerIn a digital landscape where technology evolves at lightning speed, choosing the right IT partner is more than  a strategic move towards future-proofing your business.</p>
                         </div>
                     </div>
                 </motion.div>
@@ -59,7 +59,7 @@ const Services = () => {
                         </div>
                         <div className="mt-5">
                             <h2 className="text-2xl primaryText mb-3 text-center">Cloud Computing, CyberSecurity</h2>
-                            <p className="text-gray-700 text-lg hover:text-white text-center">We Leading providerIn a digital landscape where technology evolves at lightning speed, choosing the right IT partner is more than  a strategic move towards future-proofing your business.</p>
+                            <p className="text-gray-700 text-lg text-justify">We Leading providerIn a digital landscape where technology evolves at lightning speed, choosing the right IT partner is more than  a strategic move towards future-proofing your business.</p>
                         </div>
                     </div>
                 </motion.div>

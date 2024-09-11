@@ -18,8 +18,8 @@ const Weare = () => {
                 >
                     <div className="w-full bg-[#f6fbfc] p-8 h-auto md:mt-16 mt-0">
                         <h2 className="text-[23px] font-medium text-blue-300">Who we are</h2>
-                        <h3 className="text-xl primaryText py-3 ">Hey!, we’re glad you want to know more about us.</h3>
-                        <p className="text-lg text-gray-600">At Glitzteck, our distinct edge is rooted in our relentless pursuit of software excellence, focusing on two core pillars: product-focused processes and advanced tech we build to accelerate development. This dual emphasis ensures we deliver not just software, but unparalleled software products to you. As more than just consultants, we are your experienced navigators in the realm of digital innovation.</p>
+                        <h3 className="text-xl primaryText py-3 ">Hey! we’re glad you want to know more about us.</h3>
+                        <p className="text-lg text-justify text-gray-600">At Glitzteck, our distinct edge is rooted in our relentless pursuit of software excellence, focusing on two core pillars: product-focused processes and advanced tech we build to accelerate development. This dual emphasis ensures we deliver not just software, but unparalleled software products to you. As more than just consultants, we are your experienced navigators in the realm of digital innovation.</p>
                     </div>
 
                 </motion.div>

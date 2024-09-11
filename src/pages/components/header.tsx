@@ -1,6 +1,7 @@
 import React from "react";
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useTranslation } from 'next-i18next'
+import Link from "next/link";
 
 
 export async function getStaticProps(obj: { locale: any }) {
@@ -24,7 +25,7 @@ const Header = () => {
           {/* {t('HeaderText')} */}
         </h2>
         <p className="text-xl text-xl my-4 text-gray-500">Transform your ideas in solutions</p>
-        <button className="primarybg text-white flex px-4 py-3.5 rounded mt-2 space-x-5 text-xl">Get Started <i className="ri-arrow-right-line ml-4 text-xl"></i></button>
+        <Link href={"/contact"}><button className="primarybg text-white flex px-4 py-3.5 rounded mt-2 space-x-5 text-xl">Get In Touch <i className="ri-arrow-right-line ml-4 text-xl"></i></button></Link>
       </div>
 
       <div className="image-animation md:block hidden">

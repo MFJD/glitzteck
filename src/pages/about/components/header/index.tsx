@@ -44,7 +44,7 @@ const AboutHeaderSection = () => {
                 <div className="mx-auto max-w-7xl px-6 pb-32  lg:px-8 ">
                     <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                         <div className="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-                            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+                            <h1 className="text-4xl font-bold tracking-tight primaryText sm:text-6xl">
                                 The story behind.
                             </h1>
                             <p className="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">

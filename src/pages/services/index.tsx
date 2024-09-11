@@ -9,7 +9,7 @@ import Cards from './components/cards'
 
 const Services = () => {
     return (
-        <div className='bg-gray-100'>
+        <div className=''>
             <motion.div
                 initial={{ opacity: 0, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}

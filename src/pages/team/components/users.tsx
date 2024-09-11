@@ -35,7 +35,7 @@ const Users = () => {
                                 <p className="text-lg primaryText font-medium">Chief Executive Officer</p>
                             </div>
                         </div>
-                        <p className="text-center textalign mt-2 px-3 mt-3 text-gray-800">
+                        <p className="text-justify  mt-2 px-3 mt-3 text-gray-800">
                             My role at Glitzteck is to lead strategic vision, set goals, make key decisions, and drive overall success of the company through effective leadership and management.
                         </p>
                     </div>
@@ -82,7 +82,7 @@ const Users = () => {
                                 <p className="text-lg primaryText font-medium">Chief Administrative officer</p>
                             </div>
                         </div>
-                        <p className="text-center textalign mt-2 px-3 mt-3 text-gray-800">
+                        <p className="text-justify  mt-2 px-3 mt-3 text-gray-800">
                             My role at Glizteck is to manage daily operations, oversees administrative functions, and ensures efficient business processes in the company to drive success and growth.
                         </p>
                     </div>
@@ -116,7 +116,7 @@ const Users = () => {
                 >
                     <div className="h-[40vh] relative w-full bg-gray-200">
                         <img
-                            src="/images/users/MbaJames.png"
+                            src="/images/users/Mbajames.png"
                             height={500}
                             width={500}
                             className="mt-5 absolute bottom-0"
@@ -131,7 +131,7 @@ const Users = () => {
                                 <p className="text-lg primaryText font-medium">Chief TechnicaL Officer</p>
                             </div>
                         </div>
-                        <p className="text-center textalign mt-2 px-3 mt-3 text-gray-800">
+                        <p className="text-justify   mt-2 px-3 mt-3 text-gray-800">
                             My role  at Glitzteck is to oversees the technical direction, development, and innovation of IT solutions to ensure alignment with business goals and industry trends.
                         </p>
                     </div>

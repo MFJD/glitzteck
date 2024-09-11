@@ -54,17 +54,19 @@ const TeamMember: FC<Members> = ({ member }) => (
             <h3 className="text-xl font-semibold text-gray-900 mt-4">
                 {member.name}
             </h3>
-            <p className="primaryText text-xl">{member.position}</p>
+            <p className="primaryText text-xl ">{member.position}</p>
         </div>
-        <p className="text-gray-700 text-center mb-4">{member.description}</p>
-        <div className="flex space-x-4 justify-center">
-            <a className='h-10 w-10 flex justify-center rounded  items-center border bg-gray-50' href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                <i className="ri-linkedin-box-fill text-3xl text-blue-500"></i>
+        <p className="text-gray-700  mb-4">{member.description}</p>
+         <div className="flex space-x-4 justify-center">
+            <a className='h-8 w-8 flex justify-center rounded  items-center border bg-gray-50' href={member.linkedin} target="_blank" rel="noopener noreferrer">
+                <i className="ri-linkedin-box-fill text-2xl text-blue-500"></i>
             </a>
+            {/*
             <a className='h-10 w-10 flex justify-center rounded  items-center border bg-gray-50' href={`mailto:${member.email}`}>
                 <img src="/icons/gmail.svg" className='h-7 w-7' alt="" />
             </a>
-        </div>
+            */}
+        </div> 
     </motion.div>
 );
 
