@@ -1,13 +1,13 @@
 
 import "@/styles/globals.css";
 import App, { AppContext, AppProps } from 'next/app';
-import { appWithTranslation, i18n } from 'next-i18next';
+import { appWithTranslation} from 'next-i18next';
 import { SetStateAction, useEffect, useState } from 'react';
 import 'remixicon/fonts/remixicon.css'
 import { useRouter } from "next/router";
 import 'react-bootstrap-accordion/dist/index.css'
 import 'react-toastify/dist/ReactToastify.css';
-import Header from "./components/header";
+import '../../i18n';
 import { ToastContainer } from 'react-toastify';
 interface MyAppProps extends AppProps {
   // Add any additional props here if needed
@@ -30,24 +30,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
     // Add the chat script after the component mounts
     addChatScript();
-
-    // 1. Get Locale from localStorage on mount
-    const storedLocale = typeof window !== 'undefined'
-      ? localStorage.getItem('language')
-      : null;
-
-    // 2. Redirect if localStorage value doesn't match current route
-    if (storedLocale && locales?.includes(storedLocale) && storedLocale !== locale) {
-      // push(`/${storedLocale}`); 
-    } else if (!storedLocale) {
-      // 3. If no localStorage value, set it to default (or detected)
-      localStorage.setItem('language', locale ? locale : "");
-      setUserLocale(locale); `          `
-    } else {
-      // 4. If localStorage value is valid, use it
-      setUserLocale(storedLocale);
-    }
-
+ 
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);

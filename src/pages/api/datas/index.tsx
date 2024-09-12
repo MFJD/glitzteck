@@ -24,7 +24,7 @@ export const posts = [
         date: 'Sep 10, 2024',
         datetime: '2024-09-10',
         author: {
-            name: 'tech news',
+            name: 'Tech News',
             href: '#',
             imageUrl:
                 'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',

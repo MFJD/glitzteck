@@ -3,51 +3,20 @@ import React, { FC, useEffect, useState } from 'react';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import ReactFlagsSelect from "react-flags-select";
-import { useTranslation } from 'next-i18next';
+// import { useTranslation } from 'next-i18next';
 import router, { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from './languageSelector';
 
 const Head = () => {
-    const { i18n } = useTranslation();
+   
     const {asPath} = useRouter()
     const str = asPath
     let link = str.split('/')
     
-    const [selected, setSelected] = useState(i18n.language == "fr" ? "FR" : i18n.language == "en" ? "US" : "US");
-    useEffect(() => {
-        console.log(link)
-        if (i18n.language == "fr")
-            setSelected("FR")
-        else if (i18n.language == "en")
-            setSelected("US")
-        else
-            setSelected("US")
-    }, [i18n])
-    const { locale, locales, push } = useRouter();
-    const [userLocale, setUserLocale] = useState(locale);
-
-
-    const changeLanguage = (language: any) => {
-        console.log(i18n)
-        if (language == "US") {
-            router.push(router.asPath, router.asPath, { locale: 'en' });
-            if (!locales?.includes(language)) {
-                // push(`/${language}`); // Update URL
-                localStorage.setItem('language', "en"); // Persist in localStorage
-                setUserLocale(language);
-            }
-        }
-        else if (language == "FR") {
-            router.push(router.asPath, router.asPath, { locale: language });
-            i18n.changeLanguage(language);
-            setSelected(language)
-            if (!locales?.includes(language)) {
-                // push(`/${language}`); // Update URL
-                localStorage.setItem('language', "fr"); // Persist in localStorage
-                setUserLocale(language);
-            }
-        }
-    };
+ 
+ 
     const [isVisible, setIsVisible] = useState(false);
 
     const handleScroll = () => {
@@ -139,14 +108,15 @@ const Head = () => {
                                         </a></Link>
                                     </div>
                                     <div className="flex-shrink-0 ml-10">
-                                        <ReactFlagsSelect
+                                        {/* <ReactFlagsSelect
                                             fullWidth={false}
                                             countries={["US", "FR"]}
                                             customLabels={{ "US": "En", "FR": "Fr" }}
                                             selected={selected}
                                             onSelect={(code) => changeLanguage(code)}
                                             className='w-full mt-2 h-10  border-none'
-                                        />
+                                        /> */}
+                                         <LanguageSelector />
                                     </div>
                                     <div className="hidden md:ml-4 md:flex md:flex-shrink-0 md:items-center">
                                     </div>

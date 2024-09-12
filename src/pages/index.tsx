@@ -22,16 +22,7 @@ import SplashCreen from "./splashscreen";
 import { motion } from "framer-motion";
 import ScrollToTopButton from "@/components/scrollButton";
 
-
-export async function getStaticProps(obj: { locale: any }) {
-  return {
-    props: {
-      ...(await serverSideTranslations(obj.locale, [
-        'common',
-      ])),
-    },
-  }
-}
+ 
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,25 +30,12 @@ export default function Home() {
   const pathname = usePathname()
   const isHome = pathname === "/"
   const [isLoading, setIsLoading] = React.useState(isHome)
-  const router = useRouter();
-  const { t } = useTranslation('common')
-  const { i18n } = useTranslation();
-  const [selectedLanguage, setSelectedLanguage] = useState(() => {
-    if (typeof window !== 'undefined') { // Check if in the browser
-      return localStorage.getItem('selectedLanguage') || null;
-    } // Use initialLanguage on the server 
-  });
-  useEffect(() => {
-    // 1. Set localStorage on component mount
-    const data: any = localStorage.getItem('selectedLanguage');
 
-    // 2. Update the translation context 
-    if (data! == null)
-      i18n.changeLanguage(data);
+  useEffect(() => {
 
     if (isLoading) return
 
-  }, [selectedLanguage, isLoading]);
+  }, [ isLoading]);
 
   return (
     <div
