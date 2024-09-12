@@ -12,8 +12,7 @@ export const posts = [
         author: {
             name: 'Yann Tchoumta',
             href: '#',
-            imageUrl:
-            <img src="/images/users/tchoumtayann.png" alt="" />,
+            imageUrl:'/images/users/tchoumtayann.png'
         },
     },
     {
