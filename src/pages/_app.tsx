@@ -1,7 +1,7 @@
 
 import "@/styles/globals.css";
 import App, { AppContext, AppProps } from 'next/app';
-import { appWithTranslation} from 'next-i18next';
+import { appWithTranslation, useTranslation} from 'next-i18next';
 import { SetStateAction, useEffect, useState } from 'react';
 import 'remixicon/fonts/remixicon.css'
 import { useRouter } from "next/router";
@@ -16,8 +16,7 @@ interface MyAppProps extends AppProps {
 function MyApp({ Component, pageProps }: MyAppProps) {
   const [isLoading, setIsLoading] = useState(true);
   const { locale, locales, push } = useRouter();
-  const [userLocale, setUserLocale] = useState(locale);
-
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     
     const addChatScript = () => {
@@ -30,7 +29,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
     // Add the chat script after the component mounts
     addChatScript();
- 
+
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
@@ -38,7 +37,13 @@ function MyApp({ Component, pageProps }: MyAppProps) {
     return () => clearTimeout(timer);
   }, [locale, locales, push]);
 
-
+  useEffect(() => {
+    const lng = localStorage.getItem('i18nextLng') || 'en';
+    if (lng) {
+      i18n.changeLanguage(lng); 
+    }
+  }, [i18n]);
+  
 
   return (
     <div className={`  ${isLoading ? 'overflow-y-hidden' : ''}`}>

@@ -1,5 +1,8 @@
 {
     "HeaderText": "Nous proposons des solutions modernes pour développer votre entreprise" ,
     "welcome": "Bienvenue",
-       "contact": "Contact"
+       "contact": "Contact",
+       "theadSolution":"Transformez vos idées en solutions",
+       "theadButton":"contactez-nous"
+       
 }
