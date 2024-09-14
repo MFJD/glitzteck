@@ -1,6 +1,8 @@
 import { JSX, SVGProps } from "react"
+import { useTranslation } from 'react-i18next';
 
 const navigation = {
+   
     solutions: [
         { name: 'About Us', href: '#' },
         { name: 'Our Services', href: '#' },

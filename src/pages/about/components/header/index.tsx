@@ -1,7 +1,9 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 
 const AboutHeaderSection = () => {
+    const { t} = useTranslation();
     return (
         <div className="relative isolate -z-10 mt-10">
             <svg
@@ -44,19 +46,11 @@ const AboutHeaderSection = () => {
                 <div className="mx-auto max-w-7xl px-6 pb-32  lg:px-8 ">
                     <div className="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
                         <div className="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-                            <h1 className="text-4xl font-bold tracking-tight primaryText sm:text-6xl">
-                                The story behind.
+                            <h1 className="text-4xl font-bold tracking-tight primaryText sm:text-6xl">{t('headerabouttitle')}
+                               
                             </h1>
-                            <p className="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">
-                            GlitzTeck was founded by Yann, Frank, and James, each bringing 
-                            their distinct expertise to the venture. Yann, with his focus on 
-                            cutting-edge technology, aimed to revolutionize business interactions 
-                            through innovative solutions. Frank, an adept strategist, prioritized 
-                            enhancing user experience, while James, a skilled developer, was dedicated 
-                            to creating elegant and efficient technology. United by their commitment 
-                            to excellence, integrity, and continuous learning, Yann, Frank, and James 
-                            built GlitzTeck to deliver tailored, high-quality solutions that 
-                            transform how people and businesses connect.
+                            <p className="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">{t('headeraboutparagraph')}
+                     
                             </p>
                         </div>
                         <div className="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
