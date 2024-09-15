@@ -1,41 +1,42 @@
 import React from "react";
 import { useTranslation } from 'react-i18next';
-const values = [
 
-
-    {
-        name: 'Be world-class',
-        description:
-            'we prioritize excellence by striving for the highest standards in every project and ensuring exceptional quality in all our services.',
-    },
-    {
-        name: 'Sustainability',
-        description:
-            ' our commitment to sustainability drives us to implement environmentally responsible practices and reduce our ecological footprint in all our operations.',
-    },
-    {
-        name: 'Always learning',
-        description:
-            'a commitment to continuous learning drives the pursuit of new knowledge and insights to stay ahead in the rapidly evolving technology landscape.',
-    },
-    {
-        name: 'Be supportive',
-        description:
-            'Being supportive means actively engaging with and contributing to the community, as well as providing steadfast support to clients and team members, fostering a collaborative and empowering environment both internally and externally.',
-    },
-    {
-        name: 'Take responsibility',
-        description:
-            'means owning outcomes and proactively addressing challenges, ensuring accountability and reliability in every aspect of our work.',
-    },
-    {
-        name: 'Integrity',
-        description:
-            'Integrity involves maintaining the highest ethical standards in all actions and decisions, ensuring trust and transparency in every interaction.',
-    },
-]
 
 const ValuesAbout = () => {
+    const values = [
+
+
+        {
+            name: ('valuesname1'),
+            description:
+                ('valuesdescription1'),
+        },
+        {
+            name:  ('valuesname2'),
+            description:
+            ('valuesdescription2'),
+        },
+        {
+            name: ('valuesname3'),
+            description:
+            ('valuesdescription3'),
+        },
+        {
+            name: ('valuesname4'),
+            description:
+            ('valuesdescription4'),
+        },
+        {
+            name: ('valuesname5'),
+            description:
+            ('valuesdescription5'),
+        },
+        {
+            name: ('valuesname6'),
+            description:
+            ('valuesdescription6'),
+        },
+    ]
     const { t} = useTranslation();
     return (
 

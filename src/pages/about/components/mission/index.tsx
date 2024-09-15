@@ -4,18 +4,19 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 
-interface Stat {
-    label: number;
-    value: string;
-}
-
-const stats: Stat[] = [
-    { label: 24, value: "Projects" },
-    { label: 18, value: "Clients" },
-    { label: 10, value: "Experts" },
-];
 
 const MissionSection: React.FC = () => {
+    interface Stat {
+        label: number;
+        value: string;
+    }
+    
+    const stats: Stat[] = [
+        { label: 24, value: ('missionProjects')},
+        { label: 18, value: ('missionClients')},
+        { label: 10, value: ('missionExperts')},
+    ];
+    
     const [animatedStats, setAnimatedStats] = useState<Stat[]>(
         stats.map((stat) => ({ label: 0, value: stat.value })) // Set initial value
     );

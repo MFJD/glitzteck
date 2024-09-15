@@ -43,7 +43,7 @@ const ImageAbout = () => {
                                 </p>
                             </blockquote>
                             <figcaption className="mt-6 text-base text-white">
-                                <div className="font-semibold">{t('image2')}</div>
+                                <div className="font-semibold">Yann Tchoumta</div>
                                 <div className="mt-1">{t('image3')}</div>
                             </figcaption>
                         </figure>
