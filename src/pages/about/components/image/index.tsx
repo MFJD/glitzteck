@@ -1,6 +1,8 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 
 const ImageAbout = () => {
+    const { t} = useTranslation();
     return (
         <div className="bg-white py-8 sm:py-6">
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -36,15 +38,13 @@ const ImageAbout = () => {
                         <img alt="" src="/images/logos/logoHeader.png" className="h-12 w-auto" />
                         <figure>
                             <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
-                                <p>
-                                    “ I believe our success lies in our unwavering commitment to innovation, 
-                                    integrity, and client partnership, driving us to continuously 
-                                    set new standards and exceed expectations in everything we do.”
+                                <p>{t('image1')}
+                                    
                                 </p>
                             </blockquote>
                             <figcaption className="mt-6 text-base text-white">
-                                <div className="font-semibold">Yann Tchoumta</div>
-                                <div className="mt-1">Cofounder and CAO of GlitzTeck</div>
+                                <div className="font-semibold">{t('image2')}</div>
+                                <div className="mt-1">{t('image3')}</div>
                             </figcaption>
                         </figure>
                     </div>

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 
 interface Stat {
     label: number;
@@ -45,50 +46,27 @@ const MissionSection: React.FC = () => {
             }
           };
     }, [isInView]);
-
+    const { t} = useTranslation();
     return (
         <div className="mx-auto mb-20 max-w-7xl px-6 sm:mt-0 lg:px-8 xl:-mt-8">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
                 {/* Use a div with a ref for useInView */}
                 <div ref={sectionRef}>
                     <h2 className="text-3xl font-bold tracking-tight primaryText sm:text-4xl">
-                        Our mission
+                    {t('missiontitle')}
                     </h2>
                     <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
                         <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
                             <p className="text-lg leading-8 text-gray-600">
-                                At GlitzTeck, we understand that every business is
-                                unique and requires personalized solutions to truly excel.
-                                Our approach revolves around deeply comprehending your
-                                specific needs and delivering solutions that are both
-                                innovative and precisely aligned with your business
-                                goals. We focus on crafting tailored strategies that
-                                effectively drive your business forward, ensuring that
-                                each solution is uniquely suited to your requirements.
+                            {t('missionparagraph1')}
+                               
                             </p>
                             <div className="mt-10 text-lg text-gray-700">
-                                <p>
-                                    Quality is the cornerstone of our operations at
-                                    GlitzTeck. It’s not merely a target but the
-                                    foundation of everything we do. From the development
-                                    of our solutions to the level of customer service we
-                                    offer, excellence is embedded in every facet of our
-                                    work. When you choose GlitzTeck, you’re selecting a
-                                    partner who is committed to maintaining the highest
-                                    standards and never compromises on the quality of
-                                    service provided.
+                                <p>{t('missionparagraph2')}
+                                
                                 </p>
-                                <p className="mt-10 text-lg">
-                                    Our team is made up of professionals and
-                                    forward-thinking experts, each with extensive
-                                    experience and a deep enthusiasm for technology.
-                                    This collective expertise allows us to serve not
-                                    just as service providers, but as trusted advisors
-                                    who can navigate the intricate IT landscape with
-                                    you. At GlitzTeck, we offer comprehensive solutions
-                                    and uphold strong values of sustainability and ethics,
-                                    aiming to build lasting partnerships that extend
-                                    beyond mere contractual agreements.
+                                <p className="mt-10 text-lg">{t('missionparagraph3')}
+                                  
                                 </p>
                             </div>
                         </div>

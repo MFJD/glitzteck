@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 
 const Services = () => {
+    const { t} = useTranslation();
     const ref = useRef(null)
     const isInview = useInView(ref, { once:true,amount: 0 })
     return (
@@ -10,7 +12,7 @@ const Services = () => {
         animate={isInview ? { opacity: 1, y: 0 } : {}}
         transition={{ duration:2, ease: 'easeInOut' }} className="mx-auto max-w-7xl px-6 pb-2 pt-28 sm:pt-10 lg:px-8 lg:pt-20">
             <div className="text-center">
-                <h3 className="font-semibold text-3xl primaryText">Our Services</h3>
+                <h3 className="font-semibold text-3xl primaryText">{t('servicestitle')}</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-2 mt-8 md:mt-16">
                 <motion.div ref={ref}
@@ -25,8 +27,8 @@ const Services = () => {
                             </div>
                         </div>
                         <div className="mt-5">
-                            <h2 className="text-2xl primaryText mb-3 text-center">Software Development </h2>
-                            <p className="text-gray-700 text-lg  text-gray-400 text-justify">We Leading providerIn a digital landscape where technology evolves at lightning speed, choosing the right IT partner is more than  a strategic move towards future-proofing your business.</p>
+                            <h2 className="text-2xl primaryText mb-3 text-center">{t('servicessubtitle1')} </h2>
+                            <p className="text-gray-700 text-lg  text-gray-400 text-justify">{t('serviceparagraph1')}</p>
                         </div>
                     </div>
                 </motion.div>
@@ -41,8 +43,8 @@ const Services = () => {
                             </div>
                         </div>
                         <div className="mt-5">
-                            <h2 className="text-2xl primaryText mb-3 text-center">Project Management</h2>
-                            <p className="text-gray-700 text-lg   text-justify">We Leading providerIn a digital landscape where technology evolves at lightning speed, choosing the right IT partner is more than  a strategic move towards future-proofing your business.</p>
+                            <h2 className="text-2xl primaryText mb-3 text-center">{t('servicessubtitle2')} </h2>
+                            <p className="text-gray-700 text-lg   text-justify">{t('serviceparagraph2')} </p>
                         </div>
                     </div>
                 </motion.div>
@@ -58,8 +60,8 @@ const Services = () => {
                             </div>
                         </div>
                         <div className="mt-5">
-                            <h2 className="text-2xl primaryText mb-3 text-center">Cloud Computing, CyberSecurity</h2>
-                            <p className="text-gray-700 text-lg text-justify">We Leading providerIn a digital landscape where technology evolves at lightning speed, choosing the right IT partner is more than  a strategic move towards future-proofing your business.</p>
+                            <h2 className="text-2xl primaryText mb-3 text-center">{t('servicessubtitle3')} </h2>
+                            <p className="text-gray-700 text-lg text-justify">{t('serviceparagraph3')} </p>
                         </div>
                     </div>
                 </motion.div>

@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 
 const MostValue = () => {
+    const { t} = useTranslation();
     const ref = useRef(null)
     const isInview = useInView(ref, { once:true,amount: 0 })
     
@@ -11,7 +13,7 @@ const MostValue = () => {
         animate={isInview ? { opacity: 1, y: 0 } : {}}
         transition={{ duration:2, ease: 'easeInOut' }} className="mx-auto max-w-7xl px-6 pb-2 pt-18 sm:pt-10 lg:px-8 lg:pt-36">
             <div className="text-center">
-                <h3 className="font-semibold text-3xl mt-16 md:mt-0 primaryText ">What We Most Value</h3>
+                <h3 className="font-semibold text-3xl mt-16 md:mt-0 primaryText ">{t('mostvaluetitle')}</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10 md:mt-14">
                 <motion.div ref={ref}
@@ -22,8 +24,8 @@ const MostValue = () => {
                     <div className="">
                         <img src="/images/values-1.png" height={280} width={280} alt="" />
                         <div>
-                            <h5 className="text-[20px]  font-medium primaryText my-3">Culture</h5>
-                            <p className="text-lg text-gray-600 text-left ">We are a family! We want everyone to love their job and the people they work with. If you work with us, you&apos;ll see smiles and hear laughter.</p>
+                            <h5 className="text-[20px]  font-medium primaryText my-3">{t('mostvaluesubtitle1')}</h5>
+                            <p className="text-lg text-gray-600 text-left ">{t('mostvalueparagraph1.1')}</p>
                         </div>
                     </div>
                 </motion.div>
@@ -35,8 +37,8 @@ const MostValue = () => {
                     <div className="">
                         <img src="/images/values-2.png" height={280} width={280} alt="" />
                         <div>
-                            <h5 className="text-[20px] font-medium primaryText my-3">Boosting Employee Well-Being</h5>
-                            <p className="text-lg text-gray-600  text-left">Prioritizing a good time at work contributes to overall employee satisfaction and well-being, resulting in a motivated, productive team that is committed to delivering excellence.</p>
+                            <h5 className="text-[20px] font-medium primaryText my-3">{t('mostvaluesubtitle2')}</h5>
+                            <p className="text-lg text-gray-600  text-left">{t('mostvalueparagraph2.1')}</p>
                         </div>
                     </div>
                 </motion.div>
@@ -48,8 +50,8 @@ const MostValue = () => {
                     <div className="">
                         <img src="/images/values-3.png" height={280} width={280} alt="" />
                         <div>
-                            <h5 className="text-[20px]  font-medium primaryText my-3">Resilience</h5>
-                            <p className="text-lg text-gray-600  text-left">Resilience is central to our culture. We embrace challenges as opportunities for growth, recover with renewed strength, and remain steadfast in overcoming adversity.</p>
+                            <h5 className="text-[20px]  font-medium primaryText my-3">{t('mostvaluesubtitle3')}</h5>
+                            <p className="text-lg text-gray-600  text-left">{t('mostvalueparagraph3.1')}</p>
                         </div>
                     </div>
                 </motion.div>

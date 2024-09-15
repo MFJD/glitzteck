@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from 'react-i18next';
 const values = [
 
 
@@ -35,21 +36,14 @@ const values = [
 ]
 
 const ValuesAbout = () => {
+    const { t} = useTranslation();
     return (
 
         < div className="mx-auto mt-10 max-w-7xl px-6 sm:mt-16 lg:px-8" >
             <div className="mx-auto max-w-2xl lg:mx-0">
-                <h2 className="text-3xl font-bold tracking-tight primaryText sm:text-4xl">Our values</h2>
-                <p className="mt-6 text-lg leading-8 text-gray-600">
-                At GlitzTeck, our core values drive everything we do. 
-                We are dedicated to innovation, consistently delivering cutting-edge 
-                solutions tailored to our clients’ needs. Integrity guides 
-                our actions, ensuring the highest ethical standards in all interactions. 
-                Excellence is paramount, as we strive for perfection in every project. 
-                Additionally, we are committed to sustainability, working to reduce our
-                 environmental impact and promote responsible practices. These 
-                 alues are the foundation of our exceptional service and lasting 
-                 client relationships.
+                <h2 className="text-3xl font-bold tracking-tight primaryText sm:text-4xl">{t('valuestitle')}</h2>
+                <p className="mt-6 text-lg leading-8 text-gray-600">{t('valuesparagraph')}
+            
                 </p>
             </div>
             <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
@@ -60,7 +54,7 @@ const ValuesAbout = () => {
                     </div>
                 ))}
             </dl>
-        </div >
+        </div>
 
     )
 }
