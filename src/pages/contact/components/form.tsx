@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Email } from "@/pages/api/email";
+import { useTranslation } from 'react-i18next';
 
 const ContactForm = () => {
-
+    const { t} = useTranslation();
     const [email, setEmail] = useState('')
     const [name, setName] = useState<string>('')
     const [subject, setSubject] = useState('')
@@ -21,7 +22,7 @@ const ContactForm = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="w-full border py-2.5 pl-2"
-                    placeholder="Name *"
+                    placeholder={t('contactname')}
                 />
             </div>
             <div className="mt-5">
@@ -39,7 +40,7 @@ const ContactForm = () => {
                     value={subject}
                     onChange={(e) => setSubject(e.target.value)}
                     className="w-full border py-2.5 pl-2"
-                    placeholder="Subject *"
+                    placeholder={t('contactsubject')}
                 />
             </div>
             <div className="mt-5">
@@ -50,13 +51,13 @@ const ContactForm = () => {
                     id=""
                     className="w-full border py-2.5 p-2 outline-none"
                     rows={8}
-                    placeholder="Message"
+                    placeholder={t('contactmessage')}
                 >
 
                 </textarea>
             </div>
             <div className="w-full mt-5">
-                <button onClick={handleEmail} className="w-full py-2.5 text-white primarybg">{EmailSend.isloading ? 'Sending ...' : 'Submit Message'}</button>
+                <button onClick={handleEmail} className="w-full py-2.5 text-white primarybg">{EmailSend.isloading ? <p>{t('contactbuttonsending')}</p> : <p>{t('contactbuttonsend')}</p>}</button>
             </div>
         </div>
     )
