@@ -40,7 +40,7 @@
     "fterm": "Terms",
     "Explore": "Explore",
     "Legal": "Legal",
-    "Contacts": "Contacts",
+    "Contacts": "Contact",
     "copyright": "Inc. All rights reserved",
     "ftb": "From the blog",
     "newsdesc": "Learn how to grow your business with our expert advice.",
@@ -124,4 +124,7 @@
     "tdescription2": "Oversees Glitzteck’s operations, ensuring efficiency and excellence across all departments. Expertise in organizational development and process optimization.",
     "tposition3": "Chief Technical Officer",
     "tdescription3": "Leads Glitzteck’s technology vision and development. An experienced technologist with a deep understanding of software engineering, cloud computing, and cybersecurity.",
+    "theader1": "The entrepreneurs behind the vision.",
+    "tbody1": "Get to know the people behind GlitzTeck and discover how their expertise and dedication are shaping the future of technology and connectivity."
+
 }
