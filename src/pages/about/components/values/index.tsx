@@ -3,41 +3,42 @@ import { useTranslation } from 'react-i18next';
 
 
 const ValuesAbout = () => {
+    const { t} = useTranslation();
     const values = [
 
 
         {
-            name: ('valuesname1'),
+            name: t('valuesname1'),
             description:
-                ('valuesdescription1'),
+                t('valuesdescription1'),
         },
         {
-            name:  ('valuesname2'),
+            name:  t('valuesname2'),
             description:
-            ('valuesdescription2'),
+            t('valuesdescription2'),
         },
         {
-            name: ('valuesname3'),
+            name: t('valuesname3'),
             description:
-            ('valuesdescription3'),
+            t('valuesdescription3'),
         },
         {
-            name: ('valuesname4'),
+            name: t('valuesname4'),
             description:
-            ('valuesdescription4'),
+            t('valuesdescription4'),
         },
         {
-            name: ('valuesname5'),
+            name: t('valuesname5'),
             description:
-            ('valuesdescription5'),
+            t('valuesdescription5'),
         },
         {
-            name: ('valuesname6'),
+            name: t('valuesname6'),
             description:
-            ('valuesdescription6'),
+            t('valuesdescription6'),
         },
     ]
-    const { t} = useTranslation();
+    
     return (
 
         < div className="mx-auto mt-10 max-w-7xl px-6 sm:mt-16 lg:px-8" >

@@ -1,20 +1,20 @@
 
-
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 
 
 const MissionSection: React.FC = () => {
+    const { t} = useTranslation();
     interface Stat {
         label: number;
         value: string;
     }
     
     const stats: Stat[] = [
-        { label: 24, value: ('missionProjects')},
-        { label: 18, value: ('missionClients')},
-        { label: 10, value: ('missionExperts')},
+        { label: 24, value: t('missionProjects')},
+        { label: 18, value: t('missionClients')},
+        { label: 10, value: t('missionExperts')},
     ];
     
     const [animatedStats, setAnimatedStats] = useState<Stat[]>(
@@ -47,7 +47,7 @@ const MissionSection: React.FC = () => {
             }
           };
     }, [isInView]);
-    const { t} = useTranslation();
+    
     return (
         <div className="mx-auto mb-20 max-w-7xl px-6 sm:mt-0 lg:px-8 xl:-mt-8">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
