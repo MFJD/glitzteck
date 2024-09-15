@@ -3,10 +3,16 @@ import Head from "../components/head";
 import Footer from "../components/footer";
 import { motion } from "framer-motion";
 import ScrollToTopButton from "@/components/scrollButton";
-import {featuredPost, posts } from "../api/datas";
+import { New } from "../api/datas";
+// import {featuredPost, posts } from "../api/datas";
+import { useTranslation } from 'react-i18next';
 
 
 const News = () => {
+    const featuredPost = New()?.featuredPost
+    const posts = New()?.posts
+    const { t} = useTranslation();
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 0 }}
@@ -15,9 +21,9 @@ const News = () => {
             <Head />
             <ScrollToTopButton />
             <div className="grid  mx-auto max-w-7xl px-4 sm:px-6  lg:px-8 md:mb-20 mb-10">
-                <h2 className="text-3xl font-medium tracking-tight px-5 primaryText sm:text-4xl mt-10">From the blog</h2>
+                <h2 className="text-3xl font-medium tracking-tight px-5 primaryText sm:text-4xl mt-10">{t('ftb')}</h2>
                 <p className="mt-2 text-lg px-5 leading-8 text-gray-600 text-left">
-                    Learn how to grow your business with our expert advice.
+                    {t('newsdesc')}
                 </p>
                 <div className="bg-white pb-24 sm:py-10">
                     <div className="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-12 px-6 sm:gap-y-16 lg:grid-cols-2 lg:px-8">
@@ -36,7 +42,7 @@ const News = () => {
                                         aria-describedby="featured-post"
                                         className="text-sm font-semibold leading-6 text-indigo-600"
                                     >
-                                        Continue reading <span aria-hidden="true">&rarr;</span>
+                                        {t('cread')} <span aria-hidden="true">&rarr;</span>
                                     </a>
                                 </div>
                                 <div className="flex lg:border-t lg:border-gray-900/10 lg:pt-8">
