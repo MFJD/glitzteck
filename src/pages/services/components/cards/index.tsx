@@ -1,58 +1,33 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslation } from 'react-i18next';
 
-const servicesData = [
-  {
-    title: 'Software Development',
-    description: `Crafting bespoke software solutions tailored to your unique business needs. From web applications to mobile apps, we build it with precision and scalability in mind.  We leverage the latest technologies and industry best practices to deliver high-quality, maintainable code that drives your business forward. 
-    
-    Our software engineering expertise includes: 
-    - Web Application Development
-    - Mobile App Development (iOS and Android)
-    - API Design and Development
-    - Cloud-Native Development
-    `, 
-    imageUrl: '/images/software.png', // Replace with actual image path
-  },
-  {
-    title: 'Project Management',
-    description: `Keeping your projects on track and within budget. Our certified project managers utilize proven methodologies such as Agile and Waterfall to ensure timely delivery and client satisfaction. 
 
-    We handle all aspects of project management, including: 
-    - Project planning and scoping
-    - Risk assessment and mitigation
-    - Resource allocation 
-    - Communication and stakeholder management
-    - Quality assurance and testing`,
-    imageUrl: '/images/projectmanagement.png', // Replace with actual image path
-  },
-  {
-    title: 'Cloud Computing',
-    description: `Leveraging the power of the cloud for flexibility, scalability, and cost-effectiveness. We provide cloud migration, architecture design, and management services to help you harness the full potential of cloud technologies. 
-    
-    Our cloud computing services encompass:
-    - Cloud Strategy and Consulting
-    - Cloud Migration and Deployment 
-    - Cloud Security and Compliance
-    - Cloud Infrastructure Management
-    - Cloud Cost Optimization`,
-    imageUrl: '/images/cloudcomputing.png', // Replace with actual image path 
-  },
-  {
-    title: 'Cybersecurity',
-    description: `Protecting your digital assets with robust cybersecurity solutions. From threat detection and prevention to data encryption and security audits, we keep your business safe from evolving cyber threats. 
-
-    Our cybersecurity services include:
-    - Threat Assessment and Vulnerability Management 
-    - Security Information and Event Management (SIEM)
-    - Firewall Management and Intrusion Detection/Prevention
-    - Data Encryption and Data Loss Prevention (DLP)
-    - Security Awareness Training`, 
-    imageUrl: '/images/cybersecurity.png', // Replace with actual image path
-  },
-];
 
 const Cards = () => {
+  const { t} = useTranslation();
+  const servicesData = [
+    {
+      title: t('stitle1'),
+      description: t('sdesc1'), 
+      imageUrl: '/images/software.png', // Replace with actual image path
+    },
+    {
+      title: t('stitle2'),
+      description: t('sdesc2'),
+      imageUrl: '/images/projectmanagement.png', // Replace with actual image path
+    },
+    {
+      title: t('stitle3'),
+      description: t('sdesc3'),
+      imageUrl: '/images/cloudcomputing.png', // Replace with actual image path 
+    },
+    {
+      title: t('stitle4'),
+      description: t('sdesc4'), 
+      imageUrl: '/images/cybersecurity.png', // Replace with actual image path
+    },
+  ];
   return (
     <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
     
@@ -80,7 +55,7 @@ const Cards = () => {
                 {service.description}
               </p>
               <Link href={'/contact'}><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Contact us
+                {t('Contacts')}
               </button></Link>
             </div>
           </div>

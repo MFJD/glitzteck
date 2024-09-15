@@ -2,15 +2,13 @@
 import React, { FC, useEffect, useState } from 'react';
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import ReactFlagsSelect from "react-flags-select";
-// import { useTranslation } from 'next-i18next';
-import router, { useRouter } from 'next/router';
+import  { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './languageSelector';
 
 const Head = () => {
-   
+    const { t} = useTranslation();
     const {asPath} = useRouter()
     const str = asPath
     let link = str.split('/')
@@ -72,50 +70,41 @@ const Head = () => {
                                     <div className="hidden md:ml-6 md:flex md:space-x-8">
                                         {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
                                         <Link href="/" legacyBehavior><a
-                                            
                                             className={`${link[1] == undefined || link[1] == "" ? 'primaryText font-bold':''} inline-flex items-center  px-1 pt-1 text-[16px] `}
                                         >
-                                            Home
+                                            {t('headhome')}
                                         </a></Link>
                                         <Link href="/about" legacyBehavior><a
                                             
                                             className={`${link[1] == 'about' ? 'primaryText font-bold':''}  inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
                                         >
-                                            About
+                                            {t('headabout')}
                                         </a></Link>
                                         <Link legacyBehavior href="/services"><a
                                             
                                             className={`${link[1] == 'services' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
                                         >
-                                            Services
+                                            {t('headservice')}
                                         </a></Link>
                                         <Link href="/team" legacyBehavior><a
-                                            
                                             className={`${link[1] == 'team' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
                                         >
-                                            Team
+                                            {t('headteam')}
                                         </a></Link>
                                         <Link href="/news" legacyBehavior><a
                                             className={`${link[1] == 'news' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
                                         >
-                                            News
+                                            {t('headnew')}
                                         </a></Link>
                                         <Link href="/contact" legacyBehavior><a
                                             
                                             className={`${link[1] == 'contact' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
                                         >
-                                            Contact
+                                            {t('headcontact')}
                                         </a></Link>
                                     </div>
                                     <div className="flex-shrink-0 ml-10">
-                                        {/* <ReactFlagsSelect
-                                            fullWidth={false}
-                                            countries={["US", "FR"]}
-                                            customLabels={{ "US": "En", "FR": "Fr" }}
-                                            selected={selected}
-                                            onSelect={(code) => changeLanguage(code)}
-                                            className='w-full mt-2 h-10  border-none'
-                                        /> */}
+                                        
                                          <LanguageSelector />
                                     </div>
                                     <div className="hidden md:ml-4 md:flex md:flex-shrink-0 md:items-center">
@@ -132,42 +121,42 @@ const Head = () => {
                                     href="/"
                                     className={`${link[1] == undefined || link[1] == "" ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
-                                    Home
+                                    {t('headhome')}
                                 </DisclosureButton>
                                 <DisclosureButton
                                     as="a"
                                     href="/about"
                                     className={`${link[1] == 'about' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
-                                    About
+                                    {t('headabout')}
                                 </DisclosureButton>
                                 <DisclosureButton
                                     as="a"
                                     href="/services"
                                     className={`${link[1] == 'services' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
-                                    Services
+                                    {t('headservice')}
                                 </DisclosureButton>
                                 <DisclosureButton
                                     as="a"
                                     href="/team"
                                     className={`${link[1] == 'team' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
-                                    Team
+                                    {t('headteam')}
                                 </DisclosureButton>
                                 <DisclosureButton
                                     as="a"
                                     href="/news"
                                     className={`${link[1] == 'news' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
-                                    News
+                                    {t('headnew')}
                                 </DisclosureButton>
                                 <DisclosureButton
                                     as="a"
                                     href="/contact"
                                     className={`${link[1] == 'contact' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block border-l-4  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
                                 >
-                                    Contact
+                                    {t('headcontact')}
                                 </DisclosureButton>
                             </div>
 
