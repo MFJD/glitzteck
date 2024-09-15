@@ -9,7 +9,7 @@ const teamMembers = [
         position: 'Chief Executive Officer',
         imageUrl: '/images/users/towa.png', // Replace with actual images
         description: 'Visionary leader driving Glitzteck’s growth and strategy.  A seasoned executive with a passion for leveraging technology to solve complex business challenges.',
-        linkedin: 'https://www.linkedin.com/', // Replace with actual profile links
+        linkedin: 'https://www.linkedin.com/in/frank-towa-tiemeni-40083a1ab/', // Replace with actual profile links
         email: 'frank@glitzteck.com', // Replace with actual email address
     },
     {
@@ -17,7 +17,7 @@ const teamMembers = [
         position: 'Chief Administrative Officer',
         imageUrl: '/images/users/yann.png',
         description: 'Oversees Glitzteck’s operations, ensuring efficiency and excellence across all departments. Expertise in organizational development and process optimization.',
-        linkedin: 'https://www.linkedin.com/',
+        linkedin: 'https://www.linkedin.com/in/yanntchoumta/',
         email: 'yann@glitzteck.com',
     },
     {
@@ -25,7 +25,7 @@ const teamMembers = [
         position: 'Chief Technical Officer',
         imageUrl: '/images/users/james.png',
         description: 'Leads Glitzteck’s technology vision and development. An experienced technologist with a deep understanding of software engineering, cloud computing, and cybersecurity.',
-        linkedin: 'https://www.linkedin.com/',
+        linkedin: 'https://www.linkedin.com/in/james-mba-8bb4121ab/',
         email: 'james@glitzteck.com',
     },
 ];
