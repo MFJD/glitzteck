@@ -40,7 +40,7 @@
        "fterm": "Conditions",
        "Explore": "Explorer",
        "Legal": "Juridique",
-       "Contacts": "Contacts",
+       "Contacts": "Contact",
        "copyright": "Inc. Tous droits réservés",
        "ftb": "Du blog",
        "newsdesc": "Découvrez comment faire croître votre entreprise avec nos conseils d'experts.",
@@ -123,5 +123,7 @@
        "tposition2": "Directeur Administratif",
        "tdescription2": "Supervise les opérations de Glitzteck, garantissant efficacité et excellence dans tous les départements. Expertise en développement organisationnel et optimisation des processus.",
        "tposition3": "Directeur Technique",
-       "tdescription3": "Dirige la vision technologique et le développement de Glitzteck. Un technologue expérimenté avec une compréhension approfondie de l'ingénierie logicielle, de l'informatique en nuage et de la cybersécurité."
+       "tdescription3": "Dirige la vision technologique et le développement de Glitzteck. Un technologue expérimenté avec une compréhension approfondie de l'ingénierie logicielle, de l'informatique en nuage et de la cybersécurité.",
+       "theader1": "Les entrepreneurs derrière la vision.",
+       "tbody1": "Découvrez les personnes derrière GlitzTeck et découvrez comment leur expertise et leur dévouement façonnent l'avenir de la technologie et de la connectivité."
 }
