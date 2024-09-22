@@ -27,7 +27,7 @@ const ContactUs = () => {
                                     <i className="ri-mail-fill primaryText text-5xl"></i>
                                 </div>
                                 <h4 className="primaryText   text-xl mt-3">Email Us</h4>
-                                <p className="mt-2 text-lg">info@glitzteck.com</p>
+                                <p className="mt-2 text-lg">glitzteck@gmail.com</p>
                             </div>
                             <div className="py-5 w-full h-56 mt-3 bg-[#f6fbfc] px-8 rounded">
                                 <div>

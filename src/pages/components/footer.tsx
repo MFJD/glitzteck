@@ -163,7 +163,7 @@ export default function Footer() {
                                 <li className="flex">
                                     <i className="ri-mail-fill mr-1 text-yellow-600 text-xl"></i>
                                     <a href="" className="text-lg text-gray-600 hover:text-gray-900">
-                                    info@glitzteck.com
+                                    glitzteck@gmail.com
                                     </a>
                                 </li>
 

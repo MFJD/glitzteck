@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
   useEffect(() => {
     
     const addChatScript = () => {
-      const hccid = 94576215;
+      const hccid = 16233252;
       const script = document.createElement('script');
       script.async = true;
       script.src = `https://mylivechat.com/chatinline.aspx?hccid=${hccid}`;

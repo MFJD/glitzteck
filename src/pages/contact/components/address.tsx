@@ -12,7 +12,7 @@ const Address = () => {
                 <p className="text-lg text-gray-600"> {t('contactnh')}</p>
                 <h3 className="text-xl primaryText mt-10">+1 (612) 405-4320</h3>
                 <p className="text-xl mt-10 text-gray-700 ">{t('contactaddress')} : 1117 Marquette Ave  Minneapolis,MN 55403 USA</p>
-                <p className="text-[20px] mt-5 text-gray-700 ">{t('contactemail')} : info@glitzteck.com</p>
+                <p className="text-[20px] mt-5 text-gray-700 ">{t('contactemail')} : glitzteck@gmail.com</p>
             </div>
         </div>
     )

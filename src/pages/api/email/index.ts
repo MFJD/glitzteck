@@ -28,11 +28,11 @@ export const Email = () => {
         }
         try {
             await emailjs.send(
-                'service_q0ni3ne',
+                'service_h8u9gwk',
                 'template_1og46mq',
                 emailTemplate,
                 {
-                    publicKey: 'XCsGFZh03BQepo5AA',
+                    publicKey: 'template_8l3quon',
                 },
             );
             setisloading(false)
