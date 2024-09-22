@@ -68,7 +68,7 @@ const OurTeam = () => {
         {
             name: 'MBA FONGANG JAMES',
             position: t("tposition3"),
-            imageUrl: '/images/users/james.png',
+            imageUrl: '/images/users/James.png',
             description: t('tdescription3'),
             linkedin: 'https://www.linkedin.com/in/james-mba-8bb4121ab/',
             email: 'james@glitzteck.com',
