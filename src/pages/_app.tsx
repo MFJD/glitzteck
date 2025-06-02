@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
   return (
     <div className={`  ${isLoading ? 'overflow-y-hidden' : ''}`}>
     <Head>
-      <link rel="shortcut icon" href="/icons/favicon.png" type="image/x-icon" />
+      <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
     </Head>
       <ToastContainer />
       <Component {...pageProps} />
