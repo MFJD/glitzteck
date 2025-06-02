@@ -9,6 +9,7 @@ import 'react-bootstrap-accordion/dist/index.css'
 import 'react-toastify/dist/ReactToastify.css';
 import '../../i18n';
 import { ToastContainer } from 'react-toastify';
+import Head from 'next/head';
 interface MyAppProps extends AppProps {
   // Add any additional props here if needed
 }
@@ -47,6 +48,9 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
   return (
     <div className={`  ${isLoading ? 'overflow-y-hidden' : ''}`}>
+    <Head>
+      <link rel="shortcut icon" href="/icons/favicon.png" type="image/x-icon" />
+    </Head>
       <ToastContainer />
       <Component {...pageProps} />
     </div>
