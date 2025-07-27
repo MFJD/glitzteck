@@ -1,4 +1,4 @@
-import "@/styles/globals.css";
+import '@/styles/globals.css';
 import 'remixicon/fonts/remixicon.css';
 import 'react-bootstrap-accordion/dist/index.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,7 +7,7 @@ import '../../i18n';
 import { AppContext, AppProps } from 'next/app';
 import { appWithTranslation, useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 import { ToastContainer } from 'react-toastify';
 import Head from 'next/head';
 import Script from 'next/script';
@@ -18,9 +18,14 @@ interface MyAppProps extends AppProps {}
 function MyApp({ Component, pageProps }: MyAppProps) {
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
-  // Track route changes (SPA navigation)
+  // Track initial page load
+  useEffect(() => {
+    gtag.pageview(window.location.pathname);
+  }, []);
+
+  // Track route changes
   useEffect(() => {
     const handleRouteChange = (url: string) => {
       gtag.pageview(url);
@@ -31,31 +36,19 @@ function MyApp({ Component, pageProps }: MyAppProps) {
     };
   }, [router.events]);
 
-  // Track initial page load
+  // Load chat script and handle loading state
   useEffect(() => {
-    gtag.pageview(window.location.pathname);
-  }, []);
+    const hccid = 16233252;
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = `https://mylivechat.com/chatinline.aspx?hccid=${hccid}`;
+    document.body.appendChild(script);
 
-  // Chat widget & loader
-  useEffect(() => {
-    const addChatScript = () => {
-      const hccid = 16233252;
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = `https://mylivechat.com/chatinline.aspx?hccid=${hccid}`;
-      document.body.appendChild(script);
-    };
-
-    addChatScript();
-
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-
+    const timer = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
-  // Language from localStorage
+  // Set language from localStorage
   useEffect(() => {
     const lng = localStorage.getItem('i18nextLng') || 'en';
     if (lng) {
@@ -64,8 +57,8 @@ function MyApp({ Component, pageProps }: MyAppProps) {
   }, [i18n]);
 
   return (
-    <div className={` ${isLoading ? 'overflow-y-hidden' : ''}`}>
-      {/* Google Analytics Scripts */}
+    <div className={isLoading ? 'overflow-y-hidden' : ''}>
+      {/* Google Analytics script */}
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
