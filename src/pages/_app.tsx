@@ -10,21 +10,19 @@ import { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { ToastContainer } from 'react-toastify';
 import Head from 'next/head';
-import Script from 'next/script'; // AJOUTÉ : Import pour le composant Script
-import * as gtag  from '../../lib/gtag' // AJOUTÉ : Import pour nos fonctions d'analytique
+import Script from 'next/script';
+import * as gtag from '../../lib/gtag';
 
-interface MyAppProps extends AppProps {
-  // Add any additional props here if needed
-}
+interface MyAppProps extends AppProps {}
 
 function MyApp({ Component, pageProps }: MyAppProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter(); // MODIFIÉ : On récupère l'objet router complet
+  const router = useRouter();
   const { t, i18n } = useTranslation();
 
-  // AJOUTÉ : Ce useEffect gère le suivi des pages vues pour Google Analytics
+  // Track route changes (SPA navigation)
   useEffect(() => {
-    const handleRouteChange = (url: URL) => {
+    const handleRouteChange = (url: string) => {
       gtag.pageview(url);
     };
     router.events.on('routeChangeComplete', handleRouteChange);
@@ -33,6 +31,12 @@ function MyApp({ Component, pageProps }: MyAppProps) {
     };
   }, [router.events]);
 
+  // Track initial page load
+  useEffect(() => {
+    gtag.pageview(window.location.pathname);
+  }, []);
+
+  // Chat widget & loader
   useEffect(() => {
     const addChatScript = () => {
       const hccid = 16233252;
@@ -49,8 +53,9 @@ function MyApp({ Component, pageProps }: MyAppProps) {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, []); // MODIFIÉ : Les dépendances router n'étaient pas nécessaires ici
+  }, []);
 
+  // Language from localStorage
   useEffect(() => {
     const lng = localStorage.getItem('i18nextLng') || 'en';
     if (lng) {
@@ -60,7 +65,7 @@ function MyApp({ Component, pageProps }: MyAppProps) {
 
   return (
     <div className={` ${isLoading ? 'overflow-y-hidden' : ''}`}>
-      {/* AJOUTÉ : Balises Script pour Google Analytics */}
+      {/* Google Analytics Scripts */}
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
@@ -79,24 +84,22 @@ function MyApp({ Component, pageProps }: MyAppProps) {
           `,
         }}
       />
-      
+
       <Head>
         <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
       </Head>
+
       <ToastContainer />
       <Component {...pageProps} />
     </div>
   );
 }
 
-// Votre fonction getInitialProps reste inchangée
 MyApp.getInitialProps = async ({ Component, ctx }: AppContext) => {
   let appProps = {};
-
   if (Component.getInitialProps) {
     appProps = await Component.getInitialProps(ctx);
   }
-
   return { ...appProps };
 };
 
