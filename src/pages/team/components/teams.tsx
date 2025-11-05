@@ -1,92 +1,97 @@
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { FC } from 'react';
-import { RiLinkedinFill, RiMailLine } from 'react-icons/ri';
-import { useTranslation } from 'react-i18next';
+// ================================
+// components/teams.tsx (OurTeam) — Light, elegant, mobile‑first & responsive avatars
+// ================================
+"use client";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import React from "react";
 
+const members = [
+  {
+    name: "TOWA TIEMENI FRANK",
+    position: "Chief Executive Officer",
+    imageUrl: "/images/users/towa.png",
+    description:
+      "Guides Glitzteck’s vision and growth. Focused, pragmatic, and relentlessly customer‑driven.",
+  },
+  {
+    name: "TCHOUMTA YANN",
+    position: "Chief Administrative Officer",
+    imageUrl: "/images/users/yann.png",
+    description:
+      "Builds smooth operations and thoughtful processes that let teams move fast with clarity.",
+  },
+  {
+    name: "MBA FONGANG JAMES",
+    position: "Chief Technical Officer",
+    imageUrl: "/images/users/James.png",
+    description:
+      "Leads engineering strategy. Scalable systems, clean architecture, and purposeful innovation.",
+  },
+];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.08 } },
+};
 
+const item = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
 
-interface Members {
-    member: any;
-}
-const TeamMember: FC<Members> = ({ member }) => (
-    <motion.div
-        className="bg-white rounded-lg border  p-6 transform hover:scale-105 transition duration-300 ease-in-out"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }} // Animate only once when in view
-        transition={{ duration: 0.8 }}
-    >
-        <div className="flex flex-col items-center mb-6">
-            <div className="relative h-24 w-24 rounded-full  overflow-hidden border-4 border-gray-200">
-                <Image
-                    src={member.imageUrl}
-                    alt={member.name}
-                    layout="fill"
-                    objectFit="cover"
-                />
-            </div>
-            <h3 className="text-xl font-semibold text-gray-900 mt-4">
-                {member.name}
-            </h3>
-            <p className="primaryText text-xl ">{member.position}</p>
-        </div>
-        <p className="text-gray-700  mb-4">{member.description}</p>
-         <div className="flex space-x-4 justify-center">
-            <a className='h-8 w-8 flex justify-center rounded  items-center border bg-gray-50' href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                <i className="ri-linkedin-box-fill text-2xl text-blue-500"></i>
-            </a>
-            {/*
-            <a className='h-10 w-10 flex justify-center rounded  items-center border bg-gray-50' href={`mailto:${member.email}`}>
-                <img src="/icons/gmail.svg" className='h-7 w-7' alt="" />
-            </a>
-            */}
-        </div> 
-    </motion.div>
+const Card = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    variants={item}
+    whileHover={{ y: -4 }}
+    className="group relative rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:shadow-md"
+  >
+    <div
+      className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-20"
+      style={{
+        background:
+          "radial-gradient(24rem 12rem at 70% -10%, rgba(99,102,241,0.08), transparent)",
+      }}
+    />
+    {children}
+  </motion.div>
+);
+
+const Avatar = ({ src, alt }: { src: string; alt: string }) => (
+  // Use responsive, valid Tailwind sizes. Fill requires a sized, relative parent.
+  <div className="relative mx-auto mb-4 h-24 w-24 sm:h-28 sm:w-28">
+    <span className="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-400 via-sky-400 to-emerald-400 p-[2px]">
+      <span className="block h-full w-full rounded-full bg-white" />
+    </span>
+    <div className="absolute inset-[3px] overflow-hidden rounded-full">
+      <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width: 640px) 96px, 112px" />
+    </div>
+  </div>
 );
 
 const OurTeam = () => {
-    const { t} = useTranslation();
-    const teamMembers = [
-        {
-            name: 'TOWA TIEMENI FRANK',
-            position: t("tposition1"),
-            imageUrl: '/images/users/towa.png', // Replace with actual images
-            description: t('tdescription1'),
-            linkedin: 'https://www.linkedin.com/in/frank-towa-tiemeni-40083a1ab/', // Replace with actual profile links
-            email: 'frank@glitzteck.com', // Replace with actual email address
-        },
-        {
-            name: 'TCHOUMTA YANN',
-            position: t("tposition2"),
-            imageUrl: '/images/users/yann.png',
-            description: t('tdescription2'),
-            linkedin: 'https://www.linkedin.com/in/yanntchoumta/',
-            email: 'yann@glitzteck.com',
-        },
-        {
-            name: 'MBA FONGANG JAMES',
-            position: t("tposition3"),
-            imageUrl: '/images/users/James.png',
-            description: t('tdescription3'),
-            linkedin: 'https://www.linkedin.com/in/james-mba-8bb4121ab/',
-            email: 'james@glitzteck.com',
-        },
-    ];
-    return(
-        <div className=" ">
-        <div className="container mx-auto">
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-                {teamMembers.map((member) => (
-                    <TeamMember key={member.name} member={member} />
-                ))}
-            </div>
-        </div>
-    </div>
-    )
-}
-   
+  return (
+    <motion.div
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.25 }}
+      className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {members.map((m, i) => (
+        <Card key={i}>
+          <div className="flex flex-col items-center text-center">
+            <Avatar src={m.imageUrl} alt={m.name} />
+            <h3 className="text-sm font-semibold tracking-tight text-gray-900">{m.name}</h3>
+            <p className="mb-2 text-[11px] uppercase tracking-wide text-gray-500">{m.position}</p>
+            <p className="max-w-xs text-[12px] leading-relaxed text-gray-600">{m.description}</p>
+          </div>
+        </Card>
+      ))}
+    </motion.div>
+  );
+};
 
 export default OurTeam;
+
+

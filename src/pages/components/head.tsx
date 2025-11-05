@@ -1,169 +1,288 @@
-// import React from "react";
-import React, { FC, useEffect, useState } from 'react';
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import  { useRouter } from 'next/router';
+import React, { useEffect, useState } from 'react';
+import {
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  Transition,
+} from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from './languageSelector';
 
 const Head = () => {
-    const { t} = useTranslation();
-    const {asPath} = useRouter()
-    const str = asPath
-    let link = str.split('/')
-    
- 
- 
-    const [isVisible, setIsVisible] = useState(false);
+  const { t } = useTranslation();
+  const { asPath } = useRouter();
+  const link = asPath.split('/');
 
+  const [isVisible, setIsVisible] = useState(false);
+
+  // scroll shadow intensifier
+  useEffect(() => {
     const handleScroll = () => {
-        if (window.pageYOffset > 100) { // Adjust the scroll threshold (300px) as needed
-            setIsVisible(true);
-        } else {
-            setIsVisible(false);
-        }
+      if (window.pageYOffset > 100) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
     };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  // active route helper
+  const isActive = (slug: string | undefined) => {
+    if (!slug && (link[1] === undefined || link[1] === '')) return true;
+    return link[1] === slug;
+  };
 
+  // desktop nav link
+  const DesktopNavLink = ({
+    href,
+    label,
+    activeKey,
+  }: {
+    href: string;
+    label: string;
+    activeKey: string | undefined;
+  }) => {
+    const active = isActive(activeKey);
 
     return (
-        <Disclosure as="nav" className={`  transform transition-transform duration-500 ease-in-out 
-                 ${isVisible ? 'bg-white fixed top-0 left-0 right-0 z-10  shadow-lg' : ''}
-                 ${isVisible ? 'animate-headerWobble' : ''}
-                 `} >
-                {(open: any) => (
-                    <>
-                        <div className="mx-auto   max-w-7xl px-4 sm:px-6 lg:px-8">
-                            <div className="flex h-20 justify-between">
-                                <div className="flex">
-                                    <div className="-ml-2 mr-2 flex items-center md:hidden">
-                                        {/* Mobile menu button */}
-                                        <DisclosureButton className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 ">
-                                            <span className="absolute -inset-0.5" />
-                                            <span className="sr-only">Open main menu</span>
-                                            {open ? (
-                                                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="21" height="26">
-                                                    <path d="M0 0 C6.93 0 13.86 0 21 0 C21 0.99 21 1.98 21 3 C14.07 3 7.14 3 0 3 C0 2.01 0 1.02 0 0 Z " fill="#2c7081" transform="translate(0,0)" />
-                                                    <path d="M0 0 C4.62 0 9.24 0 14 0 C14 0.99 14 1.98 14 3 C9.38 3 4.76 3 0 3 C0 2.01 0 1.02 0 0 Z " fill="#2c7081" transform="translate(0,12)" />
-                                                    <path d="M0 0 C2.97 0 5.94 0 9 0 C9 0.99 9 1.98 9 3 C6.03 3 3.06 3 0 3 C0 2.01 0 1.02 0 0 Z " fill="#2c7081" transform="translate(0,23)" />
-                                                </svg>
-                                            ) : (
-                                                <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                                            )}
-                                        </DisclosureButton>
-                                    </div>
-                                    <div className="flex flex-shrink-0 items-center">
-                                        <Link href="/"><img
-                                            className={`${isVisible ? 'md:h-10 h-8 w-auto mt-5' : 'md:h-14 h-10 w-auto mt-5'}`}
-                                            src="./images/logos/logoHeader.png"
-                                            alt="Your Company"
-                                        /></Link>
-                                    </div>
+      <Link href={href} legacyBehavior>
+        <a
+          className={`
+            relative inline-flex items-center px-1 pt-1 text-[16px] transition
+            ${
+              active
+                ? 'primaryText font-bold text-gray-900'
+                : 'text-gray-600 hover:text-gray-800'
+            }
+          `}
+        >
+          <span className="relative z-[2]">{label}</span>
 
-                                </div>
-                                <div className="flex items-center">
-                                    <div className="hidden md:ml-6 md:flex md:space-x-8">
-                                        {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                                        <Link href="/" legacyBehavior><a
-                                            className={`${link[1] == undefined || link[1] == "" ? 'primaryText font-bold':''} inline-flex items-center  px-1 pt-1 text-[16px] `}
-                                        >
-                                            {t('headhome')}
-                                        </a></Link>
-                                        <Link href="/about" legacyBehavior><a
-                                            
-                                            className={`${link[1] == 'about' ? 'primaryText font-bold':''}  inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
-                                        >
-                                            {t('headabout')}
-                                        </a></Link>
-                                        <Link legacyBehavior href="/services"><a
-                                            
-                                            className={`${link[1] == 'services' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
-                                        >
-                                            {t('headservice')}
-                                        </a></Link>
-                                        <Link href="/team" legacyBehavior><a
-                                            className={`${link[1] == 'team' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
-                                        >
-                                            {t('headteam')}
-                                        </a></Link>
-                                        <Link href="/news" legacyBehavior><a
-                                            className={`${link[1] == 'news' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
-                                        >
-                                            {t('headnew')}
-                                        </a></Link>
-                                        <Link href="/contact" legacyBehavior><a
-                                            
-                                            className={`${link[1] == 'contact' ? 'primaryText font-bold':''} inline-flex items-center  border-transparent px-1 pt-1 text-[16px]   hover:border-gray-300 hover:text-gray-700`}
-                                        >
-                                            {t('headcontact')}
-                                        </a></Link>
-                                    </div>
-                                    <div className="flex-shrink-0 ml-10">
-                                        
-                                         <LanguageSelector />
-                                    </div>
-                                    <div className="hidden md:ml-4 md:flex md:flex-shrink-0 md:items-center">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+          {active && (
+            <span className="absolute bottom-0 left-0 right-0 h-[2px] rounded-full bg-[#2c7081]" />
+          )}
+        </a>
+      </Link>
+    );
+  };
 
-                        <DisclosurePanel className="md:hidden bg-white shadow-xl">
-                            <div className="space-y-1.5 pb-3 pt-2">
-                                {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" */}
-                                <DisclosureButton
-                                    as="a"
-                                    href="/"
-                                    className={`${link[1] == undefined || link[1] == "" ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
-                                >
-                                    {t('headhome')}
-                                </DisclosureButton>
-                                <DisclosureButton
-                                    as="a"
-                                    href="/about"
-                                    className={`${link[1] == 'about' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
-                                >
-                                    {t('headabout')}
-                                </DisclosureButton>
-                                <DisclosureButton
-                                    as="a"
-                                    href="/services"
-                                    className={`${link[1] == 'services' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
-                                >
-                                    {t('headservice')}
-                                </DisclosureButton>
-                                <DisclosureButton
-                                    as="a"
-                                    href="/team"
-                                    className={`${link[1] == 'team' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
-                                >
-                                    {t('headteam')}
-                                </DisclosureButton>
-                                <DisclosureButton
-                                    as="a"
-                                    href="/news"
-                                    className={`${link[1] == 'news' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
-                                >
-                                    {t('headnew')}
-                                </DisclosureButton>
-                                <DisclosureButton
-                                    as="a"
-                                    href="/contact"
-                                    className={`${link[1] == 'contact' ? ' border-l-4 border-[#2c7081] bg-gray-50 text-[#2c7081]':''} block border-l-4  py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700 sm:pl-5 sm:pr-6`}
-                                >
-                                    {t('headcontact')}
-                                </DisclosureButton>
-                            </div>
+  // mobile nav link
+  const MobileNavLink = ({
+    href,
+    label,
+    activeKey,
+  }: {
+    href: string;
+    label: string;
+    activeKey: string | undefined;
+  }) => {
+    const active = isActive(activeKey);
 
-                        </DisclosurePanel>
-                    </>
-                )}
-            </Disclosure>
-    )
-}
-export default Head
+    return (
+      <Link href={href} legacyBehavior>
+        <a
+          className={`
+            relative block w-full rounded-xl px-4 py-3 text-[16px] font-medium sm:px-5
+            ${
+              active
+                ? 'text-[#2c7081] font-semibold'
+                : 'text-gray-700 hover:bg-white hover:text-gray-900'
+            }
+          `}
+        >
+          <span className="relative">{label}</span>
+          {active && (
+            <span className="absolute left-4 right-auto bottom-1 h-[2px] w-8 rounded-full bg-[#2c7081]" />
+          )}
+        </a>
+      </Link>
+    );
+  };
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 flex w-full justify-center px-4 sm:px-6 lg:px-8">
+      <Disclosure
+        as="nav"
+        className={`
+          w-full
+          max-w-7xl
+          mt-3
+          rounded-2xl
+          border
+          backdrop-blur-xl
+          transition-all duration-500
+          ${
+            isVisible
+              ? 'border-gray-200/70 bg-white/80 shadow-[0_24px_60px_rgba(0,0,0,0.12)]'
+              : 'border-gray-200/50 bg-white/60 shadow-[0_16px_40px_rgba(0,0,0,0.08)]'
+          }
+        `}
+      >
+        {({ open }) => (
+          <>
+            {/* Top bar */}
+            <div className="px-4 sm:px-6 lg:px-8">
+              <div className="flex h-16 items-center justify-between">
+                {/* LEFT: logo */}
+                <div className="flex flex-shrink-0 items-center">
+                  <Link href="/" legacyBehavior>
+                    <a className="flex items-center">
+                      <img
+                        className={`${
+                          isVisible
+                            ? 'md:h-6 h-8 w-auto'
+                            : 'md:h-8 h-8 w-auto'
+                        } transition-all duration-300`}
+                        src="./images/logos/logoHeader.png"
+                        alt="Your Company"
+                      />
+                    </a>
+                  </Link>
+                </div>
+
+                {/* CENTER: desktop nav */}
+                <div className="hidden md:flex md:items-center">
+                  <div className="md:ml-6 md:flex md:space-x-6 lg:space-x-8">
+                    <DesktopNavLink
+                      href="/"
+                      label={t('headhome')}
+                      activeKey={undefined}
+                    />
+                    <DesktopNavLink
+                      href="/about"
+                      label={t('headabout')}
+                      activeKey="about"
+                    />
+                    <DesktopNavLink
+                      href="/services"
+                      label={t('headservice')}
+                      activeKey="services"
+                    />
+                    <DesktopNavLink
+                      href="/team"
+                      label={t('headteam')}
+                      activeKey="team"
+                    />
+                    <DesktopNavLink
+                      href="/news"
+                      label={t('headnew')}
+                      activeKey="news"
+                    />
+                    <DesktopNavLink
+                      href="/contact"
+                      label={t('headcontact')}
+                      activeKey="contact"
+                    />
+                  </div>
+                </div>
+
+                {/* RIGHT: language + burger (burger only visible on mobile) */}
+                <div className="flex items-center">
+                  {/* desktop language */}
+                  <div className="hidden md:block mr-3">
+                    <LanguageSelector />
+                  </div>
+
+                  {/* burger mobile on the right */}
+                  <div className="flex md:hidden">
+                    <DisclosureButton
+                      className="relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200/70 bg-white/80 text-gray-600 shadow-sm ring-offset-white transition hover:bg-white hover:text-gray-900 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2c7081]/40"
+                    >
+                      <span className="sr-only">Toggle menu</span>
+                      {open ? (
+                        <XMarkIcon className="block h-6 w-6 text-[#2c7081]" />
+                      ) : (
+                        <Bars3Icon className="block h-6 w-6" />
+                      )}
+                    </DisclosureButton>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile panel (collapsible) */}
+            <Transition
+              show={open}
+              enter="transition duration-200 ease-out"
+              enterFrom="opacity-0 -translate-y-2 scale-[0.98]"
+              enterTo="opacity-100 translate-y-0 scale-100"
+              leave="transition duration-150 ease-in"
+              leaveFrom="opacity-100 translate-y-0 scale-100"
+              leaveTo="opacity-0 -translate-y-2 scale-[0.98]"
+            >
+              <DisclosurePanel
+                static={false}
+                className="
+                  md:hidden
+                  px-4 pb-5 pt-3 sm:px-5 sm:pb-6 sm:pt-4
+                "
+              >
+                {/* floating mobile sheet */}
+                <div
+                  className="
+                    rounded-2xl border border-gray-200/70 bg-white/90
+                    shadow-[0_32px_80px_rgba(0,0,0,0.18)]
+                    backdrop-blur-xl
+                    divide-y divide-gray-100/70
+                    overflow-hidden
+                  "
+                >
+                  {/* nav list */}
+                  <div className="flex flex-col">
+                    <MobileNavLink
+                      href="/"
+                      label={t('headhome')}
+                      activeKey={undefined}
+                    />
+                    <MobileNavLink
+                      href="/about"
+                      label={t('headabout')}
+                      activeKey="about"
+                    />
+                    <MobileNavLink
+                      href="/services"
+                      label={t('headservice')}
+                      activeKey="services"
+                    />
+                    <MobileNavLink
+                      href="/team"
+                      label={t('headteam')}
+                      activeKey="team"
+                    />
+                    <MobileNavLink
+                      href="/news"
+                      label={t('headnew')}
+                      activeKey="news"
+                    />
+                    <MobileNavLink
+                      href="/contact"
+                      label={t('headcontact')}
+                      activeKey="contact"
+                    />
+                  </div>
+
+                  {/* language selector mobile */}
+                  <div className="bg-white/80 px-4 py-4 sm:px-5">
+                    <div className="mb-2 text-[12px] font-semibold uppercase tracking-wide text-gray-500">
+                      {t('language') || 'Language'}
+                    </div>
+                    <div className="max-w-[160px]">
+                      <LanguageSelector />
+                    </div>
+                  </div>
+                </div>
+              </DisclosurePanel>
+            </Transition>
+          </>
+        )}
+      </Disclosure>
+    </header>
+  );
+};
+
+export default Head;

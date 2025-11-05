@@ -1,63 +1,55 @@
 import React from "react";
-import { useTranslation } from 'react-i18next';
-
+import { useTranslation } from "react-i18next";
 
 const ValuesAbout = () => {
-    const { t} = useTranslation();
-    const values = [
+  const { t } = useTranslation();
 
+  const values = [
+    { name: t("valuesname1"), description: t("valuesdescription1") },
+    { name: t("valuesname2"), description: t("valuesdescription2") },
+    { name: t("valuesname3"), description: t("valuesdescription3") },
+    { name: t("valuesname4"), description: t("valuesdescription4") },
+    { name: t("valuesname5"), description: t("valuesdescription5") },
+    { name: t("valuesname6"), description: t("valuesdescription6") },
+  ];
 
-        {
-            name: t('valuesname1'),
-            description:
-                t('valuesdescription1'),
-        },
-        {
-            name:  t('valuesname2'),
-            description:
-            t('valuesdescription2'),
-        },
-        {
-            name: t('valuesname3'),
-            description:
-            t('valuesdescription3'),
-        },
-        {
-            name: t('valuesname4'),
-            description:
-            t('valuesdescription4'),
-        },
-        {
-            name: t('valuesname5'),
-            description:
-            t('valuesdescription5'),
-        },
-        {
-            name: t('valuesname6'),
-            description:
-            t('valuesdescription6'),
-        },
-    ]
-    
-    return (
+  return (
+    <section className="text-slate-900 relative">
+      <div className="flex justify-center">
+        <div className="w-full max-w-7xl">
+          {/* Header */}
+          <div className="w-full">
+            <h2 className="text-[1.5rem] sm:text-[1.7rem] font-semibold tracking-[-0.04em] text-slate-900 leading-[1.25]">
+              {t("valuestitle")}
+            </h2>
 
-        < div className="mx-auto mt-10 max-w-7xl px-6 sm:mt-16 lg:px-8" >
-            <div className="mx-auto max-w-2xl lg:mx-0">
-                <h2 className="text-3xl font-bold tracking-tight primaryText sm:text-4xl">{t('valuestitle')}</h2>
-                <p className="mt-6 text-lg leading-8 text-gray-600">{t('valuesparagraph')}
-            
-                </p>
-            </div>
-            <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                {values.map((value) => (
-                    <div key={value.name}>
-                        <dt className="font-semibold text-lg primaryText">{value.name}</dt>
-                        <dd className="mt-1 text-gray-600  text-lg">{value.description}</dd>
-                    </div>
-                ))}
-            </dl>
+            {/* Paragraph full width */}
+            <p className="mt-4 text-[0.9rem] leading-relaxed text-slate-600 max-w-6xl">
+              {t("valuesparagraph")}
+            </p>
+          </div>
+
+          {/* Values grid */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
+            {values.map((item) => (
+              <div key={item.name} className="max-w-sm">
+                <div className="text-[0.9rem] font-semibold text-slate-900 tracking-[-0.03em]">
+                  {item.name}
+                </div>
+                <div className="mt-2 text-[0.85rem] leading-relaxed text-slate-600">
+                  {item.description}
+                </div>
+
+                <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-slate-300/60 to-transparent" />
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-slate-300/50 to-transparent" />
         </div>
+      </div>
+    </section>
+  );
+};
 
-    )
-}
-export default ValuesAbout
+export default ValuesAbout;

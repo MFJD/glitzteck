@@ -24,8 +24,8 @@ const Navbar: FC<ExampleProps> = () => {
     return (
         <div className={`w-full    duration-500 ease-in-out  ${isVisible ? 'md:h-[85vh] h-[55vh]' : 'md:h-[100vh] h-[60vh]'}  relative`} style={{ background: `url('/images/hero-bg.png')`, backgroundSize: "cover" }}>
             <Head />
-            <div className='mx-auto max-w-7xl px-4 sm:px-6  lg:px-8'>
-                <div className=' w-full  md:mt-36'>
+            <div className='mx-auto max-w-7xl  px-4 sm:px-6  lg:px-8'>
+                <div className=' w-full  '>
                     <Header />
                 </div>
             </div>

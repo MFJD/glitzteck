@@ -1,165 +1,61 @@
+// ================================
+// components/users.tsx (Users) — (kept for future, but not used on page)
+// ================================
+"use client";
+import React from "react";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import Image from "next/image";
 
+const people = [
+  {
+    name: "Jane Doe",
+    position: "Product Designer",
+    img: "/images/users/designer.png",
+    bio: "Designs thoughtful interfaces with simplicity and impact.",
+  },
+  {
+    name: "Mark Louis",
+    position: "Software Engineer",
+    img: "/images/users/developer.png",
+    bio: "Writes scalable, reliable systems with user experience in mind.",
+  },
+  {
+    name: "Amira N.",
+    position: "Marketing Strategist",
+    img: "/images/users/marketer.png",
+    bio: "Crafts clear, measurable communication strategies.",
+  },
+];
 
-const Users = () => {
-    const [isHovered, setIsHovered] = useState(false);
-    const [isHoveredY, setIsHoveredY] = useState(false);
-    const [isHoveredJ, setIsHoveredJ] = useState(false);
+const list = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.07 } } };
+const row = { hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
 
-    const socialMediaVariants = {
-        hidden: { x: "100%" },
-        visible: { x: 0 },
-    };
-    return (
-        <div className="">
-            <div className="grid md:grid-cols-3 grid-col-1 mb-10 md:gap-8 lg:gap-8">
-                <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    onHoverStart={() => setIsHovered(true)}
-                    onHoverEnd={() => setIsHovered(false)}
-                    className="h-[75vh] mt-3 relative shadow-xl rounded-md cursor-pointer w-full"
-                >
-                    <div className="h-[40vh] w-full bg-gray-200">
-                        <img
-                            src="/images/users/TowaFrank.png"
-                            className="h-[40vh] w-full"
-                            style={{ objectFit: "contain" }}
-                            alt=""
-                        />
-                    </div>
-                    <div className="h-[35vh] bg-white px-4 pt-5 w-full">
-                        <div className="w-full flex justify-center">
-                            <div className="text-center">
-                                <h5 className="text-xl primaryText">TOWA TIEMENI FRANK</h5>
-                                <p className="text-lg primaryText font-medium">Chief Executive Officer</p>
-                            </div>
-                        </div>
-                        <p className="text-justify  mt-2 px-3 mt-3 text-gray-800">
-                            My role at Glitzteck is to lead strategic vision, set goals, make key decisions, and drive overall success of the company through effective leadership and management.
-                        </p>
-                    </div>
-                    {isHovered && (
-                        <motion.div
-                            id="social-media"
-                            initial="hidden"
-                            animate="visible"
-                            variants={socialMediaVariants}
-                            transition={{ duration: 0.5 }}
-                            className="w-auto p-2 absolute top-0 right-0 h-auto bg-gray-50 rounded-md m-3"
-                        >
-                            <div>
-                                <i className="cursor-pointer text-gray-500 ri-twitter-x-line text-[18px]"></i>
-                            </div>
-                            <div>
-                                <i className="cursor-pointer text-gray-500 ri-facebook-circle-fill text-[23px]"></i>
-                            </div>
-                            <div>
-                                <i className="cursor-pointer text-gray-500 ri-instagram-line text-[23px]"></i>
-                            </div>
-                            <i className="cursor-pointer text-gray-500 ri-linkedin-box-fill text-[23px]"></i>
-                        </motion.div>
-                    )}
-                </motion.div>
-                <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    onHoverStart={() => setIsHoveredY(true)}
-                    onHoverEnd={() => setIsHoveredY(false)}
-                    className="h-[75vh] mt-3 relative shadow-xl rounded-md cursor-pointer w-full"
-                >
-                    <div className="h-[40vh] w-full bg-gray-200">
-                        <img
-                            src="/images/users/tchoumtayann.png"
-                            className="h-[40vh] w-full"
-                            style={{ objectFit: "contain" }}
-                            alt=""
-                        />
-                    </div>
-                    <div className="h-[35vh] bg-white px-4 pt-5 w-full">
-                        <div className="w-full flex justify-center">
-                            <div className="text-center">
-                                <h5 className="text-xl primaryText">TCHOUMTA YANN</h5>
-                                <p className="text-lg primaryText font-medium">Chief Administrative officer</p>
-                            </div>
-                        </div>
-                        <p className="text-justify  mt-2 px-3 mt-3 text-gray-800">
-                            My role at Glizteck is to manage daily operations, oversees administrative functions, and ensures efficient business processes in the company to drive success and growth.
-                        </p>
-                    </div>
-                    {isHoveredY && (
-                        <motion.div
-                            id="social-media"
-                            initial="hidden"
-                            animate="visible"
-                            variants={socialMediaVariants}
-                            transition={{ duration: 0.5 }}
-                            className="w-auto p-2 absolute top-0 right-0 h-auto bg-gray-50 rounded-md m-3"
-                        >
-                            <div>
-                                <i className="cursor-pointer text-gray-500 ri-twitter-x-line text-[18px]"></i>
-                            </div>
-                            <div>
-                                <i className="cursor-pointer text-gray-500 ri-facebook-circle-fill text-[23px]"></i>
-                            </div>
-                            <div>
-                                <i className="cursor-pointer text-gray-500 ri-instagram-line text-[23px]"></i>
-                            </div>
-                            <i className="cursor-pointer text-gray-500 ri-linkedin-box-fill text-[23px]"></i>
-                        </motion.div>
-                    )}
-                </motion.div>
-                <motion.div
-                    whileHover={{ scale: 1.1 }}
-                    onHoverStart={() => setIsHoveredJ(true)}
-                    onHoverEnd={() => setIsHoveredJ(false)}
-                    className="h-[75vh] mt-3 relative shadow-xl rounded-md cursor-pointer w-full"
-                >
-                    <div className="h-[40vh] relative w-full bg-gray-200">
-                        <img
-                            src="/images/users/Mbajames.png"
-                            height={500}
-                            width={500}
-                            className="mt-5 absolute bottom-0"
+export const Users = () => {
+  return (
+    <motion.div
+      variants={list}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3"
+    >
+      {people.map((p, i) => (
+        <motion.div
+          key={i}
+          variants={row}
+          whileHover={{ y: -3 }}
+          className="rounded-2xl border border-gray-100 bg-white p-5 text-center shadow-sm transition-all hover:shadow-md"
+        >
+          <div className="relative mx-auto mb-3 h-16 w-16 overflow-hidden rounded-full ring-2 ring-gray-100 sm:h-20 sm:w-20">
+            <Image src={p.img} alt={p.name} fill className="object-cover" sizes="(max-width: 640px) 64px, 80px" />
+          </div>
+          <h4 className="text-sm font-semibold text-gray-900">{p.name}</h4>
+          <p className="mb-2 text-[11px] uppercase tracking-wide text-gray-500">{p.position}</p>
+          <p className="mx-auto max-w-xs text-[12px] leading-relaxed text-gray-600">{p.bio}</p>
+        </motion.div>
+      ))}
+    </motion.div>
+  );
+};
 
-                            alt=""
-                        />
-                    </div>
-                    <div className="h-[35vh] bg-white px-4 pt-5 w-full">
-                        <div className="w-full flex justify-center">
-                            <div className="text-center">
-                                <h5 className="text-xl primaryText">MBA FONGANG JAMES</h5>
-                                <p className="text-lg primaryText font-medium">Chief TechnicaL Officer</p>
-                            </div>
-                        </div>
-                        <p className="text-justify   mt-2 px-3 mt-3 text-gray-800">
-                            My role  at Glitzteck is to oversees the technical direction, development, and innovation of IT solutions to ensure alignment with business goals and industry trends.
-                        </p>
-                    </div>
-                    {isHoveredJ && (
-                        <motion.div
-                            id="social-media"
-                            initial="hidden"
-                            animate="visible"
-                            variants={socialMediaVariants}
-                            transition={{ duration: 0.5 }}
-                            className="w-auto p-2 absolute top-0 right-0 h-auto bg-gray-50 rounded-md m-3"
-                        >
-                            <div>
-                                <i className="cursor-pointer text-gray-500 ri-twitter-x-line text-[18px]"></i>
-                            </div>
-                            <div>
-                                <i className="cursor-pointer text-gray-500 ri-facebook-circle-fill text-[23px]"></i>
-                            </div>
-                            <div>
-                                <i className="cursor-pointer text-gray-500 ri-instagram-line text-[23px]"></i>
-                            </div>
-                            <i className="cursor-pointer text-gray-500 ri-linkedin-box-fill text-[23px]"></i>
-                        </motion.div>
-                    )}
-                </motion.div>
-            </div>
-        </div>
-    )
-}
-
-export default Users
+export default Users;

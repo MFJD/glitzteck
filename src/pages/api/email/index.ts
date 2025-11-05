@@ -1,53 +1,61 @@
-import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
-import { FC, useState } from 'react';
-import { toast } from 'react-toastify';
-
-interface EmailData {
-    email: string;
-}
+import { useState } from "react";
+import emailjs, { EmailJSResponseStatus } from "@emailjs/browser";
+import { toast } from "react-toastify";
 
 interface EmailProps {
-    email: string;
-    message: string;
-    subject: string;
-    name: string;
+  email: string;
+  message: string;
+  subject: string;
+  name: string;
 }
 
-export const Email = () => {
-    const [isloading, setisloading] = useState(false)
-    const EmailServer = async ({ email, message, subject, name }: EmailProps): Promise<void> => {
-        setisloading(true)
-        const emailTemplate = {
-            name: name,
-            email: email,
-            message: message,
-            subject: subject
+// rename to hook-style
+export const useEmail = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const EmailServer = async ({
+    email,
+    message,
+    subject,
+    name,
+  }: EmailProps): Promise<boolean> => {
+    setIsLoading(true);
+
+    const templateParams = {
+      name,
+      email,
+      message,
+      subject,
+    };
+
+    try {
+      await emailjs.send(
+        "service_h8u9gwk",      // ✅ your service ID
+        "template_8l3quon",     // ✅ your template ID
+        templateParams,
+        {
+          publicKey: "2z_EgJFGkQB1QYtPa", // ⬅️ VERY IMPORTANT: replace this
         }
-        const data: EmailData = {
-            email: email
-        }
-        try {
-            await emailjs.send(
-                'service_h8u9gwk',
-                'template_1og46mq',
-                emailTemplate,
-                {
-                    publicKey: 'template_8l3quon',
-                },
-            );
-            setisloading(false)
-            toast.success("Message was successfully send to Glitzteck, Contact you shortly")
-            // console.log('SUCCESS!');
-        } catch (err) {
-            setisloading(false)
-            if (err instanceof EmailJSResponseStatus) {
-                // console.log('EMAILJS FAILED...', err);
-                return;
-            }
-            // console.log('ERROR', err);
-            toast.error("Something went wrong")
-            
-        }
+      );
+
+      toast.success(
+        "Message was successfully sent to Glitzteck."
+      );
+      setIsLoading(false);
+      return true; // success
+    } catch (err) {
+      setIsLoading(false);
+
+      if (err instanceof EmailJSResponseStatus) {
+        console.error("EMAILJS FAILED...", err);
+      } else {
+        console.error("ERROR", err);
+      }
+
+      toast.error("Something went wrong. Please try again.");
+      return false; // failed
     }
-    return { EmailServer, isloading }
-}
+  };
+
+  return { EmailServer, isLoading };
+};

@@ -10,19 +10,21 @@ import { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { ToastContainer } from 'react-toastify';
 import Head from 'next/head';
-import Script from 'next/script'; // AJOUTÉ : Import pour le composant Script
-import * as gtag  from '../../lib/gtag' // AJOUTÉ : Import pour nos fonctions d'analytique
+import Script from 'next/script';
+import * as gtag from '../../lib/gtag';
+import ChatbotWidget from "@/components/ChatbotWidget";
+import SplashScreen from "./splashscreen";
 
-interface MyAppProps extends AppProps {
-  // Add any additional props here if needed
-}
+interface MyAppProps extends AppProps {}
 
 function MyApp({ Component, pageProps }: MyAppProps) {
-  const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter(); // MODIFIÉ : On récupère l'objet router complet
+  const router = useRouter();
   const { t, i18n } = useTranslation();
 
-  // AJOUTÉ : Ce useEffect gère le suivi des pages vues pour Google Analytics
+  const [showSplash, setShowSplash] = useState(false);
+  const [initialized, setInitialized] = useState(false);
+
+  // ✅ Google Analytics page tracking
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
       gtag.pageview(url);
@@ -33,34 +35,32 @@ function MyApp({ Component, pageProps }: MyAppProps) {
     };
   }, [router.events]);
 
-  useEffect(() => {
-    const addChatScript = () => {
-      const hccid = 16233252;
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = `https://mylivechat.com/chatinline.aspx?hccid=${hccid}`;
-      document.body.appendChild(script);
-    };
-
-    addChatScript();
-
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []); // MODIFIÉ : Les dépendances router n'étaient pas nécessaires ici
-
+  // ✅ Language setup + splash logic
   useEffect(() => {
     const lng = localStorage.getItem('i18nextLng') || 'en';
     if (lng) {
       i18n.changeLanguage(lng);
     }
+
+    // ✅ prevent flicker: wait until hydration complete
+    requestAnimationFrame(() => {
+      const hasSeenSplash = sessionStorage.getItem("hasSeenSplash");
+      if (!hasSeenSplash) {
+        setShowSplash(true);
+        sessionStorage.setItem("hasSeenSplash", "true");
+      }
+      setInitialized(true);
+    });
   }, [i18n]);
 
+  // ✅ prevent any flicker before deciding splash
+  if (!initialized) {
+    return <div className="fixed inset-0 bg-gray-50" />;
+  }
+
   return (
-    <div className={` ${isLoading ? 'overflow-y-hidden' : ''}`}>
-      {/* AJOUTÉ : Balises Script pour Google Analytics */}
+    <div className={`${showSplash ? 'overflow-y-hidden' : ''}`}>
+      {/* ✅ Google Analytics */}
       <Script
         strategy="afterInteractive"
         src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
@@ -79,17 +79,23 @@ function MyApp({ Component, pageProps }: MyAppProps) {
           `,
         }}
       />
-      
+
       <Head>
         <link rel="shortcut icon" href="/icons/favicon.ico" type="image/x-icon" />
       </Head>
+
       <ToastContainer />
-      <Component {...pageProps} />
+
+      {/* ✅ Splash screen logic */}
+      {showSplash && <SplashScreen finishLoading={() => setShowSplash(false)} />}
+      {!showSplash && <Component {...pageProps} />}
+
+      <ChatbotWidget />
     </div>
   );
 }
 
-// Votre fonction getInitialProps reste inchangée
+// ✅ unchanged
 MyApp.getInitialProps = async ({ Component, ctx }: AppContext) => {
   let appProps = {};
 

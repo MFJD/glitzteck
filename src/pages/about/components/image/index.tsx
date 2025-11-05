@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 const ImageAbout = () => {
     const { t} = useTranslation();
     return (
-        <div className="bg-white py-8 sm:py-6">
+        <div className="bg-white py-2 sm:py-3 relative">
             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="relative overflow-hidden bg-gray-900 px-6 py-20 shadow-xl sm:rounded-3xl sm:px-10 sm:py-24 md:px-12 lg:px-20">
                     <img
@@ -37,12 +37,12 @@ const ImageAbout = () => {
                     <div className="relative mx-auto max-w-2xl lg:mx-0">
                         <img alt="" src="/images/logos/logoHeader.png" className="h-12 w-auto" />
                         <figure>
-                            <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
+                            <blockquote className="mt-6 text-md font-semibold text-white sm:text-md sm:leading-8">
                                 <p>{t('image1')}
                                     
                                 </p>
                             </blockquote>
-                            <figcaption className="mt-6 text-base text-white">
+                            <figcaption className="mt-6 text-md text-white">
                                 <div className="font-semibold">Yann Tchoumta</div>
                                 <div className="mt-1">{t('image3')}</div>
                             </figcaption>
