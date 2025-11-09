@@ -1,6 +1,6 @@
 // /pages/api/test-hf.ts
 export default async function handler(_req: any, res: any) {
-  const apiKey = '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';
+  const apiKey = process.env.HUGGINGFACE_API_KEY;
   if (!apiKey) return res.status(400).json({ ok: false, error: "Missing HUGGINGFACE_API_KEY" });
 
   const url = "https://router.huggingface.co/v1/chat/completions";
