@@ -1,63 +1,122 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+// ================================
+// pages/components/cards.tsx — Mobile‑first, bigger images + clear scroll hint (no page horizontal scroll)
+// ================================
+"use client";
 
+import Image from "next/image";
+import React from "react";
+import { motion } from "framer-motion";
 
+const services = [
+  {
+    title: "Custom Software Development",
+    desc: "Web, mobile, and platform engineering. Clean, scalable code and crisp UX.",
+    imageUrl: "/images/software.png",
+    bullets: ["Product discovery & prototyping", "Full‑stack apps", "Design systems"],
+  },
+  {
+    title: "Project & Delivery Management",
+    desc: "Roadmaps, sprints, and stakeholder clarity. Predictable shipping.",
+    imageUrl: "/images/projectmanagement.png",
+    bullets: ["Agile/Lean delivery", "KPIs & reporting", "Vendor coordination"],
+  },
+  {
+    title: "Cloud & DevOps",
+    desc: "Modern infra on AWS/Azure/GCP. CI/CD and observability built‑in.",
+    imageUrl: "/images/cloudcomputing.png",
+    bullets: ["Kubernetes & serverless", "Pipelines & IaC", "Monitoring & autoscale"],
+  },
+  {
+    title: "Cybersecurity",
+    desc: "Hardening, audits, and incident readiness. Protect apps and data.",
+    imageUrl: "/images/cybersecurity.png",
+    bullets: ["Threat modeling", "Pen‑testing & fixes", "Compliance guidance"],
+  },
+];
 
 const Cards = () => {
-  const { t} = useTranslation();
-  const servicesData = [
-    {
-      title: t('stitle1'),
-      description: t('sdesc1'), 
-      imageUrl: '/images/software.png', // Replace with actual image path
-    },
-    {
-      title: t('stitle2'),
-      description: t('sdesc2'),
-      imageUrl: '/images/projectmanagement.png', // Replace with actual image path
-    },
-    {
-      title: t('stitle3'),
-      description: t('sdesc3'),
-      imageUrl: '/images/cloudcomputing.png', // Replace with actual image path 
-    },
-    {
-      title: t('stitle4'),
-      description: t('sdesc4'), 
-      imageUrl: '/images/cybersecurity.png', // Replace with actual image path
-    },
-  ];
   return (
-    <div className="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
-    
+    <div className="mx-auto max-w-7xl">
+      {/* Mobile horizontal scroll with big images + hint */}
+      <div
+        className="relative block sm:hidden"
+        role="region"
+        aria-label="Services cards — swipe horizontally"
+      >
+        {/* fade edges to hint scrollability */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent" />
 
-      <div className="space-y-16 mt-16"> {/* Use space-y for vertical spacing */}
-        {servicesData.map((service, index) => (
-          <div 
-            key={index} 
-            className={`flex flex-col lg:flex-row items-center ${
-              index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-            } gap-8`} 
+        {/* scroll container */}
+        <div className="overflow-x-auto overscroll-x-contain scroll-smooth">
+          <div className="flex snap-x snap-mandatory gap-4 pb-2 px-4">
+            {services.map((s, i) => (
+              <div
+                key={i}
+                className="snap-start shrink-0 basis-[85%] rounded-2xl border border-slate-100 bg-white p-4 shadow-sm"
+              >
+                <div className="relative mb-3 h-48 w-full overflow-hidden rounded-xl">
+                  <Image
+                    src={s.imageUrl}
+                    alt={s.title}
+                    fill
+                    className="object-contain bg-slate-50"
+                    sizes="100vw"
+                  />
+                </div>
+                <h3 className="text-sm font-semibold tracking-tight text-slate-900">{s.title}</h3>
+                <p className="mt-1 text-[12px] leading-relaxed text-slate-600">{s.desc}</p>
+                <ul className="mt-2 space-y-1 text-[11px] text-slate-600">
+                  {s.bullets.map((b, j) => (
+                    <li key={j}>• {b}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* swipe hint chip */}
+        <motion.div
+          initial={{ opacity: 0, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="pointer-events-none absolute bottom-1 right-3 inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white/95 px-2 py-1 text-[10px] font-medium text-slate-600 shadow-sm"
+        >
+          <span>Swipe</span>
+          <motion.span
+            initial={{ x: 0 }}
+            animate={{ x: [0, 4, 0] }}
+            transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
           >
-            <div className="lg:w-1/2"> 
-              <img
-                src={service.imageUrl}
-                alt={service.title}
-                className="md:h-96 w-auto" 
+            →
+          </motion.span>
+        </motion.div>
+      </div>
+
+      {/* Tablet/desktop grid */}
+      <div className="hidden grid-cols-2 gap-6 sm:grid lg:grid-cols-4">
+        {services.map((s, i) => (
+          <div
+            key={i}
+            className="group relative flex flex-col rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md"
+          >
+            <div className="relative mb-4 h-32 w-full overflow-hidden rounded-xl">
+              <Image
+                src={s.imageUrl}
+                alt={s.title}
+                fill
+                className="object-contain bg-slate-50"
+                sizes="(max-width: 1024px) 50vw, 25vw"
               />
             </div>
-            <div className="lg:w-1/2 p-4">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                {service.title}
-              </h3>
-              <p className="text-[18px] text-justify text-gray-600 mb-4">
-                {service.description}
-              </p>
-              <Link href={'/contact'}><button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                {t('Contacts')}
-              </button></Link>
-            </div>
+            <h3 className="text-sm font-semibold tracking-tight text-slate-900">{s.title}</h3>
+            <p className="mt-1 text-[12px] leading-relaxed text-slate-600">{s.desc}</p>
+            <ul className="mt-3 space-y-1 text-[11px] text-slate-600">
+              {s.bullets.map((b, j) => (
+                <li key={j}>• {b}</li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
