@@ -2,7 +2,7 @@
 type HFChatChoice = { message: { role: string; content: string } };
 type HFChatResponse = { choices?: HFChatChoice[]; error?: any };
 
-const HF_URL = "https://router.huggingface.co/v1/chat/completions";
+const HF_URL : any = process.env.HDF_URL;
 
 // Put Qwen first (it worked in your test), then a couple of alternates.
 const HF_MODELS = [
