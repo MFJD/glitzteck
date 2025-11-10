@@ -43,7 +43,7 @@ async function tryModel(apiKey: string, model: string, messages: any[]) {
 }
 
 export async function callHuggingFace(prompt: string): Promise<string | null> {
-  const apiKey = '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';
+  const apiKey = process.env.HUGGINGFACE_API_KEY;
   if (!apiKey) {
     console.warn("⚠️ Missing HUGGINGFACE_API_KEY in .env.local");
     return null;
