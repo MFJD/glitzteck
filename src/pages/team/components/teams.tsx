@@ -1,6 +1,3 @@
-// ================================
-// components/teams.tsx — Slimmer, tighter, elegant cards (lazy + pulse)
-// ================================
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -47,7 +44,7 @@ const item = {
   },
 };
 
-// Small helper with skeleton/pulse until the image is loaded
+// Smaller image helper with stronger bottom crop and skeleton/pulse until loaded
 const TeamImage: React.FC<{ src: string; alt: string; sizes?: string }> = ({
   src,
   alt,
@@ -57,8 +54,8 @@ const TeamImage: React.FC<{ src: string; alt: string; sizes?: string }> = ({
 
   return (
     <div className="relative w-full overflow-hidden rounded-t-2xl">
-      {/* slightly shorter portrait: aspect-[7/10] ~ 0.7w/1h (shorter than 2.6/4) */}
-      <div className="relative w-full aspect-[7/10] bg-slate-100">
+      {/* much shorter portrait with stronger bottom crop */}
+      <div className="relative w-full aspect-[4/5] bg-slate-100 overflow-hidden">
         {/* skeleton */}
         <div
           className={`absolute inset-0 animate-pulse bg-slate-200 transition-opacity duration-300 ${
@@ -69,15 +66,16 @@ const TeamImage: React.FC<{ src: string; alt: string; sizes?: string }> = ({
           src={src}
           alt={alt}
           fill
-          className={`object-cover transition-opacity duration-300 ${
+          className={`object-cover object-top transition-opacity duration-300 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
           onLoadingComplete={() => setLoaded(true)}
-          sizes={sizes ?? "(max-width: 640px) 90vw, (max-width: 1024px) 30vw, 220px"}
+          sizes={
+            sizes ?? "(max-width: 540px)  85vw, (max-width: 950px) 25vw, 160px"
+          }
           loading="lazy"
           quality={85}
         />
-        {/* subtle bottom fade for a premium transition into content */}
       </div>
     </div>
   );
@@ -107,19 +105,16 @@ const OurTeam = () => {
             transition-all hover:border-sky-200
           "
         >
-          {/* top accent hairline */}
           <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-sky-400/60 via-cyan-400/60 to-sky-400/60" />
 
-          {/* IMAGE: full-bleed horizontally, a bit shorter, no scaling */}
+          {/* Smaller IMAGE with cropped bottom */}
           <TeamImage src={m.imageUrl} alt={m.name} />
 
-          {/* content (slightly tighter) */}
           <div className="px-3 py-3.5 sm:px-3.5 sm:py-4">
             <h3 className="text-[0.92rem] font-semibold tracking-[-0.02em] text-slate-900">
               {m.name}
             </h3>
 
-            {/* role chip */}
             <div className="mt-1 inline-flex items-center rounded-full border border-slate-200 bg-white px-2 py-[2px] text-[9px] font-medium tracking-wide text-slate-600">
               {m.position}
             </div>
@@ -128,14 +123,10 @@ const OurTeam = () => {
               {m.description}
             </p>
 
-            {/* divider */}
             <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
 
-            {/* footer label */}
             <div className="mt-3 flex items-center justify-between">
-              <span className="text-[10px] text-slate-500">
-                Co-Founder of Glitzteck
-              </span>
+              <span className="text-[10px] text-slate-500">Co-Founder of Glitzteck</span>
               <div className="flex items-center gap-1.5 opacity-70 group-hover:opacity-100 transition">
                 <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
                 <span className="h-1.5 w-1.5 rounded-full bg-slate-300" />
@@ -144,7 +135,6 @@ const OurTeam = () => {
             </div>
           </div>
 
-          {/* soft hover glow */}
           <div
             className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             style={{
