@@ -16,7 +16,7 @@ const CTA = () => {
       </div>
 
       {/* card */}
-      <div className="relative w-full max-w-3xl rounded-2xl bg-white/70 backdrop-blur-xl  border-slate-200 px-6 py-10 sm:px-10 sm:py-12 text-center">
+      <div className="relative w-full max-w-3xl rounded-2xl bg-white/70 backdrop-blur-xl  border-slate-200 px-6 py-5 sm:px-10 sm:py-5 text-center">
         {/* badge/title row */}
         <div className="inline-flex items-center gap-2 rounded-full bg-white/60 backdrop-blur-sm px-3 py-[6px] text-[11px] font-medium text-sky-600 ring-1 ring-slate-200">
           <div className="h-1.5 w-1.5 rounded-full bg-sky-500 animate-pulse" />
