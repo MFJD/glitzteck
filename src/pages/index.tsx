@@ -113,7 +113,7 @@ export default function Home() {
             <motion.div variants={fadeUp} className="relative flex justify-center items-center lg:items-end">
               {/* Make the illustration responsive and layered; on small screens it will float and overlap the next section */}
               <motion.div className="w-full max-w-[640px]" variants={floatSlow} animate="animate">
-               <AnimatedDiagram />
+                <AnimatedDiagram />
               </motion.div>
 
               {/* Decorative blobs for depth; they help break the stacking feel on mobile */}
@@ -139,6 +139,12 @@ export default function Home() {
           className="bg-white rounded-2xl shadow-sm p-6 sm:p-8 lg:p-12"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <motion.div variants={fadeUp} className="order-last lg:order-first">
+              {/* Decorative image: team + product. On small screens we shrink and offset it to avoid a big stacked block. */}
+              <div className="rounded-2xl overflow-hidden  transform sm:translate-y-0 -translate-y-6 sm:-translate-y-2">
+                <img src="/images/front-image.png" alt="Team working illustration" className="w-full h-auto object-cover sm:object-contain" />
+              </div>
+            </motion.div>
             <div>
               <motion.h2 variants={fadeUp} className="text-2xl sm:text-3xl font-bold text-slate-900">Who We Are</motion.h2>
 
@@ -150,8 +156,7 @@ export default function Home() {
 
               <motion.p variants={fadeUp} className="mt-3 text-slate-700 leading-relaxed text-base">
                 Driven by a passion for technological excellence, we combine product-centric processes with cutting-edge technology to accelerate
-                development and deliver unmatched digital experiences. From project management and cloud computing to cybersecurity, we’re more
-                than just a service provider — we’re your trusted partner in the digital evolution.
+                development and deliver unmatched digital experiences. Our team of experts is committed to understanding your unique challenges
               </motion.p>
 
               <motion.ul variants={fadeUp} className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -207,12 +212,7 @@ export default function Home() {
               </motion.ul>
             </div>
 
-            <motion.div variants={fadeUp} className="order-first lg:order-last">
-              {/* Decorative image: team + product. On small screens we shrink and offset it to avoid a big stacked block. */}
-              <div className="rounded-2xl overflow-hidden shadow-lg transform sm:translate-y-0 -translate-y-6 sm:-translate-y-2">
-                <img src="/images/team-illustration.svg" alt="Team working illustration" className="w-full h-auto object-cover sm:object-contain" />
-              </div>
-            </motion.div>
+            
           </div>
         </motion.section>
 

@@ -1,235 +1,379 @@
-// AnimatedDiagram.jsx
+// ProfessionalAnimatedDashboardV5.jsx
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 /**
- * Copy this component into your project and render <AnimatedDiagram />
- * It uses framer-motion to animate SVG elements:
- * - paths draw themselves
- * - nodes float/shake and pulse
- * - connector dots travel along paths to imply active data flow
+ * ProfessionalAnimatedDashboardV5
+ * - Adds click-to-toggle + click-outside + Esc close behavior for the bell dropdown
+ * - Smooth enter/exit popover animation (scale + fade + slide)
+ * - Works with SVG elements (refs point to SVG nodes)
  *
- * Primary color used: #2c7081
+ * Usage: <ProfessionalAnimatedDashboardV5 className="w-full max-w-[980px] mx-auto" />
  */
 
-export default function AnimatedDiagram({ className = "w-full max-w-[640px] mx-auto" }) {
+export default function ProfessionalAnimatedDashboardV5({ className = "w-full max-w-[980px] mx-auto" }) {
   const primary = "#2c7081";
   const accent = "#8bd3d8";
+  const slate = "#0f1724";
+  const lightPanel = "#ffffff";
+  const subtleStroke = "rgba(44,112,129,0.06)";
 
-  // common path draw animation (from 0 -> 1 pathLength)
-  const draw = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: (i = 1) => ({
-      pathLength: 1,
-      opacity: 1,
-      transition: {
-        pathLength: { delay: 0.1 * i, duration: 1.2, ease: [0.2, 0.8, 0.2, 1] },
-        opacity: { delay: 0.05 * i, duration: 0.6 },
-      },
-    }),
+  // Layout
+  const svgW = 980;
+  const svgH = 600;
+  const sidebarX = 21   ;
+  const sidebarW = 160;
+  const topbarX = sidebarX + sidebarW + 16;
+  const topbarW = svgW - topbarX - 28;
+  const mainX = topbarX;
+  const mainY = 100;
+  const leftPanelW = 520;
+  const rightPanelW = Math.max(220, svgW - mainX - leftPanelW - 64);
+
+  // Dropdown state + refs
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const bellRef = useRef(null);
+  const dropdownRef = useRef(null);
+
+  // Animation variants for popover
+  const dropdownVariants = {
+    hidden: { opacity: 0, y: -8, scale: 0.96 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.24, ease: [0.2, 0.9, 0.2, 1] } },
+    exit: { opacity: 0, y: -8, scale: 0.96, transition: { duration: 0.18, ease: "easeInOut" } },
   };
 
-  // gentle float/hover for nodes
-  const float = {
-    animate: {
-      y: [0, -8, 0, 6, 0],
-      rotate: [0, 1.2, 0, -0.8, 0],
-      transition: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-    },
-  };
+  // Close on click outside or Esc
+  useEffect(() => {
+    function onPointerDown(e) {
+      const downTarget = e.target;
+      // If dropdown open and click is outside both bell and dropdown, close
+      if (isDropdownOpen) {
+        const bellNode = bellRef.current;
+        const ddNode = dropdownRef.current;
+        if (bellNode && ddNode) {
+          // contains works for SVG elements
+          if (!bellNode.contains(downTarget) && !ddNode.contains(downTarget)) {
+            setDropdownOpen(false);
+          }
+        }
+      }
+    }
 
-  // subtle shake used during hover / to give 'active' feeling
-  const microShake = {
-    animate: {
-      x: [0, -2, 2, -1, 1, 0],
-      transition: { duration: 0.9, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" },
-    },
-  };
+    function onKeyDown(e) {
+      if (e.key === "Escape") setDropdownOpen(false);
+    }
 
-  // small dot that moves along a path using pathLength (framer-motion supports offset via pathLength)
-  const movingDot = {
-    animate: {
-      offsetDistance: ["0%", "100%"],
-      transition: { duration: 3.4, repeat: Infinity, ease: "linear" },
-    },
-  };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isDropdownOpen]);
+
+  // handle keyboard activate on bell (Enter / Space)
+  function onBellKeyDown(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      setDropdownOpen((s) => !s);
+    }
+    if (e.key === "Escape") setDropdownOpen(false);
+  }
+
+  // small helper to toggle
+  function toggleDropdown() {
+    setDropdownOpen((s) => !s);
+  }
+
+  // Recent activity placement
+  const recentX = leftPanelW + rightPanelW - 280;
+  const recentY = 320;
 
   return (
-    <motion.div
-      className={className + " relative"}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: false, amount: 0.2 }}
-      style={{ willChange: "transform, opacity" }}
-    >
+    <motion.div className={className + " relative"} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35 }}>
       <svg
-        viewBox="0 0 900 640"
+        viewBox={`0 0 ${svgW} ${svgH}`}
         className="w-full h-auto block"
         xmlns="http://www.w3.org/2000/svg"
         role="img"
-        aria-label="Glitzteck animated diagram"
+        aria-label="Glitzteck professional dashboard illustration v5"
       >
         <defs>
-          <linearGradient id="gradPrimary" x1="0%" x2="100%" y1="0%" y2="100%">
-            <stop offset="0%" stopColor={primary} stopOpacity="1" />
-            <stop offset="100%" stopColor={accent} stopOpacity="0.95" />
+          <linearGradient id="bgGradV5" x1="0%" x2="100%">
+            <stop offset="0%" stopColor={primary} stopOpacity="0.06" />
+            <stop offset="100%" stopColor={accent} stopOpacity="0.04" />
           </linearGradient>
 
-          <radialGradient id="nodeGlow" cx="50%" cy="30%" r="60%">
-            <stop offset="0%" stopColor={primary} stopOpacity="0.22" />
-            <stop offset="100%" stopColor="#ffffff" stopOpacity="0" />
-          </radialGradient>
-
-          <filter id="softBlur">
-            <feGaussianBlur stdDeviation="8" result="b" />
-            <feBlend in="SourceGraphic" in2="b" />
-          </filter>
+          <linearGradient id="panelGradV5" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={lightPanel} />
+            <stop offset="100%" stopColor="#f7fdfc" />
+          </linearGradient>
         </defs>
 
-        {/* Background soft panel */}
-        <rect x="40" y="20" rx="18" width="820" height="560" fill="url(#gradPrimary)" opacity="0.07" />
+        {/* Background */}
+        <rect x="0" y="0" width={svgW} height={svgH} fill="url(#bgGradV5)" />
 
-        {/* Main device / panel */}
-        <g transform="translate(80,60)">
-          <rect x="240" y="40" rx="18" width="420" height="260" fill="#fff" opacity="0.98" stroke="rgba(44,112,129,0.06)" />
-          <rect x="260" y="68" width="380" height="36" rx="9" fill="#f6fafb" />
+        {/* LEFT SIDEBAR */}
+        <rect x={sidebarX} y={28} width={sidebarW} height={svgH - 56} rx="16" fill={lightPanel} stroke={subtleStroke} />
+        {["Overview", "Users", "Services", "Projects", "Settings"].map((label, i) => (
+          <g key={label} transform={`translate(${sidebarX + 18}, ${62 + i * 64})`}>
+            <circle cx="0" cy="0" r="8" fill={i === 0 ? primary : "rgba(44,112,129,0.12)"} />
+            <text x="24" y="6" fontSize="13" fill={i === 0 ? primary : "#556174"} fontWeight={600}>
+              {label}
+            </text>
+          </g>
+        ))}
+
+        {/* TOP BAR */}
+        <rect x={topbarX} y={28} width={topbarW} height={64} rx="12" fill={lightPanel} stroke="rgba(44,112,129,0.05)" />
+        <g transform={`translate(${topbarX + 18}, ${58})`}>
+          <circle cx="0" cy="0" r="6" fill={primary} />
+          <text x="14" y="6" fontSize="15" fill={slate} fontWeight={700}>
+            Glitzteck — Live Overview
+          </text>
         </g>
 
-        {/* --- Network/diagram layer --- */}
-        <g transform="translate(60,160)">
-          {/* Connector paths (curved lines describing flows) */}
+        {/* Bell icon (click to toggle). keep ref on group */}
+        <g
+          ref={bellRef}
+          transform={`translate(${topbarX + topbarW - 80}, ${44})`}
+          role="button"
+          tabIndex={0}
+          aria-haspopup="dialog"
+          aria-expanded={isDropdownOpen}
+          onClick={toggleDropdown}
+          onKeyDown={onBellKeyDown}
+          style={{ cursor: "pointer" }}
+        >
           <motion.path
-            d="M20 40 C120 0, 260 120, 380 80 C480 45, 560 120, 680 40"
-            fill="none"
-            stroke={primary}
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeOpacity="0.18"
-            variants={draw}
-            custom={1}
-            initial="hidden"
-            animate="visible"
+            d="M10 2c-3 0-5 2.5-5 5.5V12l-2.2 2.2A1 1 0 003 16h14a1 1 0 00.9-1.6L16 12V7.5C16 4.5 14 2 11 2h-1z"
+            fill={primary}
+            initial={{ y: -1 }}
+            animate={{ y: [0, -2, 0] }}
+            transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
           />
+          <circle cx="26" cy="-2" r="4" fill="#ef4444" />
+        </g>
 
-          <motion.path
-            d="M60 170 C170 120, 300 230, 420 190 C520 162, 600 210, 720 150"
-            fill="none"
-            stroke={primary}
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeOpacity="0.12"
-            variants={draw}
-            custom={2}
-            initial="hidden"
-            animate="visible"
-          />
+        {/* MAIN GRID (unchanged, omitted below for brevity) */}
+        {/* ... (left panel, right panel, recent activity, overview notes) */}
+        {/* We'll include the exact same content as your previous component to keep layout stable. */}
 
-          {/* Decorative dashed backbone (gives sense of lanes) */}
-          <motion.path
-            d="M10 260 C140 210, 320 310, 470 260 C620 215, 750 295, 820 260"
-            fill="none"
-            stroke={primary}
-            strokeWidth="1"
-            strokeLinecap="round"
-            strokeDasharray="6 8"
-            strokeOpacity="0.08"
-            variants={draw}
-            custom={3}
-            initial="hidden"
-            animate="visible"
-          />
+        {/* LEFT PANEL */}
+        <g transform={`translate(${mainX}, ${mainY})`}>
+          <g transform="translate(-2,0)">
+            <rect x="0" y="0" width={leftPanelW} height="300" rx="14" fill="url(#panelGradV5)" stroke="rgba(44,112,129,0.04)" />
+            <text x="20" y="28" fontSize="15" fontWeight="700" fill={slate}>
+              Traffic & Activity
+            </text>
 
-          {/* Moving pulse/dot on top path (gives active flow) */}
-          <motion.circle
-            r="6"
-            fill={accent}
-            style={{ offsetDistance: "0%" }}
-            // frame-motion supports `offsetDistance` with CSS Motion Path. Use animate to move along path via path() trick below.
-            // We'll use <use> with pathLength trick below instead (see anchored circle with strokeDashoffset approach).
-            className="motion-dot"
-            // small pulse
-            animate={{ scale: [0.9, 1.15, 0.95], opacity: [0.85, 1, 0.9] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            cx="120"
-            cy="40"
-            transform="translate(0,-10)"
-            opacity="0.98"
-          />
+            <g transform="translate(20,46)">
+              {[
+                { label: "Active Users", value: "12,482" },
+                { label: "Errors / min", value: "1.2" },
+                { label: "Avg Latency", value: "86ms" },
+              ].map((k, idx) => (
+                <g key={k.label} transform={`translate(${idx * 168},0)`}>
+                  <rect x="0" y="0" rx="10" width="160" height="64" fill="#fff" stroke="rgba(15,23,36,0.03)" />
+                  <text x="12" y="20" fontSize="12" fill="#64748b">
+                    {k.label}
+                  </text>
+                  <text x="12" y="44" fontSize="18" fontWeight="700" fill={primary}>
+                    {k.value}
+                  </text>
+                </g>
+              ))}
+            </g>
 
-          {/* Nodes (systems/services) - they float and slightly shake */}
-          <motion.g variants={float} animate="animate">
-            {/* Node A */}
-            <motion.g whileHover={microShake.animate as any}>
-              <circle cx="40" cy="40" r="22" fill={primary} opacity="0.98" />
-              <circle cx="40" cy="40" r="36" fill="url(#nodeGlow)" opacity="0.28" />
-              <text x="40" y="46" textAnchor="middle" fontSize="12" fill="#fff" fontWeight="700">API</text>
-            </motion.g>
+            <line x1="20" y1="124" x2={leftPanelW - 20} y2="124" stroke="rgba(15,23,36,0.03)" strokeWidth="1" />
 
-            {/* Node B */}
-            <motion.g whileHover={microShake.animate as any} transform="translate(240,20)">
-              <circle cx="40" cy="40" r="22" fill="#195a5f" />
-              <circle cx="40" cy="40" r="36" fill="url(#nodeGlow)" opacity="0.18" />
-              <text x="40" y="46" textAnchor="middle" fontSize="12" fill="#fff" fontWeight="700">DB</text>
-            </motion.g>
+            <g transform="translate(24,136)">
+              {["Auth", "API", "DB", "UI"].map((label, r) => (
+                <text key={label} x="0" y={r * 42 + 18} fontSize="12" fill="#64748b">
+                  {label}
+                </text>
+              ))}
 
-            {/* Node C */}
-            <motion.g whileHover={microShake.animate as any} transform="translate(480,-10)">
-              <circle cx="40" cy="40" r="26" fill={primary} />
-              <circle cx="40" cy="40" r="48" fill="url(#nodeGlow)" opacity="0.14" />
-              <text x="40" y="46" textAnchor="middle" fontSize="12" fill="#fff" fontWeight="700">AI</text>
-            </motion.g>
+              <g transform="translate(76, -8)">
+                {[
+                  { pct: 76, color: "#2c7081" },
+                  { pct: 58, color: "#195a5f" },
+                  { pct: 82, color: "#0b7285" },
+                  { pct: 65, color: "#1f7a78" },
+                ].map((b, i) => {
+                  const width = 360;
+                  const percent = b.pct / 100;
+                  const xPercentText = Math.max(8, Math.min(width - 44, percent * width - 44));
+                  return (
+                    <g key={i} transform={`translate(0, ${i * 42})`}>
+                      <rect x="0" y="8" width={width} height="28" rx="8" fill="#eef8f9" stroke="rgba(44,112,129,0.03)" />
+                      <motion.rect
+                        x="0"
+                        y="8"
+                        height="28"
+                        rx="8"
+                        width={width}
+                        fill={b.color}
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: percent }}
+                        transformOrigin="left center"
+                        transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1], delay: 0.08 * i }}
+                      />
+                      <text x={xPercentText} y="28" fontSize="12" fill="#fff" fontWeight="700">
+                        {b.pct}%
+                      </text>
+                    </g>
+                  );
+                })}
+              </g>
+            </g>
 
-            {/* Node D */}
-            <motion.g whileHover={microShake.animate as any} transform="translate(680,40)">
-              <circle cx="40" cy="40" r="20" fill="#1f7a78" />
-              <circle cx="40" cy="40" r="34" fill="url(#nodeGlow)" opacity="0.12" />
-              <text x="40" y="46" textAnchor="middle" fontSize="11" fill="#fff" fontWeight="700">UI</text>
-            </motion.g>
-          </motion.g>
-
-          {/* Animated connectors drawn on top with little moving particles */}
-          {/* Using small moving circles that animate along approximate coordinates to simulate data moving */}
-          <motion.circle
-            r="5"
-            fill="#fff"
-            stroke={primary}
-            strokeWidth="1"
-            initial={{ cx: 40, cy: 40, opacity: 0.9 }}
-            animate={{
-              cx: [40, 140, 260, 390, 520, 640, 740],
-              cy: [40, 28, 60, 42, 56, 48, 60],
-              opacity: [0.85, 0.95, 0.7, 0.95, 0.8, 0.95, 0.85],
-            }}
-            transition={{ duration: 3.6, repeat: Infinity, ease: "linear" }}
-          />
-
-          <motion.circle
-            r="4"
-            fill={accent}
-            initial={{ cx: 660, cy: 62, opacity: 0.9 }}
-            animate={{
-              cx: [640, 560, 430, 320, 220, 120, 40],
-              cy: [62, 52, 70, 58, 64, 46, 40],
-              opacity: [0.85, 0.7, 0.9, 0.7, 0.95, 0.9, 0.85],
-            }}
-            transition={{ duration: 4.2, repeat: Infinity, ease: "linear", delay: 0.4 }}
-          />
-
-          {/* small labels / badges */}
-          <g transform="translate(12,320)">
-            <rect x="0" y="0" rx="8" width="140" height="38" fill="#fff" opacity="0.98" stroke="rgba(44,112,129,0.06)" />
-            <text x="12" y="24" fontSize="12" fill="#2b3940">Realtime sync</text>
+            <g transform="translate(20,260)">
+              <rect x="0" y="0" rx="8" width="120" height="30" fill="#fff" stroke="rgba(15,23,36,0.03)" />
+              <text x="12" y="20" fontSize="12" fill="#334155">
+                Live traffic
+              </text>
+            </g>
           </g>
 
-          <g transform="translate(580,300)">
-            <rect x="0" y="0" rx="8" width="160" height="38" fill="#fff" opacity="0.98" stroke="rgba(44,112,129,0.06)" />
-            <text x="12" y="24" fontSize="12" fill="#2b3940">Secure pipelines</text>
+          {/* RIGHT PANEL */}
+          <g transform={`translate(${leftPanelW + 15},0)`}>
+            <rect x="0" y="0" width={rightPanelW} height="300" rx="14" fill="url(#panelGradV5)" stroke="rgba(44,112,129,0.04)" />
+            <text x="16" y="28" fontSize="15" fontWeight="700" fill={slate}>
+              Service Throughput
+            </text>
+
+            {[{ label: "Requests/min", value: "3.2k", y: 56 }, { label: "Errors/min", value: "1.2", y: 100 }, { label: "Avg Latency", value: "86ms", y: 144 }].map((s) => (
+              <g key={s.label} transform={`translate(16, ${s.y})`}>
+                <text x="0" y="14" fontSize="12" fill="#64748b">
+                  {s.label}
+                </text>
+                <rect x="110" y="0" rx="8" width={rightPanelW - 140} height="34" fill="#fff" stroke="rgba(15,23,36,0.03)" />
+                <text x="118" y="22" fontSize="14" fontWeight="700" fill={primary}>
+                  {s.value}
+                </text>
+              </g>
+            ))}
+
+            <g transform={`translate(20, 230)`}>
+              <line x1="-6" y1="0" x2={rightPanelW - 40} y2="0" stroke="rgba(15,23,36,0.04)" />
+              {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d, i) => (
+                <text key={d} x={i * 24} y="20" fontSize="9" fill="#94a3b8" textAnchor="middle">
+                  {d}
+                </text>
+              ))}
+
+              {[
+                { h: 0.6, col: "#2c7081" },
+                { h: 0.9, col: "#195a5f" },
+                { h: 0.7, col: "#0b7285" },
+                { h: 0.8, col: "#1f7a78" },
+                { h: 0.66, col: "#2c7081" },
+                { h: 0.4, col: "#195a5f" },
+                { h: 0.72, col: "#0b7285" },
+              ].map((b, idx) => (
+                <g key={idx} transform={`translate(${idx * 24},0)`}>
+                  <rect x="-6" y="-60" width="12" height="60" rx="4" fill="#eef8f9" />
+                  <motion.rect
+                    x="-6"
+                    y="-60"
+                    width="12"
+                    height="60"
+                    rx="4"
+                    fill={b.col}
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: b.h }}
+                    transformOrigin="bottom center"
+                    transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1], delay: 0.08 * idx }}
+                  />
+                </g>
+              ))}
+            </g>
+
+            <g transform={`translate(16, 260)`}>
+              <circle cx="12" cy="12" r="10" fill={primary} />
+              <text x="32" y="16" fontSize="12" fill="#334155">
+                All systems nominal
+              </text>
+            </g>
+          </g>
+
+          {/* Recent Activity */}
+          <g transform={`translate(${Math.max(80, recentX+10)}, ${recentY})`}>
+            <rect x="0" y="0" rx="12" width="260" height="140" fill="#fff" stroke="rgba(15,23,36,0.03)" />
+            <text x="16" y="24" fontSize="13" fontWeight="700" fill="#334155">
+              Recent Activity
+            </text>
+
+            {[
+              { who: "build@ci", msg: "Pipeline passed in few sec", t: "5m" },
+              { who: "alert@monitor", msg: "High memory usage", t: "12m" },
+              { who: "alice@client", msg: "New ticket created In less than an hour", t: "1h" },
+            ].map((a, i) => (
+              <g key={i} transform={`translate(16, ${44 + i * 34})`}>
+                <circle cx="0" cy="0" r="6" fill={i === 0 ? primary : accent} />
+                <text x="14" y="4" fontSize="12" fill="#334155" fontWeight={600}>
+                  {a.who}
+                </text>
+                <text x="14" y="18" fontSize="11" fill="#64748b">
+                  {a.msg} · {a.t}
+                </text>
+              </g>
+            ))}
+          </g>
+
+          {/* Overview Notes */}
+          <g transform={`translate(0, 320)`}>
+            <rect x="0" y="0" rx="12" width="420" height="140" fill="#fff" stroke="rgba(15,23,36,0.03)" />
+            <text x="16" y="24" fontSize="13" fontWeight="700" fill="#334155">
+              Overview Notes
+            </text>
+            <text x="16" y="52" fontSize="12" fill="#64748b">
+              This area highlights recent deployments, scheduled maintenance and
+            </text>
+            <text x="16" y="72" fontSize="12" fill="#64748b">
+              service health summaries.
+            </text>
           </g>
         </g>
+
+        {/* Dropdown rendered last so it sits above all visual elements */}
+        <AnimatePresence>
+          {isDropdownOpen && (
+            <motion.g
+              ref={dropdownRef}
+              transform={`translate(${topbarX + topbarW - 74}, ${46})`}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              variants={dropdownVariants}
+              role="dialog"
+              aria-label="Notifications dropdown"
+            >
+              <rect x="-224" y="18" width="220" height="120" rx="10" fill={lightPanel} stroke="rgba(15,23,36,0.04)" />
+              <text x="-212" y="36" fontSize="13" fontWeight="700" fill={primary}>
+                Notifications
+              </text>
+
+              {[
+                { from: "alice@client.com", subj: "Deployment succeeded", time: "2m" },
+                { from: "ops@glitzteck.com", subj: "New alert: CPU 85%", time: "12m" },
+                { from: "pm@client.com", subj: "Feature request", time: "1h" },
+              ].map((n, idx) => (
+                <g key={idx} transform={`translate(${-212}, ${56 + idx * 28})`}>
+                  <text x="0" y="0" fontSize="11" fill="#334155" fontWeight={600}>
+                    {n.from}
+                  </text>
+                  <text x="0" y="14" fontSize="11" fill="#64748b">
+                    {n.subj} · {n.time}
+                  </text>
+                </g>
+              ))}
+            </motion.g>
+          )}
+        </AnimatePresence>
       </svg>
     </motion.div>
   );
