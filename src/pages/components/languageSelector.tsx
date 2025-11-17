@@ -3,23 +3,23 @@ import { Menu, Transition } from "@headlessui/react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 
+// Toutes les langues avec leurs drapeaux
 const LANG_OPTIONS = [
   { code: "en", flag: "🇺🇸", label: "English", short: "EN" },
   { code: "fr", flag: "🇫🇷", label: "Français", short: "FR" },
   { code: "de", flag: "🇩🇪", label: "Deutsch", short: "DE" },
+  { code: "es", flag: "🇪🇸", label: "Español", short: "ES" },
+  { code: "it", flag: "🇮🇹", label: "Italiano", short: "IT" },
+  { code: "pt", flag: "🇵🇹", label: "Português", short: "PT" },
 ];
 
 export default function LanguageSelector() {
   const { i18n } = useTranslation();
   const router = useRouter();
 
-  // shared current lang state
   const [current, setCurrent] = useState(LANG_OPTIONS[0]);
-
-  // mobile-only state
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // sync initial
   useEffect(() => {
     const storedLang =
       typeof window !== "undefined"
@@ -34,16 +34,18 @@ export default function LanguageSelector() {
     setCurrent(found);
   }, [i18n.language]);
 
-  const applyLanguage = (opt: (typeof LANG_OPTIONS)[number]) => {
-    i18n.changeLanguage(opt.code);
-    if (typeof window !== "undefined") {
-      localStorage.setItem("i18nextLng", opt.code);
-    }
-    router.push(router.asPath, router.asPath, { locale: opt.code });
-    setCurrent(opt);
-  };
+const applyLanguage = (opt: (typeof LANG_OPTIONS)[number]) => {
+  if (typeof window !== "undefined") {
+    // Save the selected language
+    localStorage.setItem("i18nextLng", opt.code);
 
-  // styles shared by buttons
+    // Reload the current page without changing the URL
+    window.location.reload();
+  }
+};
+
+
+
   const triggerClasses = `
     inline-flex items-center gap-2
     rounded-xl border border-gray-200/70 bg-white/80 px-2.5 py-2
@@ -55,7 +57,6 @@ export default function LanguageSelector() {
     h-9
   `;
 
-  // DESKTOP VERSION (md and up): use Headless UI Menu, dropdown goes down
   const DesktopSelector = (
     <Menu as="div" className="relative hidden md:inline-block text-left">
       <Menu.Button className={triggerClasses}>
@@ -109,9 +110,7 @@ export default function LanguageSelector() {
                       `}
                     >
                       <span className="flex items-center gap-2">
-                        <span className="text-lg leading-none">
-                          {opt.flag}
-                        </span>
+                        <span className="text-lg leading-none">{opt.flag}</span>
                         <span className="flex flex-col leading-tight text-left">
                           <span className="font-semibold">{opt.label}</span>
                           <span className="text-[11px] text-gray-400 -mt-[1px]">
@@ -136,17 +135,12 @@ export default function LanguageSelector() {
     </Menu>
   );
 
-  // MOBILE VERSION (<md): custom drop-UP with absolute panel ABOVE the trigger button
-  // - we control open/close manually with mobileOpen state
-  // - we place the dropdown with bottom-full so it appears UP
   const MobileSelector = (
     <div className="relative inline-block md:hidden">
-      {/* trigger */}
       <button
         type="button"
         className={triggerClasses}
         onClick={(e) => {
-          // VERY IMPORTANT: don't let this click bubble to Disclosure and close the whole hamburger
           e.stopPropagation();
           setMobileOpen((prev) => !prev);
         }}
@@ -156,7 +150,7 @@ export default function LanguageSelector() {
         <span className="text-base leading-none">{current.flag}</span>
         <span className="leading-none">{current.short}</span>
         <span className="text-gray-400 leading-none text-[16px]">
-          <i className={`ri-arrow-${mobileOpen ? 'up' : 'down'}-s-line`} />
+          <i className={`ri-arrow-${mobileOpen ? "up" : "down"}-s-line`} />
         </span>
       </button>
 
@@ -171,7 +165,6 @@ export default function LanguageSelector() {
             p-2
             animate-langPopUp
           `}
-          // stop clicks so burger menu doesn't close
           onClick={(e) => e.stopPropagation()}
           onMouseDown={(e) => e.stopPropagation()}
           onTouchStart={(e) => e.stopPropagation()}
@@ -228,7 +221,6 @@ export default function LanguageSelector() {
       {DesktopSelector}
       {MobileSelector}
 
-      {/* keyframes for that little pop-up motion */}
       <style jsx global>{`
         @keyframes langPopUpKey {
           0% {

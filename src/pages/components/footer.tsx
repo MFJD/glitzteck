@@ -6,21 +6,21 @@ export default function Footer() {
 
   const navigation = {
     solutions: [
-      { name: t("au"), href: "#" },
-      { name: t("os"), href: "#" },
-      { name: t("News"), href: "#" },
+      { name: t("au"), href: "/about" },
+      { name: t("os"), href: "/services" },
+      { name: t("News"), href: "#/news" },
       { name: t("portfolio"), href: "#" },
     ],
     support: [
-      { name: t("faq"), href: "#" },
-      { name: t("ppolicy"), href: "#" },
+      { name: t("faq"), href: "/faq" },
+      { name: t("ppolicy"), href: "/privacy-policy" },
       { name: t("pcookie"), href: "#" },
-      { name: t("tac"), href: "#" },
+      { name: t("tac"), href: "/terms-and-conditions" },
     ],
     legal: [
-      { name: t("fclaim"), href: "#" },
-      { name: t("fprivacy"), href: "#" },
-      { name: t("fterm"), href: "#" },
+      { name: t("fclaim"), href: "/" },
+      { name: t("fprivacy"), href: "/privacy-policy" },
+      { name: t("fterm"), href: "/terms-and-conditions" },
     ],
     social: [
       {
