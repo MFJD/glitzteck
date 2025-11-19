@@ -57,43 +57,9 @@ const AboutHeaderSection = () => {
         </div>
 
         {/* RIGHT : IMAGE MOSAIC */}
-        <div className="flex justify-center lg:justify-end">
-          <div className="grid grid-cols-3 gap-3 max-w-sm">
-            {/* column 1 */}
-            <div className="col-span-1 flex flex-col gap-3">
-              <div className="overflow-hidden rounded-xl bg-white ring-1 ring-slate-200">
-                <img
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80"
-                  alt="Team session"
-                  className="h-36 w-full object-cover"
-                />
-              </div>
-              <div className="overflow-hidden rounded-xl bg-white ring-1 ring-slate-200">
-                <img
-                  src="https://images.unsplash.com/photo-1485217988980-11786ced9454?auto=format&fit=crop&w=600&q=80"
-                  alt="Planning board"
-                  className="h-36 w-full object-cover"
-                />
-              </div>
-            </div>
-
-            {/* column 2-3 */}
-            <div className="col-span-2 flex flex-col gap-3">
-              <div className="overflow-hidden rounded-xl bg-white ring-1 ring-slate-200">
-                <img
-                  src="https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?auto=format&fit=crop&w=800&q=80"
-                  alt="Collaboration"
-                  className="h-48 w-full object-cover"
-                />
-              </div>
-              <div className="overflow-hidden rounded-xl bg-white ring-1 ring-slate-200">
-                <img
-                  src="https://images.unsplash.com/photo-1670272504528-790c24957dda?auto=format&fit=crop&w=800&q=80"
-                  alt="Engineering focus"
-                  className="h-24 w-full object-cover"
-                />
-              </div>
-            </div>
+        <div className="flex justify-center -mt-10 lg:justify-end">
+          <div className="">
+            <img src="/images/about_header.png" className="-mt-5" alt="" />
           </div>
         </div>
       </div>

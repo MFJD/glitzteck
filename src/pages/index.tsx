@@ -212,7 +212,7 @@ export default function Home() {
               </motion.ul>
             </div>
 
-            
+
           </div>
         </motion.section>
 
@@ -359,7 +359,7 @@ export default function Home() {
 
             <motion.div variants={fadeUp} className="bg-white p-6 rounded-xl shadow-sm">
               <h5 className="font-semibold">Cybersecurity</h5>
-              <p className="text-sm text-slate-500 mt-2">Proactive security programs, threat modelling, secure coding, incident response and managed detection services.</p>
+              <p className="text-sm text-slate-500 mt-2">Proactive security programs, threat modelling, secure coding,incident response and managed detection services.</p>
             </motion.div>
           </div>
         </motion.section>
@@ -374,28 +374,80 @@ export default function Home() {
         >
           <motion.h3 variants={fadeUp} className="text-2xl font-bold">Visual highlights</motion.h3>
           <motion.p variants={fadeUp} className="mt-3 text-slate-600 max-w-3xl text-base">A taste of the visuals and thinking that go into our products.</motion.p>
-
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-            {/* Left big image: on small screens it will be slightly offset */}
-            <motion.div variants={fadeUp} className="rounded-xl overflow-hidden border p-4 transform sm:translate-y-0 -translate-y-6 sm:-translate-y-0">
-              <img src="/images/visual-1.svg" alt="visual 1" className="w-full h-44 object-contain" />
-              <div className="mt-3 font-semibold">Product dashboards</div>
-              <div className="text-sm text-slate-500">Designs built for clarity and action.</div>
-            </motion.div>
 
-            {/* Middle visual: floats up on mobile to avoid simple stacking */}
-            <motion.div variants={fadeUp} className="rounded-xl overflow-hidden border p-4 -mt-6 md:mt-0 z-10 bg-white">
-              <img src="/images/visual-2.svg" alt="visual 2" className="w-full h-44 object-contain" />
-              <div className="mt-3 font-semibold">Secure architectures</div>
-              <div className="text-sm text-slate-500">Resilient infrastructure patterns for modern clouds.</div>
-            </motion.div>
+            {[
+              {
+                img: "/images/dashboard_visual1.png",
+                title: "Product dashboards",
+                desc: "Designs built for clarity and action."
+              },
+              {
+                img: "/images/security_visual2.png",
+                title: "Secure architectures",
+                desc: "Resilient infrastructure patterns for clouds."
+              },
+              {
+                img: "/images/collaborator_visual3.png",
+                title: "Collaboration flows",
+                desc: "Seamless workflows between teams and tools."
+              },
+            ].map((card, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                className="relative rounded-2xl overflow-hidden border h-72 group"
+              >
+                {/* CLEAN IMAGE */}
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out
+                   group-hover:scale-105"
+                />
 
-            <motion.div variants={fadeUp} className="rounded-xl overflow-hidden border p-4">
-              <img src="/images/visual-3.svg" alt="visual 3" className="w-full h-44 object-contain" />
-              <div className="mt-3 font-semibold">Collaboration flows</div>
-              <div className="text-sm text-slate-500">Seamless workflows between teams and tools.</div>
-            </motion.div>
+                {/* HOVER OVERLAY — black fade + blur */}
+                <div
+                  className="
+          absolute inset-0
+          bg-black/0 backdrop-blur-0
+          group-hover:bg-black/60 group-hover:backdrop-blur-md
+          transition-all duration-500 ease-out
+          pointer-events-none
+        "
+                />
+
+                {/* Your ORIGINAL text position (always visible) */}
+                <div className="absolute bottom-4 left-4 right-4 z-10">
+                  <div
+                    className="
+            font-semibold text-white text-lg
+            transition-all duration-500 ease-out
+            group-hover:translate-y-[-4px] group-hover:opacity-100
+          "
+                  >
+                    {card.title}
+                  </div>
+
+                  <div
+                    className="
+            text-sm text-slate-200 mt-1
+            transition-all duration-500 ease-out delay-75
+            group-hover:translate-y-[-2px] group-hover:opacity-100
+          "
+                  >
+                    {card.desc}
+                  </div>
+                </div>
+
+                {/* Soft gradient at bottom (always visible) */}
+                <div className="absolute left-0 right-0 bottom-0 h-24 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
+              </motion.div>
+            ))}
+
           </div>
+
+
         </motion.section>
 
         {/* CONTACT / CTA ANCHOR */}
