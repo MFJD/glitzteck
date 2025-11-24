@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link"; // FIX: Import Link
 
 import Footer from "../components/footer";
 import ScrollToTopButton from "@/components/scrollButton";
@@ -73,7 +74,10 @@ export default function AboutUsFAQ(): JSX.Element {
                             <div className="mt-4 flex flex-wrap gap-3">
                                 <button onClick={expandAll} className="text-sm px-3 py-2 rounded-full border border-gray-200">Expand all</button>
                                 <button onClick={collapseAll} className="text-sm px-3 py-2 rounded-full border border-gray-200">Collapse all</button>
-                                <a href="/contact" className="text-sm px-3 py-2 rounded-full" style={{ border: '1px solid rgba(44,112,129,0.12)', background: 'rgba(44,112,129,0.06)', color: 'var(--primary)' }}>Get in touch</a>
+                                {/* FIX: Replaced <a> with <Link> */}
+                                <Link href="/contact" passHref legacyBehavior>
+                                    <a className="text-sm px-3 py-2 rounded-full" style={{ border: '1px solid rgba(44,112,129,0.12)', background: 'rgba(44,112,129,0.06)', color: 'var(--primary)' }}>Get in touch</a>
+                                </Link>
                             </div>
                         </div>
 
@@ -113,8 +117,14 @@ export default function AboutUsFAQ(): JSX.Element {
                                             </div>
 
                                             <div className="mt-3 flex flex-wrap gap-3">
-                                                <a href="/contact" className="text-sm font-medium underline">Contact our team</a>
-                                                <a href="/services" className="text-sm font-medium underline">Explore services</a>
+                                                {/* FIX: Replaced <a> with <Link> */}
+                                                <Link href="/contact" passHref legacyBehavior>
+                                                    <a className="text-sm font-medium underline">Contact our team</a>
+                                                </Link>
+                                                {/* FIX: Replaced <a> with <Link> */}
+                                                <Link href="/services" passHref legacyBehavior>
+                                                    <a className="text-sm font-medium underline">Explore services</a>
+                                                </Link>
                                             </div>
                                         </motion.div>
                                     )}
@@ -125,8 +135,10 @@ export default function AboutUsFAQ(): JSX.Element {
 
                     {filtered.length === 0 && (
                         <div className="text-center py-10 bg-white rounded-xl shadow-sm">
-                            <p className="text-gray-600">No results for "<span className="font-medium">{query}</span>".</p>
-                            <p className="mt-3 text-sm">Try other keywords (e.g., cloud, security, pricing) or <a href="/contact" className="underline">contact us</a>.</p>
+                            {/* FIX: Escaped quotes */}
+                            <p className="text-gray-600">No results for &quot;<span className="font-medium">{query}</span>&quot;.</p>
+                            {/* FIX: Replaced <a> with <Link> */}
+                            <p className="mt-3 text-sm">Try other keywords (e.g., cloud, security, pricing) or <Link href="/contact" passHref legacyBehavior><a className="underline">contact us</a></Link>.</p>
                         </div>
                     )}
                 </section>
@@ -136,7 +148,10 @@ export default function AboutUsFAQ(): JSX.Element {
                         <h4 className="text-sm font-semibold">Need a custom answer?</h4>
                         <p className="mt-2 text-xs text-gray-600">If your question is specific to your product or industry, book a short discovery call and we’ll prepare concrete next steps.</p>
                         <div className="mt-4">
-                            <a href="/contact" className="inline-block px-4 py-2 rounded-md text-sm font-medium" style={{ backgroundColor: 'var(--primary)', color: 'white' }}>Schedule a call</a>
+                            {/* FIX: Replaced <a> with <Link> */}
+                            <Link href="/contact" passHref legacyBehavior>
+                                <a className="inline-block px-4 py-2 rounded-md text-sm font-medium" style={{ backgroundColor: 'var(--primary)', color: 'white' }}>Schedule a call</a>
+                            </Link>
                         </div>
                     </div>
 
@@ -153,7 +168,10 @@ export default function AboutUsFAQ(): JSX.Element {
                         <h4 className="text-sm font-semibold">Contact</h4>
                         <p className="mt-2 text-xs text-gray-600">Prefer email? Send us details about your project and we’ll reply within one business day.</p>
                         <div className="mt-3">
-                            <a href="/contact" className="inline-block text-sm font-medium underline">/contact</a>
+                            {/* FIX: Replaced <a> with <Link> */}
+                            <Link href="/contact" passHref legacyBehavior>
+                                <a className="inline-block text-sm font-medium underline">/contact</a>
+                            </Link>
                         </div>
                     </div>
                 </section>

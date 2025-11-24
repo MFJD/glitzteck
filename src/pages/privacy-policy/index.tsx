@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link"; // FIX: Import Link
 
 import Head from "../components/head";
 import Footer from "../components/footer";
@@ -35,7 +36,8 @@ export default function TermsConditions(): JSX.Element {
         const rect = wrapper.getBoundingClientRect();
         const left = rect.left + window.scrollX;
         const width = rect.width;
-        const bottom = wrapper.getBoundingClientRect().bottom + window.scrollY;
+        // The original bottom logic using window.scrollY is complex and often unnecessary
+        // A simple check against the footer position is usually better for cleanup.
         const footerOffset = document.body.scrollHeight - window.innerHeight - 24; // 24px offset from footer
         let top = 112;
 
@@ -53,6 +55,7 @@ export default function TermsConditions(): JSX.Element {
         fixed.style.opacity = '1';
       } else {
         if (fixed) {
+          // Clear fixed positioning for mobile view
           fixed.style.position = '';
           fixed.style.top = '';
           fixed.style.left = '';
@@ -90,7 +93,7 @@ export default function TermsConditions(): JSX.Element {
     });
 
     return () => obs.disconnect();
-  }, []);
+  }, [sections]); // FIX: Added 'sections' dependency
 
   function scrollTo(id: string) {
     const ref = sections[id];
@@ -147,7 +150,8 @@ export default function TermsConditions(): JSX.Element {
                   ))}
                 </nav>
 
-                <div className="mt-4 text-xs text-gray-500">Can't find what you need? <a href="/contact" className="underline">Contact us</a>.</div>
+                {/* FIX: Escaped apostrophe and replaced <a> with <Link> */}
+                <div className="mt-4 text-xs text-gray-500">Can&apos;t find what you need? <Link href="/contact" passHref legacyBehavior><a className="underline">Contact us</a></Link>.</div>
               </div>
             </div>
           </aside>
@@ -197,12 +201,14 @@ export default function TermsConditions(): JSX.Element {
             <section id="privacy" ref={sections.privacy} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
               <h2 className="text-2xl font-semibold">9. Privacy</h2>
               <p className="mt-3 text-gray-600">We handle personal data in accordance with our Privacy Policy. Please review it for details on collection, use, and rights.</p>
-              <p className="mt-3 text-gray-700">See <a href="/privacy-policy" className="underline">Privacy Policy</a> for more information.</p>
+              {/* FIX: Replaced <a> with <Link> */}
+              <p className="mt-3 text-gray-700">See <Link href="/privacy-policy" passHref legacyBehavior><a className="underline">Privacy Policy</a></Link> for more information.</p>
             </section>
 
             <section id="changes" ref={sections.changes} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
               <h2 className="text-2xl font-semibold">10. Changes to Terms</h2>
-              <p className="mt-3 text-gray-600">We may update these terms periodically. Updated terms will be posted on this page with an updated "Effective Date". Continued use of our services constitutes acceptance.</p>
+              <p className="mt-3 text-gray-600">We may update these terms periodically. Updated terms will be posted on this page with an updated &quot;Effective Date&quot;. Continued use of our services constitutes acceptance.</p>
+              {/* FIX: Escaped quotes */}
               <div className="mt-4 text-sm text-gray-500">Effective date: <strong>November 14, 2025</strong></div>
             </section>
           </article>
