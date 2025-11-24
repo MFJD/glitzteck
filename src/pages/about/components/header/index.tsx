@@ -16,7 +16,6 @@ const AboutHeaderSection = () => {
               {t("headerabouttitle")}
             </span>
           </div>
-
           {/* headline */}
           <h1 className="mt-4 text-[1.8rem] sm:text-[2rem] font-semibold tracking-[-0.045em] leading-[1.2] text-slate-900">
             We design and build digital products that actually get used.
