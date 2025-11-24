@@ -12,9 +12,9 @@ const MissionSection: React.FC = () => {
   }
 
   const baseStats: Stat[] = [
-    { label: 24, title: t("missionProjects"), desc: "Launched successfully" },
-    { label: 18, title: t("missionClients"), desc: "Active collaborations" },
-    { label: 10, title: t("missionExperts"), desc: "Core engineering team" },
+    { label: 24, title: t("about_mission_stat_projects_title"), desc: t("about_mission_stat_projects_desc") },
+    { label: 18, title: t("about_mission_stat_clients_title"), desc: t("about_mission_stat_clients_desc") },
+    { label: 10, title: t("about_mission_stat_experts_title"), desc: t("about_mission_stat_experts_desc") },
   ];
 
   const [animatedStats, setAnimatedStats] = useState(
@@ -51,23 +51,23 @@ const MissionSection: React.FC = () => {
         {/* LEFT TEXT */}
         <div className="max-w-xl -mt-14" >
           <h2 className="text-[1.5rem] sm:text-[1.7rem] font-semibold tracking-[-0.04em] text-slate-900 leading-[1.25]">
-            {t("missiontitle")}
+            {t("about_mission_title")}
           </h2>
 
           <p className="mt-4 text-[0.9rem] leading-relaxed text-slate-600">
-            {t("missionparagraph1")}
+            {t("about_mission_paragraph_1")}
           </p>
 
          {/*  <p className="mt-4 text-[0.9rem] leading-relaxed text-slate-600">
-            {t("missionparagraph2")}
+            {t("about_mission_paragraph_2")}
           </p>
 
           <p className="mt-4 text-[0.9rem] leading-relaxed text-slate-600">
-            {t("missionparagraph3")}
+            {t("about_mission_paragraph_3")}
           </p> */}
 
           <div className="mt-6 text-[10px] uppercase tracking-wide text-slate-500">
-            We focus on outcomes, not slides.
+            {t("about_mission_focus_line")}
           </div>
         </div>
 

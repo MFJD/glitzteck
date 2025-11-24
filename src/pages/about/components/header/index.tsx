@@ -13,32 +13,31 @@ const AboutHeaderSection = () => {
           <div className="inline-flex items-center gap-2 rounded-full bg-white/60 backdrop-blur-sm px-3 py-[6px] text-[11px] font-medium text-sky-600 ring-1 ring-slate-200">
             <div className="h-1.5 w-1.5 rounded-full bg-sky-500 animate-pulse" />
             <span className="whitespace-nowrap">
-              {t("headerabouttitle")}
+              {t("about_header_badge")}
             </span>
           </div>
-
           {/* headline */}
           <h1 className="mt-4 text-[1.8rem] sm:text-[2rem] font-semibold tracking-[-0.045em] leading-[1.2] text-slate-900">
-            We design and build digital products that actually get used.
+            {t("about_header_headline")}
           </h1>
 
           {/* subtext */}
           <p className="mt-4 text-[0.9rem] leading-relaxed text-slate-600 max-w-md">
-            {t("headeraboutparagraph")}
+            {t("about_header_paragraph")}
           </p>
 
           {/* trust row */}
           <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-5 text-[12px] text-slate-500">
             <div className="flex items-center gap-3">
               <div className="h-8 w-8 rounded-full bg-gradient-to-br from-sky-100 to-cyan-50 text-sky-600 text-[11px] font-semibold ring-1 ring-sky-200/60 flex items-center justify-center">
-                5+
+                {t("about_header_years_count")}
               </div>
               <div className="leading-tight">
                 <div className="text-slate-900 font-medium text-[13px]">
-                  Years in market
+                  {t("about_header_years_label")}
                 </div>
                 <div className="text-[11px] text-slate-500">
-                  Shipping, not pitching.
+                  {t("about_header_years_sub")}
                 </div>
               </div>
             </div>
@@ -47,53 +46,19 @@ const AboutHeaderSection = () => {
 
             <div className="leading-tight">
               <div className="text-slate-900 font-medium text-[13px]">
-                Minneapolis, USA
+                {t("about_header_location")}
               </div>
               <div className="text-[11px] text-slate-500">
-                Serving global clients
+                {t("about_header_location_sub")}
               </div>
             </div>
           </div>
         </div>
 
         {/* RIGHT : IMAGE MOSAIC */}
-        <div className="flex justify-center lg:justify-end">
-          <div className="grid grid-cols-3 gap-3 max-w-sm">
-            {/* column 1 */}
-            <div className="col-span-1 flex flex-col gap-3">
-              <div className="overflow-hidden rounded-xl bg-white ring-1 ring-slate-200">
-                <img
-                  src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80"
-                  alt="Team session"
-                  className="h-36 w-full object-cover"
-                />
-              </div>
-              <div className="overflow-hidden rounded-xl bg-white ring-1 ring-slate-200">
-                <img
-                  src="https://images.unsplash.com/photo-1485217988980-11786ced9454?auto=format&fit=crop&w=600&q=80"
-                  alt="Planning board"
-                  className="h-36 w-full object-cover"
-                />
-              </div>
-            </div>
-
-            {/* column 2-3 */}
-            <div className="col-span-2 flex flex-col gap-3">
-              <div className="overflow-hidden rounded-xl bg-white ring-1 ring-slate-200">
-                <img
-                  src="https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?auto=format&fit=crop&w=800&q=80"
-                  alt="Collaboration"
-                  className="h-48 w-full object-cover"
-                />
-              </div>
-              <div className="overflow-hidden rounded-xl bg-white ring-1 ring-slate-200">
-                <img
-                  src="https://images.unsplash.com/photo-1670272504528-790c24957dda?auto=format&fit=crop&w=800&q=80"
-                  alt="Engineering focus"
-                  className="h-24 w-full object-cover"
-                />
-              </div>
-            </div>
+        <div className="flex justify-center md:-mt-20 lg:justify-end">
+          <div className="">
+            <img src="/images/about_header1.png" className="-mt-5" alt={t("about_header_image_alt")} />
           </div>
         </div>
       </div>

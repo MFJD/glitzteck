@@ -5,12 +5,12 @@ const ValuesAbout = () => {
   const { t } = useTranslation();
 
   const values = [
-    { name: t("valuesname1"), description: t("valuesdescription1") },
-    { name: t("valuesname2"), description: t("valuesdescription2") },
-    { name: t("valuesname3"), description: t("valuesdescription3") },
-    { name: t("valuesname4"), description: t("valuesdescription4") },
-    { name: t("valuesname5"), description: t("valuesdescription5") },
-    { name: t("valuesname6"), description: t("valuesdescription6") },
+    { name: t("about_values_name1"), description: t("about_values_description1") },
+    { name: t("about_values_name2"), description: t("about_values_description2") },
+    { name: t("about_values_name3"), description: t("about_values_description3") },
+    { name: t("about_values_name4"), description: t("about_values_description4") },
+    { name: t("about_values_name5"), description: t("about_values_description5") },
+    { name: t("about_values_name6"), description: t("about_values_description6") },
   ];
 
   return (
@@ -20,12 +20,12 @@ const ValuesAbout = () => {
           {/* Header */}
           <div className="w-full">
             <h2 className="text-[1.5rem] sm:text-[1.7rem] font-semibold tracking-[-0.04em] text-slate-900 leading-[1.25]">
-              {t("valuestitle")}
+              {t("about_values_title")}
             </h2>
 
-            {/* Paragraph full width */}
+            {/* Paragraph */}
             <p className="mt-4 text-[0.9rem] leading-relaxed text-slate-600 max-w-6xl">
-              {t("valuesparagraph")}
+              {t("about_values_paragraph")}
             </p>
           </div>
 
@@ -39,7 +39,6 @@ const ValuesAbout = () => {
                 <div className="mt-2 text-[0.85rem] leading-relaxed text-slate-600">
                   {item.description}
                 </div>
-
                 <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-slate-300/60 to-transparent" />
               </div>
             ))}

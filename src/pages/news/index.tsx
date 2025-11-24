@@ -13,64 +13,17 @@ const News: React.FC = () => {
   const posts = New()?.posts || [];
   const { t } = useTranslation();
 
-  //
-  // ---- Animation variants (same spirit as Services) ----
-  //
-  const pageVariants = {
-    hidden: {
-      opacity: 0,
-      y: 10,
-      scale: 0.99,
-      filter: "blur(4px)",
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      filter: "blur(0px)",
-      transition: {
-        duration: 0.35,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
-  };
-
-  const bgGlowVariants = {
-    hidden: { opacity: 0, scale: 0.97 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.45,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const sectionGroupVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        delayChildren: 0.08,
-        staggerChildren: 0.08,
-      },
-    },
-  };
-
   const sectionItemVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.3,
-        ease: [0.16, 1, 0.3, 1],
-      },
+      transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
   return (
-   <motion.div
+    <motion.div
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -79,27 +32,17 @@ const News: React.FC = () => {
       <Head />
       <ScrollToTopButton />
 
-
-      {/* --- FOREGROUND CONTENT --- */}
       <main className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 md:mb-24 mb-16 pt-16 md:pt-24">
-                {/* Page intro */}
-        <motion.section
-          variants={sectionItemVariants}
-          className="mt-10 text-left max-w-2xl"
-        >
+        {/* Page intro */}
+        <motion.section variants={sectionItemVariants} className="mt-10 text-left max-w-2xl">
           <h2 className="primaryText text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-slate-900">
-            {t("ftb")}
+            {t("news_featured_title")}
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            {t("newsdesc")}
-          </p>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">{t("news_intro")}</p>
         </motion.section>
 
         {/* Featured + List */}
-        <motion.section
-          variants={sectionItemVariants}
-          className="relative mt-8 sm:mt-10"
-        >
+        <motion.section variants={sectionItemVariants} className="relative mt-8 sm:mt-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-12 sm:gap-y-16">
             {/* FEATURED POST */}
             {featuredPost && (
@@ -129,7 +72,7 @@ const News: React.FC = () => {
                       aria-describedby="featured-post"
                       className="text-xs font-semibold text-cyan-600 hover:text-cyan-500 inline-flex items-center gap-1"
                     >
-                      {t("cread")}
+                      {t("read_more")}
                       <span aria-hidden="true" className="translate-y-[1px]">
                         &rarr;
                       </span>
@@ -155,11 +98,7 @@ const News: React.FC = () => {
             <div className="w-full max-w-2xl lg:max-w-none">
               <div className="divide-y divide-slate-200/70">
                 {posts.map((post) => (
-                  <article
-                    key={post.id}
-                    className="py-6 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4"
-                  >
-                    {/* Copy block */}
+                  <article key={post.id} className="py-6 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                     <div className="group relative flex-1 max-w-xl">
                       <time
                         dateTime={post.datetime}
@@ -179,19 +118,12 @@ const News: React.FC = () => {
                         {post.description}
                       </p>
 
-                      <a
-                        href={post.href}
-                        className="mt-3 inline-flex text-[0.7rem] font-semibold text-cyan-600 hover:text-cyan-500"
-                      >
-                        {t("cread")} →
+                      <a href={post.href} className="mt-3 inline-flex text-[0.7rem] font-semibold text-cyan-600 hover:text-cyan-500">
+                        {t("read_more")} →
                       </a>
                     </div>
 
-                    {/* Author block */}
-                    <a
-                      href={post.author.href}
-                      className="flex items-center gap-x-2.5 text-xs font-medium text-slate-700 hover:text-slate-900 shrink-0"
-                    >
+                    <a href={post.author.href} className="flex items-center gap-x-2.5 text-xs font-medium text-slate-700 hover:text-slate-900 shrink-0">
                       <img
                         alt={post.author.name}
                         src={post.author.imageUrl}
