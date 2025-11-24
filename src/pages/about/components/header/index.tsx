@@ -56,7 +56,7 @@ const AboutHeaderSection = () => {
         </div>
 
         {/* RIGHT : IMAGE MOSAIC */}
-        <div className="flex justify-center -mt-10 lg:justify-end">
+        <div className="flex justify-center md:-mt-20 lg:justify-end">
           <div className="">
             <img src="/images/about_header1.png" className="-mt-5" alt={t("about_header_image_alt")} />
           </div>

@@ -35,7 +35,7 @@ const Services: React.FC = () => {
       <main className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 md:mb-24 mb-16 pt-16 md:pt-24">
 
         {/* Hero */}
-        <section className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-6">
+        <section className="relative z-10 mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 pt-16 pb-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ const Services: React.FC = () => {
         </section>
 
         {/* Services Cards */}
-        <section id="services" className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-4">
+        <section id="services" className="relative z-10  pb-4">
           <Cards />
         </section>
 
