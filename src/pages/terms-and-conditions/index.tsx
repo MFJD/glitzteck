@@ -2,12 +2,15 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import Head from "../components/head";
 import Footer from "../components/footer";
 import ScrollToTopButton from "@/components/scrollButton";
 
 export default function TermsAndConditions(): JSX.Element {
+  const { t } = useTranslation();
+  
   const sections = {
     intro: useRef<HTMLElement | null>(null),
     acceptance: useRef<HTMLElement | null>(null),
@@ -174,26 +177,26 @@ export default function TermsAndConditions(): JSX.Element {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* LEFT: wrapper — keep in-flow so absolute positioning anchors to this wrapper when needed */}
           <div className="md:col-span-1 " ref={tocWrapperRef}>
-            <div ref={tocRef} className="hidden md:block rounded-2xl p-4 bg-white border border-gray-100 shadow-sm" aria-label="Table of contents" style={{ minWidth: 220 }}>
-              <h3 className="text-sm font-semibold">On this page</h3>
+            <div ref={tocRef} className="hidden md:block rounded-2xl p-4 bg-white border border-gray-100 shadow-sm" aria-label={t('terms_nav_aria_label')} style={{ minWidth: 220 }}>
+              <h3 className="text-sm font-semibold">{t('terms_nav_title')}</h3>
 
-              <nav className="mt-4 flex flex-col gap-2 text-sm" aria-label="Terms table of contents">
+              <nav className="mt-4 flex flex-col gap-2 text-sm" aria-label={t('terms_nav_aria_label_full')}>
                 {[
-                  { id: "intro", label: "Introduction" },
-                  { id: "acceptance", label: "Acceptance" },
-                  { id: "services", label: "Services" },
-                  { id: "accounts", label: "Accounts" },
-                  { id: "fees", label: "Fees" },
-                  { id: "ip", label: "IP" },
-                  { id: "confidentiality", label: "Confidentiality" },
-                  { id: "warranties", label: "Warranties" },
-                  { id: "liability", label: "Liability" },
-                  { id: "termination", label: "Termination" },
-                  { id: "data", label: "Data & privacy" },
-                  { id: "compliance", label: "Compliance" },
-                  { id: "changes", label: "Changes" },
-                  { id: "governing", label: "Governing law" },
-                  { id: "contact", label: "Contact" },
+                  { id: "intro", label: t('terms_nav_intro') },
+                  { id: "acceptance", label: t('terms_nav_acceptance') },
+                  { id: "services", label: t('terms_nav_services') },
+                  { id: "accounts", label: t('terms_nav_accounts') },
+                  { id: "fees", label: t('terms_nav_fees') },
+                  { id: "ip", label: t('terms_nav_ip') },
+                  { id: "confidentiality", label: t('terms_nav_confidentiality') },
+                  { id: "warranties", label: t('terms_nav_warranties') },
+                  { id: "liability", label: t('terms_nav_liability') },
+                  { id: "termination", label: t('terms_nav_termination') },
+                  { id: "data", label: t('terms_nav_data') },
+                  { id: "compliance", label: t('terms_nav_compliance') },
+                  { id: "changes", label: t('terms_nav_changes') },
+                  { id: "governing", label: t('terms_nav_governing') },
+                  { id: "contact", label: t('terms_nav_contact') },
                 ].map((item) => (
                   <button
                     key={item.id}
@@ -210,7 +213,7 @@ export default function TermsAndConditions(): JSX.Element {
               </nav>
 
               <div className="mt-4 text-xs text-gray-500">
-                Can't find it? <a href="/contact" className="underline">Contact us</a>.
+                {t('terms_nav_help_text')} <a href="/contact" className="underline">{t('terms_nav_contact_link')}</a>.
               </div>
             </div>
           </div>
@@ -218,78 +221,78 @@ export default function TermsAndConditions(): JSX.Element {
           {/* RIGHT: content */}
           <article className="md:col-span-3 space-y-8 mt-20" ref={contentRef}>
             <section id="intro" ref={sections.intro} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Introduction</h2>
-              <p className="mt-3 text-gray-600">Welcome to Glitzteck. These Terms &amp; Conditions ("Terms") govern your access to and use of our website and services. By using our services, you accept these Terms.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_intro_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_intro_content')}</p>
             </section>
 
             <section id="acceptance" ref={sections.acceptance} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Acceptance of terms</h2>
-              <p className="mt-3 text-gray-600">By using our services you confirm you are authorized to enter into these Terms. If you disagree, do not use our services.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_acceptance_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_acceptance_content')}</p>
             </section>
 
             <section id="services" ref={sections.services} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Services</h2>
-              <p className="mt-3 text-gray-600">Glitzteck provides custom software development, project & delivery management, cloud & DevOps, and cybersecurity. Specific engagement details are set out in separate statements of work.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_services_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_services_content')}</p>
             </section>
 
             <section id="accounts" ref={sections.accounts} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Accounts</h2>
-              <p className="mt-3 text-gray-600">Keep account information accurate and your credentials secure. You are responsible for activity on your account.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_accounts_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_accounts_content')}</p>
             </section>
 
             <section id="fees" ref={sections.fees} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Fees &amp; payments</h2>
-              <p className="mt-3 text-gray-600">Fees will be specified in project agreements. Payment terms and invoicing procedures are governed by the applicable contract.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_fees_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_fees_content')}</p>
             </section>
 
             <section id="ip" ref={sections.ip} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Intellectual property</h2>
-              <p className="mt-3 text-gray-600">Glitzteck retains ownership of pre-existing intellectual property. Deliverables are licensed or transferred according to your agreement.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_ip_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_ip_content')}</p>
             </section>
 
             <section id="confidentiality" ref={sections.confidentiality} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Confidentiality</h2>
-              <p className="mt-3 text-gray-600">Each party agrees to protect confidential information and use it only for permitted purposes. Separate NDAs can be executed when needed.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_confidentiality_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_confidentiality_content')}</p>
             </section>
 
             <section id="warranties" ref={sections.warranties} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Warranties</h2>
-              <p className="mt-3 text-gray-600">Services are generally provided "as is" except where a written agreement specifies otherwise. Implied warranties are disclaimed to the extent permitted by law.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_warranties_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_warranties_content')}</p>
             </section>
 
             <section id="liability" ref={sections.liability} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Limitation of liability</h2>
-              <p className="mt-3 text-gray-600">To the extent permitted by law, our liability is limited to direct damages up to the fees paid for the services that gave rise to the claim.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_liability_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_liability_content')}</p>
             </section>
 
             <section id="termination" ref={sections.termination} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Termination</h2>
-              <p className="mt-3 text-gray-600">Either party can terminate for material breach if not cured. Termination rights and consequences are set out in the relevant contract.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_termination_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_termination_content')}</p>
             </section>
 
             <section id="data" ref={sections.data} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Data &amp; privacy</h2>
-              <p className="mt-3 text-gray-600">We process personal data according to our Privacy Policy. Contact us for a data processing agreement for regulated projects.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_data_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_data_content')}</p>
             </section>
 
             <section id="compliance" ref={sections.compliance} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Compliance</h2>
-              <p className="mt-3 text-gray-600">Clients must ensure they have rights and consents for the content they provide. We comply with laws applicable to our services.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_compliance_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_compliance_content')}</p>
             </section>
 
             <section id="changes" ref={sections.changes} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Changes to terms</h2>
-              <p className="mt-3 text-gray-600">We may update the Terms. Material changes will be notified. Continued use of services after changes means acceptance.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_changes_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_changes_content')}</p>
             </section>
 
             <section id="governing" ref={sections.governing} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Governing law</h2>
-              <p className="mt-3 text-gray-600">These terms are governed by the laws of the jurisdiction where Glitzteck is registered, unless you and we agree otherwise in writing.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_governing_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_governing_content')}</p>
             </section>
 
             <section id="contact" ref={sections.contact} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
-              <h2 className="text-2xl font-semibold">Contact</h2>
-              <p className="mt-3 text-gray-600">Questions? Reach out via <a href="/contact" className="underline">/contact</a> or email <a href="mailto:legal@glitzteck.com" className="underline">legal@glitzteck.com</a>.</p>
+              <h2 className="text-2xl font-semibold">{t('terms_section_contact_title')}</h2>
+              <p className="mt-3 text-gray-600">{t('terms_section_contact_content_before')} <a href="/contact" className="underline">{t('terms_section_contact_link')}</a> {t('terms_section_contact_content_or')} <a href="mailto:legal@glitzteck.com" className="underline">{t('terms_section_contact_email')}</a>.</p>
             </section>
           </article>
         </div>
