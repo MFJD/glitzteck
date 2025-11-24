@@ -1,5 +1,5 @@
-// /components/ChatbotWidget.tsx
 import React, { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 type Role = "user" | "assistant";
 
@@ -10,15 +10,18 @@ interface ChatMessage {
 }
 
 const THINK_DELAY_MS = 1200;
-const SUGGESTED_QUESTIONS = [
-  "What does Glitzteck build?",
-  "Can you build a custom SaaS for my business?",
-  "How does pricing work?",
-  "Can you integrate payments / Stripe?",
-  "How fast can you launch an MVP?",
-];
 
 export default function ChatbotWidget() {
+  const { t } = useTranslation();
+  
+  const SUGGESTED_QUESTIONS = [
+    t('home_chatbot_question_what_build'),
+    t('home_chatbot_question_custom_saas'),
+    t('home_chatbot_question_pricing'),
+    t('home_chatbot_question_payments'),
+    t('home_chatbot_question_mvp_launch'),
+  ];
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState("");
@@ -46,8 +49,7 @@ export default function ChatbotWidget() {
       const welcome: ChatMessage = {
         role: "assistant",
         ts: Date.now(),
-        content:
-          "Hi 👋 I'm Glitzteck AI.\n\nI can help you understand what we build, how we work, and how we can scale your product.\nChoose a question below to get started, or ask your own.",
+        content: t('home_chatbot_welcome_message'),
       };
       setMessages([welcome]);
     }, 900);
@@ -55,7 +57,7 @@ export default function ChatbotWidget() {
     return () => {
       clearTimeout(t1);
     };
-  }, [isOpen, bootComplete]);
+  }, [isOpen, bootComplete, t]);
 
   async function askQuestion(userText: string) {
     const text = userText.trim();
@@ -93,8 +95,7 @@ export default function ChatbotWidget() {
       const assistantMsg: ChatMessage = {
         role: "assistant",
         content:
-          data.reply ??
-          "I couldn't generate a reply right now. Please try again.",
+          data.reply ?? t('home_chatbot_error_no_reply'),
         ts: Date.now() + 1,
       };
 
@@ -104,8 +105,7 @@ export default function ChatbotWidget() {
       await new Promise((resolve) => setTimeout(resolve, THINK_DELAY_MS));
       const failMsg: ChatMessage = {
         role: "assistant",
-        content:
-          "⚠️ I had trouble contacting the AI service. Please try again in a moment.",
+        content: t('home_chatbot_error_connection'),
         ts: Date.now() + 2,
       };
       setMessages([...nextMessages, failMsg]);
@@ -171,7 +171,7 @@ export default function ChatbotWidget() {
               : "text-[10px] text-slate-400 mt-1"
           }
         >
-          {isUser ? "You" : "Glitzteck AI"}
+          {isUser ? t('home_chatbot_label_you') : t('home_chatbot_label_ai')}
         </div>
       </div>
     );
@@ -203,12 +203,12 @@ export default function ChatbotWidget() {
               <span className="animate-bounce [animation-delay:0.2s]">●</span>
             </span>
 
-            <span className="text-[12px] text-slate-500">thinking…</span>
+            <span className="text-[12px] text-slate-500">{t('home_chatbot_status_thinking')}</span>
           </div>
         </div>
 
         <div className="text-[10px] text-slate-400 mt-1">
-          Glitzteck AI is generating
+          {t('home_chatbot_status_generating')}
         </div>
       </div>
     );
@@ -225,11 +225,11 @@ export default function ChatbotWidget() {
         </div>
 
         <div className="text-[12px] font-medium text-slate-700 tracking-[-0.03em]">
-          Waking up Glitzteck AI…
+          {t('home_chatbot_boot_title')}
         </div>
 
         <div className="mt-1 text-[11px] text-slate-400">
-          Securing conversation • Loading SaaS knowledge
+          {t('home_chatbot_boot_subtitle')}
         </div>
 
         <div className="mt-4 w-32 h-1.5 rounded-full bg-slate-200/60 overflow-hidden">
@@ -299,10 +299,10 @@ export default function ChatbotWidget() {
           >
             <div className="flex flex-col">
               <span className="text-sm font-semibold leading-tight tracking-[-0.04em]">
-                Glitzteck AI Assistant
+                {t('home_chatbot_header_title')}
               </span>
               <span className="text-[10px] text-white/80 leading-tight">
-                Ask about SaaS, product launch, pricing
+                {t('home_chatbot_header_subtitle')}
               </span>
             </div>
 
@@ -317,7 +317,7 @@ export default function ChatbotWidget() {
                 active:scale-[0.96]
                 transition
               "
-              aria-label="Close chat"
+              aria-label={t('home_chatbot_close_aria')}
             >
               ✕
             </button>
@@ -376,7 +376,7 @@ export default function ChatbotWidget() {
                 focus:border-sky-400
                 focus:ring-2 focus:ring-sky-200
               "
-              placeholder="Type your question..."
+              placeholder={t('home_chatbot_input_placeholder')}
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
@@ -401,7 +401,7 @@ export default function ChatbotWidget() {
               "
             >
               <span className="flex items-center gap-1">
-                <span>Send</span>
+                <span>{t('home_chatbot_button_send')}</span>
                 <svg
                   className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
                   fill="none"
@@ -420,7 +420,7 @@ export default function ChatbotWidget() {
           </div>
 
           <div className="px-4 pb-3 text-center text-[10px] leading-relaxed text-slate-400">
-            AI can make mistakes. For sensitive topics, please contact a human.
+            {t('home_chatbot_disclaimer')}
           </div>
         </div>
       )}
@@ -440,7 +440,7 @@ export default function ChatbotWidget() {
             hover:shadow-[0_32px_90px_rgba(6,182,212,0.6)]
             active:scale-[0.97]
           "
-          aria-label="Open Glitzteck AI chat"
+          aria-label={t('home_chatbot_open_aria')}
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-60"></span>
@@ -448,7 +448,7 @@ export default function ChatbotWidget() {
           </span>
 
           <span className="text-[12px] leading-none font-semibold tracking-[-0.03em]">
-            Chat with Glitzteck AI
+            {t('home_chatbot_open_button')}
           </span>
         </button>
       )}
