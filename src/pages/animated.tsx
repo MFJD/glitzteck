@@ -46,12 +46,12 @@ export default function ProfessionalAnimatedDashboardV5({ className = "w-full ma
 
   // Close on click outside or Esc
   useEffect(() => {
-    function onPointerDown(e) {
+    function onPointerDown(e : any) { // Removed type annotation for JSX
       const downTarget = e.target;
       // If dropdown open and click is outside both bell and dropdown, close
       if (isDropdownOpen) {
-        const bellNode = bellRef.current;
-        const ddNode = dropdownRef.current;
+        const bellNode = bellRef.current as any; // Removed type annotation for JSX
+        const ddNode = dropdownRef.current as any; // Removed type annotation for JSX
         if (bellNode && ddNode) {
           // contains works for SVG elements
           if (!bellNode.contains(downTarget) && !ddNode.contains(downTarget)) {
@@ -61,7 +61,7 @@ export default function ProfessionalAnimatedDashboardV5({ className = "w-full ma
       }
     }
 
-    function onKeyDown(e) {
+    function onKeyDown(e : any) { // Removed type annotation for JSX
       if (e.key === "Escape") setDropdownOpen(false);
     }
 
@@ -74,7 +74,7 @@ export default function ProfessionalAnimatedDashboardV5({ className = "w-full ma
   }, [isDropdownOpen]);
 
   // handle keyboard activate on bell (Enter / Space)
-  function onBellKeyDown(e) {
+  function onBellKeyDown(e : any) { // Removed type annotation for JSX
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       setDropdownOpen((s) => !s);
@@ -218,7 +218,8 @@ export default function ProfessionalAnimatedDashboardV5({ className = "w-full ma
                         fill={b.color}
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: percent }}
-                        transformOrigin="left center"
+                        // FIX: Changed transformOrigin to style prop
+                        style={{ transformOrigin: "left center" }} 
                         transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1], delay: 0.08 * i }}
                       />
                       <text x={xPercentText} y="28" fontSize="12" fill="#fff" fontWeight="700">
@@ -285,7 +286,8 @@ export default function ProfessionalAnimatedDashboardV5({ className = "w-full ma
                     fill={b.col}
                     initial={{ scaleY: 0 }}
                     animate={{ scaleY: b.h }}
-                    transformOrigin="bottom center"
+                    // FIX: Changed transformOrigin to style prop
+                    style={{ transformOrigin: "bottom center" }} 
                     transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1], delay: 0.08 * idx }}
                   />
                 </g>
