@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import Link from "next/link"; // FIX: Import Link
 
 import Head from "../components/head";
 import Footer from "../components/footer";
@@ -71,7 +72,7 @@ export default function TermsAndConditions(): JSX.Element {
 
     Object.values(sections).forEach((r) => r.current && obs.observe(r.current));
     return () => obs.disconnect();
-  }, []);
+  }, [sections]); // Added sections dependency for completeness
 
   // PIN NAV (fixed) UNTIL BOTTOM OF CONTENT — then switch to absolute anchored to wrapper bottom
   useEffect(() => {
@@ -85,7 +86,6 @@ export default function TermsAndConditions(): JSX.Element {
       const fixedTopOffset = 110; // px
 
       const wrapperRect = wrapper.getBoundingClientRect();
-      const wrapperTopPage = wrapperRect.top + window.scrollY;
       const wrapperHeight = wrapperRect.height;
 
       const navHeight = nav.offsetHeight;
@@ -93,7 +93,6 @@ export default function TermsAndConditions(): JSX.Element {
       const contentBottomPage = contentRect.top + window.scrollY + contentRect.height;
 
       // The maximum page Y where the nav top (when fixed) is allowed:
-      // we want navBottom (window.scrollY + fixedTopOffset + navHeight) <= contentBottomPage - margin
       const marginBottom = 24; // px gap above the content bottom
       const maxFixedScrollY = contentBottomPage - marginBottom - navHeight - fixedTopOffset;
 
@@ -144,7 +143,7 @@ export default function TermsAndConditions(): JSX.Element {
       window.removeEventListener("resize", updateNavPosition);
       window.removeEventListener("orientationchange", updateNavPosition);
     };
-  }, []);
+  }, [sections]); // Added sections dependency for completeness
 
   function scrollTo(id: string) {
     const ref = sections[id];
@@ -213,7 +212,8 @@ export default function TermsAndConditions(): JSX.Element {
               </nav>
 
               <div className="mt-4 text-xs text-gray-500">
-                {t('terms_nav_help_text')} <a href="/contact" className="underline">{t('terms_nav_contact_link')}</a>.
+                {/* FIX: Replaced <a> with <Link> */}
+                {t('terms_nav_help_text')} <Link href="/contact" passHref legacyBehavior><a className="underline">{t('terms_nav_contact_link')}</a></Link>.
               </div>
             </div>
           </div>
@@ -292,7 +292,14 @@ export default function TermsAndConditions(): JSX.Element {
 
             <section id="contact" ref={sections.contact} className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm">
               <h2 className="text-2xl font-semibold">{t('terms_section_contact_title')}</h2>
-              <p className="mt-3 text-gray-600">{t('terms_section_contact_content_before')} <a href="/contact" className="underline">{t('terms_section_contact_link')}</a> {t('terms_section_contact_content_or')} <a href="mailto:legal@glitzteck.com" className="underline">{t('terms_section_contact_email')}</a>.</p>
+              <p className="mt-3 text-gray-600">
+                {t('terms_section_contact_content_before')} 
+                {/* FIX: Replaced <a> with <Link> */}
+                <Link href="/contact" passHref legacyBehavior>
+                    <a className="underline">{t('terms_section_contact_link')}</a>
+                </Link> 
+                {t('terms_section_contact_content_or')} <a href="mailto:legal@glitzteck.com" className="underline">{t('terms_section_contact_email')}</a>.
+              </p>
             </section>
           </article>
         </div>
