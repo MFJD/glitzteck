@@ -374,8 +374,19 @@
   "terms_section_contact_content_before": "Fragen? Kontaktieren Sie uns über",
   "terms_section_contact_link": "/contact",
   "terms_section_contact_content_or": "oder per E-Mail",
-  "terms_section_contact_email": "legal@glitzteck.com"
-
-  
-
+  "terms_section_contact_email": "legal@glitzteck.com",
+  "home_index_kpi_revenue": "MRR",
+  "home_index_kpi_active_users": "Aktive Nutzer",
+  "home_index_kpi_uptime": "Verfügbarkeit",
+  "home_index_dashboard_preview_aria": "Dashboard-Vorschau",
+  "home_index_dashboard_title": "Produkt-Dashboard",
+  "home_index_dashboard_subtitle": "Übersicht & jüngste Aktivitäten",
+  "home_index_dashboard_action_refresh": "Aktualisieren",
+  "home_index_dashboard_action_view": "Dashboard öffnen",
+  "home_index_dashboard_graph_title": "Nutzung (30 Tage)",
+  "home_index_dashboard_graph_period": "Letzte 30 Tage",
+  "home_index_dashboard_graph_aria": "Nutzungsdiagramm",
+  "home_index_dashboard_recent_title": "Top-Konten",
+  "home_index_dashboard_see_all": "Alle anzeigen",
+  "home_index_dashboard_footer_note": "Live-Vorschau — nicht mit Produktion verbunden"
 }
