@@ -24,7 +24,7 @@ export const New = ()=>{
             date: t('p2date'),
             datetime: '2024-09-10',
             author: {
-                name: 'Tech News',
+                name: 'Yann Tchoumta',
                 href: '#',
                 imageUrl:
                     '/images/users/tchoumtayann.png',
